@@ -6,5 +6,7 @@ adjective
 
 Old Norse *ýmsir*, *ýmissir*, pl. *ýmiss*, *ímiss*
 \
-\ 
+
+\
+ 
 An R project under development
