@@ -7,12 +7,11 @@
 dput2(x, width = 65, assign = c("front", "end", "none"))
 }
 \arguments{
-\item{x}{r object}
+\item{x}{an object}
 
-\item{width}{width of column}
+\item{width}{integer; column width}
 
-\item{assign}{should assignment to object go in front of or at the end of the object,
-or none at all?}
+\item{assign}{character; should assignment be included?}
 }
 \description{
 Writes an ASCII text representation of an R object to the console
@@ -20,7 +19,11 @@ Writes an ASCII text representation of an R object to the console
 \details{
 This is similar to the way \code{dput} is used to print ASCII representations
 of objects to the console. The differences are that \code{dput2} lets you specify
-column width, and assignment to the object is an option.
+the width of the resulting column, and assignment of the object to the name used in
+the call will by default be included. Line breaks are handled by \code{strwrap}, which
+only breaks at whitespaces. This means that some possible long construcs, like
+"structure(list(eruptions" will remain in one piece, even though they in theory could have
+been broken up further.
 }
 \examples{
 xmpl <- faithful[sort(sample(1:nrow(faithful), 50)), ]
@@ -29,4 +32,7 @@ dput(xmpl)
 cat(deparse(xmpl, width.cutoff=65), sep='\\n')
 
 dput2(xmpl, 65)
+dput2(xmpl, 65, assign="end")
+dput2(xmpl, 80, assign="none")
+dput2(xmpl[1:10,], 10, "none")
 }
