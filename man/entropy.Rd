@@ -18,7 +18,8 @@
 }
 \arguments{
 \item{x}{a vector, table, data.frame or matrix. In the case of table, data.frame and matrix
-each row is treated as separate tabulated data.}
+each row is treated as a separate set of counts or proportions, with columns representing
+species, types, categories etc.}
 
 \item{base}{the log base to be used.}
 }
@@ -32,6 +33,9 @@ entropy(c(5, 5, 4, 4, 2, 3, 5), base=exp(1))  # unit nats
 
 entropy(rep(1:4, 1:4), 4)
 entropy(rep(1:4, 1), 4)
+
+entropy(as.factor(c(1, 1, 2, 3, 4, 4)))
+entropy(as.character(c(1, 1, 2, 3, 4, 4)))
 
 mtctab <- table(mtcars$cyl, mtcars$carb)
 entropy(mtctab, 6)

@@ -7,7 +7,7 @@
 #' @param top logical; should the new rows be added to the top or the bottom (default)?
 #' 
 #' @details Can only bind two objects at a time, but will bind data.frames with
-#' non-matching column names and -classes. In such a case the first data.frame will serve as
+#' non-matching column names and -classes. In such cases the first data.frame will serve as
 #' template.
 #' 
 #' @export
@@ -59,3 +59,5 @@ addrows <- function(dtf, nrw, top=FALSE) {
     dtf2
 }
 
+# Maybe implement tryCatch(rbind(dtf, nrw), )?
+# presumably more effective when types and column names do match.

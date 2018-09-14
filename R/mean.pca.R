@@ -2,10 +2,12 @@
 #' 
 #' Takes the average of several PCA objects
 #' 
-#' @param ... PCA objects, or a single list of PCA objects
+#' @param ... prcomp, princomp or factanal objects, or a single list of such objects
 #' 
 #' @details I don't know if this sort of calculation has any kind of merit. It was
 #' written more as an impromptu challenge than as a solution to any problem
+#' 
+#' @seealso \code{\link{prcomp}}, \code{\link{princomp}}, \code{\link{factanal}}
 #' 
 #' @export
 #' 
