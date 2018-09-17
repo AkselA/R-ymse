@@ -104,7 +104,7 @@ add_data <- function(projname) {
 }
 
 load_all(projname)
-# add_data(projname)
+add_data(projname)
 document(projname)
 
 # unload(projname)
