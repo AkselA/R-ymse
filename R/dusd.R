@@ -93,7 +93,7 @@
 
 #' @name dusd
 
-NULL
+dusd <- ""
 
 #' @rdname dusd
 
