@@ -18,7 +18,7 @@ An "\code{rbind} for data.frames", sort of.
 }
 \details{
 Can only bind two objects at a time, but will bind data.frames with
-non-matching column names and -classes. In such a case the first data.frame will serve as
+non-matching column names and -classes. In such cases the first data.frame will serve as
 template.
 }
 \examples{

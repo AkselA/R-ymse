@@ -7,7 +7,7 @@
 \method{mean}{pca}(...)
 }
 \arguments{
-\item{...}{PCA objects, or a single list of PCA objects}
+\item{...}{prcomp, princomp or factanal objects, or a single list of such objects}
 }
 \description{
 Takes the average of several PCA objects
@@ -34,4 +34,7 @@ xxl <- lapply(xxs, princomp)
 
 biplot(mean.pca(xxl))
 biplot(princomp(xxm))
+}
+\seealso{
+\code{\link{prcomp}}, \code{\link{princomp}}, \code{\link{factanal}}
 }

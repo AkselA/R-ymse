@@ -17,7 +17,8 @@ dput2(x, width = 65, assign = c("front", "end", "none"),
 \item{breakAtParen}{logical; should lines break at parenthesis begins (default FALSE)}
 }
 \description{
-Writes an ASCII text representation of an R object to the console
+Writes an ASCII text representation of an R object to the console for easy copy/paste
+sharing
 }
 \details{
 This is similar to the way \code{dput} is used to print ASCII representations
@@ -48,4 +49,7 @@ rownames(xmpl) <- c("bbbb (hhhhhhh\\u00A0hhhhhhhh)",
                     "100*(part)/(total)")
 dput2(xmpl, 10, breakAtParen=TRUE)
 dput2(xmpl)
+}
+\seealso{
+\code{\link{dput}}, \code{\link{deparse}}
 }
