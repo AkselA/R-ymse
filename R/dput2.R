@@ -12,9 +12,9 @@
 #' of objects to the console. The differences are that \code{dput2} lets you specify
 #' the width of the resulting column, and assignment of the object to the name used in
 #' the call will by default be included. Line breaks are by default only done on whitespace,
-#' but can be set to happen at parenthesis begins as well. This should not break break code
-#' and can make for a more compact representation, but it can also make the code less
-#' transparent.
+#' but can be set to happen at parenthesis begins as well. This should not break code
+#' and can make for a more compact representation, but it can also make the code harder
+#' to read.
 #' 
 #' @seealso \code{\link{dput}}, \code{\link{deparse}}
 #' 
@@ -38,7 +38,7 @@
 #'                     "v v v v v v v v v v",
 #'                     "(  g-god, d-god, _-___)",
 #'                     "100*(part)/(total)")
-#' dput2(xmpl, 10, breakAtParen=TRUE)
+#' dput2(xmpl, 15, breakAtParen=TRUE)
 #' dput2(xmpl)
 
 dput2 <- function(x, width=65, assign=c("front", "end", "none"), breakAtParen=FALSE) {

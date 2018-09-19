@@ -3,10 +3,11 @@
 #' @description This is an example data set Bartlett used for a lecture course on stochastic
 #' processes, Statistics Department, University College, London. The data represents the
 #' times, in seconds, when cars passed an observation point by a road. \cr
-#' Bartlett attributes the data to a Dr A. J. Miller who supplied them as a class example.
-#' According to Adery C. A. Hope the data was recorded on a rural Swedish road. \cr
 #' 
-#' @section M. S. Bartlett's instructions:
+#' Bartlett attributes the data to a Dr A. J. Miller who supplied them as a class example.
+#' According to Adery C. A. Hope the data was recorded on a rural Swedish road.
+#' 
+#' @section M. S. Bartlett's notes:
 #' 
 #' Analyse the above data with a view to examining:
 #' \describe{
@@ -52,3 +53,26 @@
 #' lines(sp$freq[1:3000], spec$fit + qt((0.99 + 1)/2, spec$df)*spec$se, lty=1, col="lightblue")
 
 "bartlett"
+
+
+#' 2018 MarbleLympics speed skating times
+#' 
+#' @description Intermediate and total times for all 16 runs, arranged by lane and heat
+#' number.
+#' 
+#' @format A list containing two data.frames, one for each lane. Columns are heat and rows
+#' are time checks in seconds.
+#' 
+#' @source https://www.youtube.com/watch?v=fA-O6f_jArk
+#' 
+#' @examples
+#' tt <- t(do.call(cbind, speedskate))
+#' pairs(tt)
+#' cor(tt)
+#' outer(
+#'   colnames(tt), 
+#'   colnames(tt), 
+#'   Vectorize(function(i,j) cor.test(tt[,i],tt[,j])$p.value)
+#' )
+
+"speedskate"

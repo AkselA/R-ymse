@@ -111,11 +111,14 @@ document(projname)
 
 # check(projname, manual=TRUE)
 
-show_pdf <- function(package, lib.loc=NULL, opt="--force") { 
-     path <- find.package(package, lib.loc) 
-     system(paste(shQuote(file.path(R.home("bin"), "R")), 
+show_pdf <- function(package, lib.loc=NULL, opt="--force") {
+    owd <- getwd()
+    setwd(package)
+    path <- find.package(package, lib.loc) 
+    system(paste(shQuote(file.path(R.home("bin"), "R")), 
                   "CMD", "Rd2pdf", paste(opt, collapse=" "),
                   shQuote(path))) 
+    setwd(owd)
 } 
 show_pdf(projname)
 

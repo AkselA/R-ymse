@@ -4,7 +4,7 @@
 #' Two different approaches.
 #' 
 #' @param xr numeric vector; a vector of equiprobable values
-#' @param xi numeric vector; a vector of probabilities, with indices representing value
+#' @param xi numeric vector; a vector of probabilities, with indices representing values
 #' @param n integer; the number of distributions to be summed
 #' @param round integer; number of digits to round to after each convolution 
 #' @param zero.index logical; should the index of xi start at zero?
@@ -18,9 +18,7 @@
 #' 
 #' @return \code{dusd1} returns an array of size length(xr)^n representing every possible
 #' outcome. \code{dusd2} returns a probability mass function in the form of a table.
-#' 
-#' @export
-#' 
+#'  
 #' @examples
 #' # five coin flips
 #' plot(table(dusd1(0:1, 5)))
@@ -85,15 +83,16 @@
 #' s2[c(1, 220, 3779)] <- 1
 #' plot(dusd2(xi=s2, 12, round=8), lwd=1)
 #' 
-#' # making sure the length of xi is highly composite improves speed
-#' # 3779 is prime, 3780 == 2*2*3*5*7*9
+#' # making sure the length of xi is highly composite (or more precicely 'smooth')
+#' # improves speed
+#' # 3779 is prime, 3780 == 2*2*3*3*3*5*7
 #' s3 <- vector(length=3780)
 #' s3[c(1, 220, 3779)] <- 1
 #' plot(dusd2(xi=s3, 12, round=9), lwd=1)
-
+#' 
 #' @name dusd
 
-dusd <- ""
+NULL
 
 #' @rdname dusd
 

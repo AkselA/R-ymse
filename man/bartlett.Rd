@@ -19,10 +19,11 @@ bartlett
 This is an example data set Bartlett used for a lecture course on stochastic
 processes, Statistics Department, University College, London. The data represents the
 times, in seconds, when cars passed an observation point by a road. \cr
+
 Bartlett attributes the data to a Dr A. J. Miller who supplied them as a class example.
-According to Adery C. A. Hope the data was recorded on a rural Swedish road. \cr
+According to Adery C. A. Hope the data was recorded on a rural Swedish road.
 }
-\section{M. S. Bartlett's instructions}{
+\section{M. S. Bartlett's notes}{
 
 
 Analyse the above data with a view to examining:

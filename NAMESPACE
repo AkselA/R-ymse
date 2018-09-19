@@ -2,6 +2,6 @@
 
 S3method(mean,pca)
 export(addrows)
+export(caleidoscope)
 export(dput2)
-export(dusd)
 export(entropy)

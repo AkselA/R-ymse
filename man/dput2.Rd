@@ -25,9 +25,9 @@ This is similar to the way \code{dput} is used to print ASCII representations
 of objects to the console. The differences are that \code{dput2} lets you specify
 the width of the resulting column, and assignment of the object to the name used in
 the call will by default be included. Line breaks are by default only done on whitespace,
-but can be set to happen at parenthesis begins as well. This should not break break code
-and can make for a more compact representation, but it can also make the code less
-transparent.
+but can be set to happen at parenthesis begins as well. This should not break code
+and can make for a more compact representation, but it can also make the code harder
+to read.
 }
 \examples{
 xmpl <- faithful[sort(sample(1:nrow(faithful), 50)), ]
@@ -47,7 +47,7 @@ rownames(xmpl) <- c("bbbb (hhhhhhh\\u00A0hhhhhhhh)",
                     "v v v v v v v v v v",
                     "(  g-god, d-god, _-___)",
                     "100*(part)/(total)")
-dput2(xmpl, 10, breakAtParen=TRUE)
+dput2(xmpl, 15, breakAtParen=TRUE)
 dput2(xmpl)
 }
 \seealso{
