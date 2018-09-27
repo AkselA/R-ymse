@@ -7,6 +7,7 @@
 \alias{quad}
 \alias{cubi}
 \alias{powr}
+\alias{lehm}
 \title{Generalized means}
 \usage{
 harm(x, na.rm = TRUE)
@@ -18,6 +19,8 @@ quad(x, na.rm = TRUE)
 cubi(x, na.rm = TRUE)
 
 powr(x, p = 1.5, na.rm = TRUE)
+
+lehm(x, p = 2, na.rm = TRUE)
 }
 \arguments{
 \item{x}{numeric vector of values whose *mean is to be computed}
@@ -28,11 +31,13 @@ powr(x, p = 1.5, na.rm = TRUE)
 and subtract one after the calculation (see \code{lop1p}), remove all zeros, or replace
 all zeros with \eqn{1}.}
 
-\item{p}{numeric scalar for the power mean, what power? \code{p=-1}, \code{p=2} and
-\code{p=3} gives the harmonic, quadratic and cubic means respectively.}
+\item{p}{exponential power. For the power mean \code{p=-1}, \code{p=2} and
+\code{p=3} gives the harmonic, quadratic and cubic means, respectively. For the Lehmer
+mean \code{p=0}, \code{p=1} and \code{p=2} gives the harmonic, arithmetic and
+contraharmonic means, respectively.}
 }
 \description{
-Harmonic, geometric, quadratic, cubic and arbitrary power means.
+Harmonic, geometric, quadratic, cubic, power and Lehmer means.
 }
 \section{Notice}{
 
@@ -55,7 +60,7 @@ rownames(m) <- as.character(funl)[-1]
 colnames(m) <- c("posi", "1neg", "zero", "1ngz")
 round(m, 3)
 
-harm(xl[[1]]); powr(xl[[1]], -1)
+harm(xl[[1]]); powr(xl[[1]], -1); lehm(xl[[1]], 0)
 
 y <- c(0, 1, 5, 0, 6, 5, 9)
 

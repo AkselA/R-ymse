@@ -11,3 +11,4 @@ Old Norse *ýmsir*, *ýmissir*, pl. *ýmiss*, *ímiss*
     install_github("AkselA/R-ymse")
     library(ymse)
 
+    ?ymse::means

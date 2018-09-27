@@ -1,14 +1,16 @@
 #' Generalized means
 #' 
-#' Harmonic, geometric, quadratic, cubic and arbitrary power means.
+#' Harmonic, geometric, quadratic, cubic, power and Lehmer means.
 #' 
 #' @param x numeric vector of values whose *mean is to be computed
 #' @param na.rm logical; should \code{NA} values be removed? (default TRUE)
 #' @param zero.rule for the geometric mean, how should zeros be dealt with? Add one before,
 #' and subtract one after the calculation (see \code{lop1p}), remove all zeros, or replace
 #' all zeros with \eqn{1}.
-#' @param p numeric scalar for the power mean, what power? \code{p=-1}, \code{p=2} and
-#' \code{p=3} gives the harmonic, quadratic and cubic means respectively.
+#' @param p exponential power. For the power mean \code{p=-1}, \code{p=2} and
+#' \code{p=3} gives the harmonic, quadratic and cubic means, respectively. For the Lehmer
+#' mean \code{p=0}, \code{p=1} and \code{p=2} gives the harmonic, arithmetic and
+#' contraharmonic means, respectively.
 #' 
 #' @section Notice:
 #' For some of these means zeros and/or negative values are undefined, or make otherwise
@@ -29,7 +31,7 @@
 #' colnames(m) <- c("posi", "1neg", "zero", "1ngz")
 #' round(m, 3)
 #' 
-#' harm(xl[[1]]); powr(xl[[1]], -1)
+#' harm(xl[[1]]); powr(xl[[1]], -1); lehm(xl[[1]], 0)
 #' 
 #' y <- c(0, 1, 5, 0, 6, 5, 9)
 #' 
@@ -114,4 +116,13 @@ powr <- function(x, p=1.5, na.rm=TRUE) {
         x <- x[!is.na(x)]
     }
     mean(x^p)^(1/p)
+}
+
+#' @rdname means
+
+lehm <- function(x, p=2, na.rm=TRUE) {
+    if (na.rm) {  
+        x <- x[!is.na(x)]
+    }
+    sum(x^p)/sum(x^(p-1))
 }
