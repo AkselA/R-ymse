@@ -13,7 +13,7 @@
 Takes the average of several PCA objects
 }
 \details{
-I don't know if this sort of calculation has any kind of merit. It was
+I don't know if this kind of calculation has any sort of merit. It was
 written more as an impromptu challenge than as a solution to any problem
 }
 \examples{

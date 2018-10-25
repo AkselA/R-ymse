@@ -97,8 +97,8 @@ add_data <- function(projname) {
     } else {
     	cat("Files added:")
     }
-    dtf <- data.frame(x=paste(files, ""), 
-      y=paste(sprintf("%.1f", file.size(files)/1000), "kB"))
+    dtf <- data.frame(x=paste0(files), 
+                      y=paste(sprintf("%.1f", file.size(files)/1000), "kB"))
     names(dtf) <- c(" ", " ")
     dtf
 }
@@ -106,7 +106,7 @@ add_data <- function(projname) {
 load_all(projname)
 add_data(projname)
 document(projname)
-?primes
+?forecast.test
 # unload(projname)
 
 # check(projname, manual=TRUE)

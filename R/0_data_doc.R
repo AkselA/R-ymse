@@ -37,6 +37,8 @@
 #' A Simplified Monte Carlo Significance Test Procedure (p. 583), Adery C. A. Hope, 1968
 #' 
 #' @examples
+#' cpgram(diff(bartlett))
+#' 
 #' bartlett2 <- bartlett - bartlett[1]
 #' 
 #' x <- rep(0, tail(bartlett2, 1)*10)

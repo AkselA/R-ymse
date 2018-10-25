@@ -8,6 +8,8 @@
 \alias{entropy.default}
 \title{Information entropy}
 \usage{
+entropy(...)
+
 \method{entropy}{table}(x, base = 2)
 
 \method{entropy}{data.frame}(x, base = 2)
@@ -46,6 +48,5 @@ xx <- data.frame(bee=c(0, 0, 1, 2, 3, 2, 0, 3),
               beetle=c(1, 0, 0, 1, 2, 2, 0, 2),
             butterfly=c(0, 0, 0, 0, 3, 1, 0, 1))
 
-entropy(xx)
-
+entropy(xx) 
 }

@@ -7,6 +7,8 @@
 #' @return A list of length \eqn{l} with elements of \eqn{m} rows and \eqn{n} columns will
 #' result in an \eqn{m \times n \times l}{m × n × l} array.
 #' 
+#' @export
+#' 
 #' @examples
 #' df1 <- data.frame(x=c(1, 2, 3), y=c(2, 3, 4), z=c(3, 4, 5))
 #' df2 <- data.frame(x=c(4, 2, 3), y=c(2, 5, 4), z=c(3, 4, 6))
