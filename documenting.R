@@ -107,6 +107,7 @@ load_all(projname)
 add_data(projname)
 document(projname)
 ?forecast.test
+package?ymse
 # unload(projname)
 
 # check(projname, manual=TRUE)
