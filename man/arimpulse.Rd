@@ -9,7 +9,8 @@ arimpulse(mod, pulse = 1, n.ahead = 20, plot = TRUE, ...)
 \arguments{
 \item{mod}{an AR model}
 
-\item{pulse}{numeric vector; the initial pulse. Magnitude is added to the model mean}
+\item{pulse}{numeric vector; the initial pulse. Magnitude is added to the 
+model mean}
 
 \item{n.ahead}{the length of the computed response}
 

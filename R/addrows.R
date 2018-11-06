@@ -2,13 +2,14 @@
 #' 
 #' An "\code{rbind} for data.frames", sort of.
 #' 
-#' @param dtf data.frame; the object that shall be added to
+#' @param dtf data.frame; original data.frame
 #' @param nrw data.frame; the new row(s) to be added
-#' @param top logical; should the new rows be added to the top or the bottom (default)?
+#' @param top logical; should the new rows be added to the top or the bottom
+#' (default)?
 #' 
 #' @details Can only bind two objects at a time, but will bind data.frames with
-#' non-matching column names and -classes. In such cases the first data.frame will serve as
-#' template.
+#' non-matching column names and -classes. In such cases the original data.frame
+#' will serve as template.
 #' 
 #' @export
 #' 

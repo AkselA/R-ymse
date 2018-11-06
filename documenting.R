@@ -106,9 +106,7 @@ add_data <- function(projname) {
 load_all(projname)
 add_data(projname)
 document(projname)
-?forecast.test
-package?ymse
-# unload(projname)
+?incdiff
 
 # check(projname, manual=TRUE)
 
@@ -132,4 +130,3 @@ use_build_ignore(c("data.R", "documenting.R", "commit.command"), pkg=projname)
 
 # install_github(paste0("AkselA/R-", projname))
 # library(projname, character.only=TRUE)
-

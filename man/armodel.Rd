@@ -32,7 +32,8 @@ arimpulse(ar.mod, pulse=1)
 ar.mod <- armodel(c(0.8))
 arimpulse(ar.mod, pulse=1)
 
-# negative second coefficient reduce damping, signal returns to normal more quickly
+# negative second coefficient reduce damping, signal returns to normal 
+more quickly
 ar.mod <- armodel(c(0.8, -0.1))
 arimpulse(ar.mod, pulse=1)
 
@@ -40,10 +41,10 @@ arimpulse(ar.mod, pulse=1)
 ar.mod <- armodel(c(0.8, -0.5))
 arimp <- arimpulse(ar.mod, pulse=1, n.ahead=40)$pred
 polyroot(c(1, -ar.mod$ar)) # complex conjugate roots
-acf(arimp) # period ≈ 6?
-φ1 <- ar.mod$ar[1]
-φ2 <- ar.mod$ar[2]
-f <- (1/(2*pi)) * acos((φ1*(φ2-1))/(4*φ2))
+acf(arimp) # period ~= 6?
+phi1 <- ar.mod$ar[1]
+phi2 <- ar.mod$ar[2]
+f <- (1/(2*pi)) * acos((phi1*(phi2-1))/(4*phi2))
 1/f # period = 6.78
 sp <- spec.ar(ar.mod, plot=FALSE)
 1/sp$freq[which.max(sp$spec)] # period = 6.79

@@ -11,8 +11,8 @@ arfit(x, mod, x.mean = mod$x.mean)
 
 \item{mod}{an AR model}
 
-\item{x.mean}{the mean used. By default the mean of the original model. Set o zero for
-no demeaning}
+\item{x.mean}{the mean used. By default the mean of the original model.
+Set to zero for no demeaning}
 }
 \description{
 Fit a specified AR model to a univariate time series

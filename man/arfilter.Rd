@@ -11,8 +11,8 @@ arfilter(x, mod, x.mean = mod$x.mean, init = "focb")
 
 \item{mod}{an AR model}
 
-\item{x.mean}{the mean used. By default the mean of the original model. Set to zero for
-no demeaning}
+\item{x.mean}{the mean used. By default the mean of the original model.
+Set to zero for no demeaning}
 }
 \description{
 Filter a time series using AR coefficients

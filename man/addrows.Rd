@@ -7,19 +7,20 @@
 addrows(dtf, nrw, top = FALSE)
 }
 \arguments{
-\item{dtf}{data.frame; the object that shall be added to}
+\item{dtf}{data.frame; original data.frame}
 
 \item{nrw}{data.frame; the new row(s) to be added}
 
-\item{top}{logical; should the new rows be added to the top or the bottom (default)?}
+\item{top}{logical; should the new rows be added to the top or the bottom
+(default)?}
 }
 \description{
 An "\code{rbind} for data.frames", sort of.
 }
 \details{
 Can only bind two objects at a time, but will bind data.frames with
-non-matching column names and -classes. In such cases the first data.frame will serve as
-template.
+non-matching column names and -classes. In such cases the original data.frame
+will serve as template.
 }
 \examples{
 dtf <- data.frame(A=letters[1:5], 

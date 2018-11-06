@@ -11,6 +11,6 @@ and in some cases function groups, seemed to fit too well in any other package
 }
 \section{ymse functions}{
 
-addrows
+\code{\link{addrows}}
 }
 

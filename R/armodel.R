@@ -22,7 +22,8 @@
 #' ar.mod <- armodel(c(0.8))
 #' arimpulse(ar.mod, pulse=1)
 #' 
-#' # negative second coefficient reduce damping, signal returns to normal more quickly
+#' # negative second coefficient reduce damping, signal returns to normal 
+#' more quickly
 #' ar.mod <- armodel(c(0.8, -0.1))
 #' arimpulse(ar.mod, pulse=1)
 #' 
@@ -30,10 +31,10 @@
 #' ar.mod <- armodel(c(0.8, -0.5))
 #' arimp <- arimpulse(ar.mod, pulse=1, n.ahead=40)$pred
 #' polyroot(c(1, -ar.mod$ar)) # complex conjugate roots
-#' acf(arimp) # period ≈ 6?
-#' φ1 <- ar.mod$ar[1]
-#' φ2 <- ar.mod$ar[2]
-#' f <- (1/(2*pi)) * acos((φ1*(φ2-1))/(4*φ2))
+#' acf(arimp) # period ~= 6?
+#' phi1 <- ar.mod$ar[1]
+#' phi2 <- ar.mod$ar[2]
+#' f <- (1/(2*pi)) * acos((phi1*(phi2-1))/(4*phi2))
 #' 1/f # period = 6.78
 #' sp <- spec.ar(ar.mod, plot=FALSE)
 #' 1/sp$freq[which.max(sp$spec)] # period = 6.79
@@ -84,7 +85,8 @@ armodel <- function(coefs, mean=0, intercept=0, var.pred=1,
 #' Get and plot the impulse response of an AR model
 #' 
 #' @param mod an AR model
-#' @param pulse numeric vector; the initial pulse. Magnitude is added to the model mean
+#' @param pulse numeric vector; the initial pulse. Magnitude is added to the 
+#' model mean
 #' @param n.ahead the length of the computed response
 #' @param plot logical; sgould the result be plotted?
 #' @param ... further arguments to \code{plot}
@@ -115,8 +117,8 @@ arimpulse <- function(mod, pulse=1, n.ahead=20, plot=TRUE, ...) {
 #' 
 #' @param x a time series
 #' @param mod an AR model
-#' @param x.mean the mean used. By default the mean of the original model. Set o zero for
-#'   no demeaning
+#' @param x.mean the mean used. By default the mean of the original model.
+#' Set to zero for no demeaning
 #' 
 #' @seealso \code{\link{armodel}} for examples
 #' 
@@ -155,8 +157,8 @@ arfit <- function(x, mod, x.mean=mod$x.mean) {
 #' 
 #' @param x a time series
 #' @param mod an AR model
-#' @param x.mean the mean used. By default the mean of the original model. Set to zero for
-#'   no demeaning
+#' @param x.mean the mean used. By default the mean of the original model.
+#' Set to zero for no demeaning
 #' 
 #' @seealso \code{\link{armodel}}
 #' 
