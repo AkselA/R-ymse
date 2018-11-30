@@ -37,5 +37,5 @@ ls[] <- LETTERS[ls]
 ls
 }
 \seealso{
-\code{\link{index.symbol}}
+\code{\link{indexvalue}}
 }

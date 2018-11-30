@@ -17,7 +17,7 @@
 #' @return
 #' A square integer matrix of size n^2
 #' 
-#' @seealso \code{\link{index.symbol}}
+#' @seealso \code{\link{indexvalue}}
 #' 
 #' @export
 #' 
@@ -88,27 +88,27 @@ latin.sq <- function(n, random=TRUE, reduce=TRUE) {
 #' 
 #' @examples
 #' arr <- array(1:(2*3*4), dim=c(2, 3, 4))
-#' arr.is <- index.value(arr)
+#' arr.is <- indexvalue(arr)
 #' 
 #' # can be used to permutate an array
-#' index.value(arr.is[,c(2, 1, 3, 4)], rev=TRUE)
+#' indexvalue(arr.is[,c(2, 1, 3, 4)], rev=TRUE)
 #' aperm(arr, c(2, 1, 3))
 #' 
 #' # can interpret values (symbols) as dimensional indices and permute them as well
 #' arr2 <- array(rep(1:6, 4), dim=c(2, 3, 4))
-#' arr2.is <- index.value(arr2)
-#' index.value(arr2.is[,c(1, 2, 4, 3)], rev=TRUE)
+#' arr2.is <- indexvalue(arr2)
+#' indexvalue(arr2.is[,c(1, 2, 4, 3)], rev=TRUE)
 #' 
 #' # a latin square will produce an "orthogonal array"
 #' set.seed(1)
 #' lsq <- latin.sq(5)
-#' iv <- index.value(lsq)
+#' iv <- indexvalue(lsq)
 #' iv
 #' 
 #' # any permutation of a latin square is also a latin square
-#' index.symbol(iv[, c(1, 3, 2)], reverse=TRUE)
+#' indexvalue(iv[, c(1, 3, 2)], reverse=TRUE)
 
-index.value <- function(x, reverse=FALSE) {
+indexvalue <- function(x, reverse=FALSE) {
 	if (reverse) {
 		x <- as.data.frame(x)
 		nc <- ncol(x)
