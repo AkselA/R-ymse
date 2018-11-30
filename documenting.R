@@ -103,7 +103,6 @@ add_data <- function(projname) {
     dtf
 }
 
-
 load_all(projname)
 add_data(projname)
 document(projname)

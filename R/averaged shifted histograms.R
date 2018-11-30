@@ -28,16 +28,16 @@
 #' x <- round(x*5)/5
 #' 
 #' hist(x, freq=FALSE, breaks="FD", col="lightblue")
-#' hist.avg(x, type="hist", border=2, col=7, freq=FALSE, lwd=2)
-#' hist.avg(x, type="poly", border=2, col=7, freq=FALSE, lwd=2)
-#' hist.avg(x, type="line", col=2, freq=FALSE, lwd=2)
-#' hist.avg(x, type="table", col=2, freq=FALSE, lwd=2)
-#' hist.avg(x, plot=FALSE)
+#' ahist(x, type="hist", border=2, col=7, freq=FALSE, lwd=2)
+#' ahist(x, type="poly", border=2, col=7, freq=FALSE, lwd=2)
+#' ahist(x, type="line", col=2, freq=FALSE, lwd=2)
+#' ahist(x, type="table", col=2, freq=FALSE, lwd=2)
+#' ahist(x, plot=FALSE)
 
 # https://stats.stackexchange.com/questions/51718
 # http://www.stat.cmu.edu/~rnugent/PCMI2016/papers/ScottASH
 
-hist.avg <- function(x, n.breaks=nclass.FD(x), n.shifts=3, 
+ahist <- function(x, n.breaks=nclass.FD(x), n.shifts=3, 
   type=c("histogram", "polygon", "line", "table"), freq=FALSE, 
   plot=TRUE, add=FALSE, ...) {
 

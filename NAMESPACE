@@ -2,11 +2,11 @@
 
 S3method(as.array,list)
 S3method(forecast,test)
-S3method(hist,avg)
 S3method(mean,pca)
 S3method(plot,histogram)
 S3method(plot,stl)
 export(addrows)
+export(ahist)
 export(arfilter)
 export(arfit)
 export(arimpulse)
