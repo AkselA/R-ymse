@@ -24,7 +24,7 @@
 #' 
 #' mod.l <- list(mod1, mod2, mod3, mod4, mod5, mod6)
 #' 
-#' l <- forecast.test(mod.l, extr, 21)
+#' l <- forecast_test(mod.l, extr, 21)
 #' 
 #' diffs <- sapply(l, function(y) y[["fcast"]] - y[["test"]])
 #' matplot(diffs, type="l", 
@@ -40,7 +40,7 @@
 #' head(forecasts(l))
 #' l
 
-forecast.test <- function(m, y=NULL, holdout=NULL) {
+forecast_test <- function(m, y=NULL, holdout=NULL) {
 	# not working: stlm, stlf
     
     if (is.null(y)) {
@@ -99,7 +99,7 @@ forecast.test <- function(m, y=NULL, holdout=NULL) {
 		                     call=origcall)
 		
 	}
-	class(acclist) <- "forecast.test"
+	class(acclist) <- "forecast_test"
 	acclist
 }
 
@@ -109,7 +109,7 @@ forecasts <- function(x) {
 	cbind(fc, actual)
 }
 
-print.forecast.test <- function(x, nsig=3) {
+print.forecast_test <- function(x, nsig=3) {
 	mat <- t(sapply(x, function(y) y[["errors"]]))
 	wm <- apply(mat, 2, which.min) + nrow(mat) * 0:(ncol(mat) - 1)
 	cal <- sapply(x, function(y) y$fcast.obj$method)
@@ -123,7 +123,7 @@ print.forecast.test <- function(x, nsig=3) {
 	invisible(mat0)
 }
 
-summary.forecast.test <- function(x) {
+summary.forecast_test <- function(x) {
 	ss <- lapply(x, function(y) y[["fcast"]] - y[["test"]])
 	ss <- do.call(rbind, lapply(ss, summary))
 	rownames(ss) <- sapply(x, function(y) as.character(y["call"]))

@@ -27,10 +27,10 @@
 #' xxm <- Reduce("+", xxs) / r
 #' xxl <- lapply(xxs, princomp)
 #' 
-#' biplot(mean.pca(xxl))
+#' biplot(pcamean(xxl))
 #' biplot(princomp(xxm))
 
-mean.pca <- function(...) {
+pcamean <- function(...) {
 	prc <- ..1
 	len <- ...length()
 	xxl <- list(...)
