@@ -4,7 +4,7 @@
 \alias{index.value}
 \title{Index–value representation of arrays}
 \usage{
-index.value(x, reverse = FALSE)
+\method{index}{value}(x, reverse = FALSE)
 }
 \arguments{
 \item{x}{an array or something that can be coerced into an array}

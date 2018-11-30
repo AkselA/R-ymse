@@ -12,6 +12,7 @@
 NULL
 
 #' @rdname central.tendency
+#' @export pseudomedian
 
 # aka. Hodges–Lehmann estimator
 pseudomedian <- function(x) {
@@ -19,6 +20,7 @@ pseudomedian <- function(x) {
 }
 
 #' @rdname central.tendency
+#' @export cmode
 
 cmode <- function(x, ...) {
     den <- density(x, ...)

@@ -4,7 +4,7 @@
 #' Only difference is that the distance between the plotting window and
 #' the x and y labels is set by \code{par("mgp")[1]}, as it is for regular plots.
 #' 
-#' @seealso \code{\link{stats::stl}}
+#' @seealso \code{\link{stats::plot.stl}}, \code{\link{ymse::plot.histogram}}
 #' 
 #' @export
 

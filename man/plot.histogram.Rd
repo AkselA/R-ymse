@@ -12,9 +12,9 @@
 }
 \description{
 A a very minor modification of \code{graphics::plot.histogram}. \cr
-Only difference is that \code{lwd} now specifies the weight of the histogram bars'
+Only difference is that \code{lwd} now specifies the width of the histogram bars'
 outline.
 }
 \seealso{
-\code{\link{stats::stl}}
+\code{\link{stats::plot.histogram}}, \code{\link{ymse::plot.stl}}
 }

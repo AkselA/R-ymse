@@ -1,14 +1,15 @@
 #' Plot \code{histogram} object
 #' 
 #' A a very minor modification of \code{graphics::plot.histogram}. \cr
-#' Only difference is that \code{lwd} now specifies the weight of the histogram bars'
+#' Only difference is that \code{lwd} now specifies the width of the histogram bars'
 #' outline.
 #' 
-#' @seealso \code{\link{stats::stl}}
+#' @seealso \code{\link{stats::plot.histogram}}, \code{\link{ymse::plot.stl}}
 #' 
 #' @export
+#' 
 
-plot.histogram <- function (x, freq = equidist, density = NULL, angle = 45, col = NULL, 
+plot.histogram <- function(x, freq=equidist, density=NULL, angle=45, col=NULL, 
     border = par("fg"), lty = NULL, lwd=1, main = paste("Histogram of", 
         paste(x$xname, collapse = "\n")), sub = NULL, xlab = x$xname, 
     ylab, xlim = range(x$breaks), ylim = NULL, axes = TRUE, labels = FALSE, 

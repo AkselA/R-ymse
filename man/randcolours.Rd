@@ -4,7 +4,7 @@
 \alias{randcolours}
 \title{Random colours}
 \usage{
-randcolours(n, l = c(0.2, 1), c1 = c(0, 1), c2 = c(0, 1), alpha = 1,
+randcolours(n, l = c(0.2, 0.9), c1 = c(0, 1), c2 = c(0, 1), alpha = 1,
   space = c("Luv", "Lab"))
 }
 \arguments{

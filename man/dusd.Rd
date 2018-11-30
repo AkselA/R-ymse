@@ -8,7 +8,8 @@
 \usage{
 dusd1(xr = 1:6, n = 2)
 
-dusd2(xi = rep(1, 6), n = 2, round, zero.index = FALSE, limit = 1e-13)
+dusd2(xi = rep(1, 6), n = 2, round, zero.index = FALSE,
+  limit = 0.0000000000001)
 }
 \arguments{
 \item{xr}{numeric vector; a vector of equiprobable values}

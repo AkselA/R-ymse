@@ -3,7 +3,8 @@
 #' Compare numeric values, returning an inbetween value for ties
 #' 
 #' @param x,y numeric values to be compared
-#' @param bias what bias should be given to ties? 0.5, the default, is considered neutral
+#' @param bias what bias should be given to ties? 0.5, the default, is 
+#' considered neutral
 #' as it's halfway between 1 and 0 (true and false).
 #' 
 #' @seealso \code{\link{Comparison}}, \code{\link{tied_triple_test}}

@@ -23,7 +23,7 @@
 #' n <- 20
 #' plot(1:n, col=randcolors(n), pch=16, cex=5)
 
-randcolours <- function(n, l=c(0.2, 1), c1=c(0, 1), c2=c(0, 1), alpha=1, 
+randcolours <- function(n, l=c(0.2, 0.9), c1=c(0, 1), c2=c(0, 1), alpha=1, 
   space=c("Luv", "Lab")) {
   	
   	space <- match.arg(space)

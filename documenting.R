@@ -106,7 +106,7 @@ add_data <- function(projname) {
 load_all(projname)
 add_data(projname)
 document(projname)
-?incdiff
+?cmode
 
 # check(projname, manual=TRUE)
 

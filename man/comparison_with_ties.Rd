@@ -19,7 +19,8 @@ tlt(x, y, bias = 0.5)
 \arguments{
 \item{x, y}{numeric values to be compared}
 
-\item{bias}{what bias should be given to ties? 0.5, the default, is considered neutral
+\item{bias}{what bias should be given to ties? 0.5, the default, is 
+considered neutral
 as it's halfway between 1 and 0 (true and false).}
 }
 \description{
