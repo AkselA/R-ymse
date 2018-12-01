@@ -22,6 +22,8 @@
 #' 
 #' @return A single integer representing an index on the input array.
 #' 
+#' @export
+#' 
 #' @examples
 #' binsearch(15, (1:9)*3.333)
 #' binsearch(2, (1:9)*3.333)
@@ -64,6 +66,8 @@ binsearch <- function(val, arr, L=1L, H=length(arr)) {
 }
 
 #' @rdname binsearch
+#' 
+#' @export binclosest
 
 binclosest <- function(val, arr, L=1L, H=length(arr)) {
 	i <- binsearch(val, arr, L, H)

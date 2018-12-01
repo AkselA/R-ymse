@@ -43,6 +43,7 @@
 NULL
 
 #' @rdname tied_triple_test
+#' @export %ttt%
 
 `%ttt%` <- function(x, y) {
 	v <- x != y
@@ -53,6 +54,7 @@ NULL
 }
 
 #' @rdname tied_triple_test
+#' @export ttt
 
 ttt <- function(x, y) {
 	v <- x != y
@@ -63,6 +65,7 @@ ttt <- function(x, y) {
 }
 
 #' @rdname tied_triple_test
+#' @export is.ttt
 
 is.ttt <- function(x) {
     inherits(x, "ttt")

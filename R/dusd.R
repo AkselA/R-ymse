@@ -95,6 +95,7 @@
 NULL
 
 #' @rdname dusd
+#' @export dusd1
 
 dusd1 <- function(xr=1:6, n=2) {
 	li <- replicate(n, xr, simplify=FALSE)
@@ -103,6 +104,7 @@ dusd1 <- function(xr=1:6, n=2) {
 }
 
 #' @rdname dusd
+#' @export dusd2
 
 dusd2 <- function(xi=rep(1, 6), n=2, round, zero.index=FALSE, limit=1e-13) {
     if (!missing(round)) {

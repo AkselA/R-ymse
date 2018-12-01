@@ -21,6 +21,7 @@
 NULL
 
 #' @rdname comparison_with_ties
+#' @export %tgt%
 
 `%tgt%` <- function(x, y) {
 	v <- x > y
@@ -29,6 +30,7 @@ NULL
 }
 
 #' @rdname comparison_with_ties
+#' @export tgt
 
 tgt <- function(x, y, bias=0.5) {
 	v <- x > y
@@ -38,6 +40,7 @@ tgt <- function(x, y, bias=0.5) {
 
 
 #' @rdname comparison_with_ties
+#' @export %tlt%
 
 `%tlt%` <- function(x, y) {
 	v <- x < y
@@ -46,6 +49,7 @@ tgt <- function(x, y, bias=0.5) {
 }
 
 #' @rdname comparison_with_ties
+#' @export tlt
 
 tlt <- function(x, y, bias=0.5) {
 	v <- x < y
