@@ -23,7 +23,7 @@
 #' arimpulse(ar.mod, pulse=1)
 #' 
 #' # negative second coefficient reduce damping, signal returns to normal 
-#' more quickly
+#' # more quickly
 #' ar.mod <- armodel(c(0.8, -0.1))
 #' arimpulse(ar.mod, pulse=1)
 #' 

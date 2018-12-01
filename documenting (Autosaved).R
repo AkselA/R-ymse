@@ -120,7 +120,7 @@ show_pdf <- function(package, lib.loc=NULL, opt="--force") {
 } 
 show_pdf(projname)
 
-use_build_ignore(c("data.R", "documenting.R", "commit.command", ".pdf"),
+use_build_ignore(c("data\\.R", "documenting\\.R", "commit\\.command", "\\.pdf$"),
   pkg=projname, escape=FALSE)
 
 readLines(file.path(projname, ".Rbuildignore"))

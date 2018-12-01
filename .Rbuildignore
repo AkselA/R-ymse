@@ -3,3 +3,12 @@
 ^data\.R$
 ^documenting\.R$
 ^commit\.command$
+^\.pdf$
+data.R
+documenting.R
+commit.command
+.pdf
+data\.R
+documenting\.R
+commit\.command
+\.pdf$
