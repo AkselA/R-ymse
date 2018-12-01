@@ -124,9 +124,9 @@ show_pdf(projname)
 use_build_ignore(c("data.R", "documenting.R", "commit.command"), pkg=projname)
 
 # run convenience script to add, commit and maybe push change
-# system(paste0("open ", projname, "/commit.command"))
+system(paste0("open ", projname, "/commit.command"))
 
 # dev_example(projname)
 
-# install_github(paste0("AkselA/R-", projname))
-# library(projname, character.only=TRUE)
+install_github(paste0("AkselA/R-", projname))
+library(projname, character.only=TRUE)

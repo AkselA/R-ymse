@@ -4,19 +4,20 @@
 #' 
 #' @param x numeric vector of values whose *mean is to be computed
 #' @param na.rm logical; should \code{NA} values be removed? (default TRUE)
-#' @param zero.rule for the geometric mean, how should zeros be dealt with? Add one before,
-#' and subtract one after the calculation (see \code{lop1p}), remove all zeros, or replace
+#' @param zero.rule for the geometric mean, how should zeros be dealt with? Add 
+#' one before, and subtract one after the calculation (see \code{lop1p}), remove 
+#' all zeros, or replace
 #' all zeros with \eqn{1}.
 #' @param p exponential power. For the power mean \code{p=-1}, \code{p=2} and
-#' \code{p=3} gives the harmonic, quadratic and cubic means, respectively. For the Lehmer
-#' mean \code{p=0}, \code{p=1} and \code{p=2} gives the harmonic, arithmetic and
-#' contraharmonic means, respectively.
+#' \code{p=3} gives the harmonic, quadratic and cubic means, respectively.
+#' For the Lehmer mean \code{p=0}, \code{p=1} and \code{p=2} gives the harmonic,
+#' arithmetic and contraharmonic means, respectively.
 #' 
 #' @section Notice:
-#' For some of these means zeros and/or negative values are undefined, or make otherwise
-#' little sense in context. Workarounds are given for the geometric mean, but if you end
-#' up using it on data \eqn{\le 0}, the wise call would be to reconsider whether using a
-#' geometric mean really makes sense in this case.
+#' For some of these means zeros and/or negative values are undefined, or make
+#' otherwise little sense in context. Workarounds are given for the geometric mean,
+#' but if you end up using it on data \eqn{\le 0}, the wise call would be to
+#' reconsider whether using a geometric mean really makes sense in that case.
 #' 
 #' @examples
 #' funl <- substitute(c(harm, geom, mean, quad, cubi))
