@@ -33,5 +33,5 @@ range, at an icreased risk of clipping.
 \examples{
 set.seed(3)
 n <- 20
-plot(1:n, col=randcolors(n), pch=16, cex=5)
+plot(1:n, col=randcolours(n), pch=16, cex=5)
 }

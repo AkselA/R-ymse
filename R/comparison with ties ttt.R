@@ -33,7 +33,7 @@
 #' 
 #' pa <- capture.output(ta)
 #' 
-#' par(mar=c(1, 2, 3, 2), family="PT Mono")
+#' par(mar=c(1, 2, 3, 2))
 #' image(ou, col=topo.colors(length(ta)), axes=FALSE)
 #' title(pa)
 #' box()

@@ -4,7 +4,7 @@
 #' Only difference is that \code{lwd} now specifies the width of the histogram bars'
 #' outline.
 #' 
-#' @seealso \code{\link{stats::plot.histogram}}, \code{\link{ymse::plot.stl}}
+#' @seealso \code{\link[stats]{plot.histogram}}, \code{\link{plot.stl}}
 #' 
 #' @export
 #' 

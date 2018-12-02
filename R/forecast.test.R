@@ -103,6 +103,8 @@ forecast_test <- function(m, y=NULL, holdout=NULL) {
 	acclist
 }
 
+#' @export
+
 forecasts <- function(x) {
 	fc <- sapply(x, function(y) y[["fcast"]])
 	actual <- x[[1]][["test"]]

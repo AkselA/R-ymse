@@ -18,6 +18,6 @@ default.par <- function() {
 	if (!exists("old.par")) {
 		old.par <<- par(no.readonly=TRUE)
 	}
-	data(def.par)
+	def.par <- ymse::def.par
 	par(def.par)
 }

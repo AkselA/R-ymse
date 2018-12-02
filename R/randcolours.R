@@ -21,7 +21,7 @@
 #' @examples
 #' set.seed(3)
 #' n <- 20
-#' plot(1:n, col=randcolors(n), pch=16, cex=5)
+#' plot(1:n, col=randcolours(n), pch=16, cex=5)
 
 randcolours <- function(n, l=c(0.2, 0.9), c1=c(0, 1), c2=c(0, 1), alpha=1, 
   space=c("Luv", "Lab")) {

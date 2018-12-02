@@ -30,9 +30,10 @@
 #' binclosest(2, (1:9)*3.333)
 #' 
 #' binsearch(18, seq_len(2e9))
-#' binsearch(18, seq_len(3e9))
+#' \dontrun{
+#' binsearch(18, seq_len(3e9))}
 #' binsearch(18, seq_len(3e9), H=2e9)
-#' binsearch(2000, seq_len(3e7)*100 + 10.71)
+#' binsearch(2000, seq_len(3e7)*100 + 0.1)
 #' 
 #' set.seed(1)
 #' x <- sort(sample(1:300, 30))

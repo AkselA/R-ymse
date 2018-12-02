@@ -45,6 +45,7 @@
 NULL
 
 #' @rdname means
+#' @export
 
 harm <- function(x, na.rm=TRUE) {
     if (na.rm) {  
@@ -54,6 +55,7 @@ harm <- function(x, na.rm=TRUE) {
 }
 
 #' @rdname means
+#' @export
 
 geom <- function(x, zero.rule=c("1p", "rm", "1"), na.rm=TRUE) {
     if (na.rm) {  
@@ -93,6 +95,7 @@ geom <- function(x, zero.rule=c("1p", "rm", "1"), na.rm=TRUE) {
 }
 
 #' @rdname means
+#' @export
 
 quad <- function(x, na.rm=TRUE) {
     if (na.rm) {  
@@ -102,6 +105,7 @@ quad <- function(x, na.rm=TRUE) {
 }
 
 #' @rdname means
+#' @export
 
 cubi <- function(x, na.rm=TRUE) {
     if (na.rm) {  
@@ -111,6 +115,7 @@ cubi <- function(x, na.rm=TRUE) {
 }
 
 #' @rdname means
+#' @export
 
 powr <- function(x, p=1.5, na.rm=TRUE) {
     if (na.rm) {  
@@ -120,6 +125,7 @@ powr <- function(x, p=1.5, na.rm=TRUE) {
 }
 
 #' @rdname means
+#' @export
 
 lehm <- function(x, p=2, na.rm=TRUE) {
     if (na.rm) {  

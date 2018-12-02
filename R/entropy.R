@@ -1,11 +1,11 @@
 #' Information entropy
 #' 
-#' Computes the information entropy (also called Shannon entropy) of a set of discrete values,
-#' or a tabulated such set.
+#' Computes the information entropy (also called Shannon entropy) of a set of
+#' discrete values, or a tabulated such set.
 #' 
-#' @param x a vector, table, data.frame or matrix. In the case of table, data.frame and matrix
-#' each row is treated as a separate set of counts or proportions, with columns representing
-#' species, types, categories etc.
+#' @param x a vector, table, data.frame or matrix. In the case of table, data.frame
+#' and matrix each row is treated as a separate set of counts or proportions, with
+#' columns representing species, types, categories etc.
 #' @param base the log base to be used.
 #' 
 #' @export
@@ -36,6 +36,7 @@ entropy <- function(...) {
 }
 
 #' @rdname entropy
+#' @export
 
 entropy.table <- function(x, base=2) {
     if (length(dim(x)) == 2) {
@@ -47,6 +48,7 @@ entropy.table <- function(x, base=2) {
 }
 
 #' @rdname entropy
+#' @export
 
 entropy.data.frame <- function(x, base=2) {
     x <- as.matrix(x)
@@ -57,6 +59,7 @@ entropy.data.frame <- function(x, base=2) {
 }
 
 #' @rdname entropy
+#' @export
 
 entropy.matrix <- function(x, base=2) {
     sc <- x / rowSums(x)
@@ -66,6 +69,7 @@ entropy.matrix <- function(x, base=2) {
 }
 
 #' @rdname entropy
+#' @export
 
 entropy.default <- function(x, base=2) {
     freqs <- table(x) / length(x)

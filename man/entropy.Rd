@@ -19,15 +19,15 @@ entropy(...)
 \method{entropy}{default}(x, base = 2)
 }
 \arguments{
-\item{x}{a vector, table, data.frame or matrix. In the case of table, data.frame and matrix
-each row is treated as a separate set of counts or proportions, with columns representing
-species, types, categories etc.}
+\item{x}{a vector, table, data.frame or matrix. In the case of table, data.frame
+and matrix each row is treated as a separate set of counts or proportions, with
+columns representing species, types, categories etc.}
 
 \item{base}{the log base to be used.}
 }
 \description{
-Computes the information entropy (also called Shannon entropy) of a set of discrete values,
-or a tabulated such set.
+Computes the information entropy (also called Shannon entropy) of a set of
+discrete values, or a tabulated such set.
 }
 \examples{
 entropy(c(5, 5, 4, 4, 2, 3, 5))  # default is unit bits

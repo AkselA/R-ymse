@@ -3,7 +3,8 @@ Title: Various more or less useful functions and methods
 Version: 0.0.0.9000
 Authors@R: 'Aksel A. Henriksen <a@b> [aut, cre]'
 Description: What the package does (one paragraph).
-Depends: R (>= 3.5.0), forecast
+Depends: R (>= 3.5.0)
+Imports: stats, utils, graphics, grDevices, forecast
 License: GPL (>= 2)
 Encoding: UTF-8
 LazyData: true
