@@ -4,7 +4,7 @@
 #' 
 #' @param n integer; number of unique values (aka. symbols)
 #' @param random logical; should the square be generated randomly?
-#' @param redude logical; should the square be in reduced form?
+#' @param reduce logical; should the square be in reduced form?
 #' 
 #' @details
 #' Computation time increses rapidly with \code{n}. On my computer generating a
@@ -23,14 +23,14 @@
 #' 
 #' @examples
 #' set.seed(1)
-#' ls <- latin.sq(10, reduce=TRUE)
+#' ls <- latin_sq(9, reduce=TRUE)
 #' image(ls, col=randcolours(ncol(ls)))
 #' 
 #' # The more "classic" representation with latin capital letters
 #' ls[] <- LETTERS[ls]
 #' ls
 
-latin.sq <- function(n, random=TRUE, reduce=TRUE) {
+latin_sq <- function(n, random=TRUE, reduce=TRUE) {
 	n <- as.integer(n)
 	x <- 1:n
 	if (!reduce) {
@@ -82,7 +82,7 @@ latin.sq <- function(n, random=TRUE, reduce=TRUE) {
 #' column gives the value found at each index tuple. The reverse process can
 #' also be performed.
 #' 
-#' @seealso \code{\link{latin.sq}}
+#' @seealso \code{\link{latin_sq}}
 #' 
 #' @export
 #' 
@@ -101,7 +101,7 @@ latin.sq <- function(n, random=TRUE, reduce=TRUE) {
 #' 
 #' # a latin square will produce an "orthogonal array"
 #' set.seed(1)
-#' lsq <- latin.sq(5)
+#' lsq <- latin_sq(5)
 #' iv <- indexvalue(lsq)
 #' iv
 #' 

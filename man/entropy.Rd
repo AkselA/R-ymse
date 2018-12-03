@@ -8,20 +8,22 @@
 \alias{entropy.default}
 \title{Information entropy}
 \usage{
-entropy(...)
+entropy(x, ...)
 
-\method{entropy}{table}(x, base = 2)
+\method{entropy}{table}(x, base = 2, ...)
 
-\method{entropy}{data.frame}(x, base = 2)
+\method{entropy}{data.frame}(x, base = 2, ...)
 
-\method{entropy}{matrix}(x, base = 2)
+\method{entropy}{matrix}(x, base = 2, ...)
 
-\method{entropy}{default}(x, base = 2)
+\method{entropy}{default}(x, base = 2, ...)
 }
 \arguments{
 \item{x}{a vector, table, data.frame or matrix. In the case of table, data.frame
 and matrix each row is treated as a separate set of counts or proportions, with
 columns representing species, types, categories etc.}
+
+\item{...}{further arguments passed to methods}
 
 \item{base}{the log base to be used.}
 }

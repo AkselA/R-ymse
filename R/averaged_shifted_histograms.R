@@ -73,7 +73,8 @@ ahist <- function(x, n.breaks=nclass.FD(x), n.shifts=3,
 	if (plot) {
 		type <- match.arg(type)
 		switch(type,
-		    histogram=ymse:::plot.histogram(comb0, freq=freq, add=add, ...),
+		    # ymse:::plot.histogram
+		    histogram=plot.histogram(comb0, freq=freq, add=add, ...),
 		    polygon=with(comb0, {
 		    	if (freq) {
 		    		val <- counts

@@ -5,10 +5,12 @@
 #' @param n integer; all prime numbers up to this will be returned
 #' 
 #' @details Effective for primes up to ~100,000,000. \cr
-#' On my lightweight laptop: 1e7 -> 0.32s, 5e7 -> 1.7s, 1e8 -> 3.7s, 2e8 -> 7.6s, 3e8 -> 15s
+#' On my lightweight laptop:
+#' 1e7 -> 0.32s, 5e7 -> 1.7s, 1e8 -> 3.7s, 2e8 -> 7.6s, 3e8 -> 15s
 #' 
-#' @source \url{https://stackoverflow.com/questions/3789968/generate-a-list-of-primes-up-to-
-#' a-certain-number/3791284#3791284}
+#' @source 
+#' \url{https://stackoverflow.com/questions/3789968/
+#' generate-a-list-of-primes-up-to-a-certain-number/3791284#3791284}
 #' 
 #' @seealso \code{\link{isPrime}}
 #' 
@@ -39,7 +41,7 @@ primes <- function(n) {
 #' 
 #' Test an integer for whether it is prime or not
 #' 
-#' @param n integer; one or more prime candidates
+#' @param x integer; one or more prime candidates
 #' 
 #' @seealso \code{\link{primes}}
 #' 

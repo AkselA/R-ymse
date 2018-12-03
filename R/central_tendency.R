@@ -1,5 +1,9 @@
 #' Central tendency measures
 #' 
+#' @param x numeric vector
+#' @param ... send further arguments to underlying function, e.g. \code{density}
+#' for cmode
+#' 
 #' @seealso \code{\link{means}}
 #' 
 #' @examples

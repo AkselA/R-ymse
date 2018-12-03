@@ -16,5 +16,5 @@ Only difference is that \code{lwd} now specifies the width of the histogram bars
 outline.
 }
 \seealso{
-\code{\link[stats]{plot.histogram}}, \code{\link{plot.stl}}
+\code{\link[graphics]{plot.histogram}}, \code{\link{plot.stl}}
 }

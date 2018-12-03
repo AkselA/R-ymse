@@ -4,10 +4,9 @@
 #' Only difference is that \code{lwd} now specifies the width of the histogram bars'
 #' outline.
 #' 
-#' @seealso \code{\link[stats]{plot.histogram}}, \code{\link{plot.stl}}
+#' @seealso \code{\link[graphics]{plot.histogram}}, \code{\link{plot.stl}}
 #' 
 #' @export
-#' 
 
 plot.histogram <- function(x, freq=equidist, density=NULL, angle=45, col=NULL, 
     border = par("fg"), lty = NULL, lwd=1, main = paste("Histogram of", 

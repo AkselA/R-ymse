@@ -60,7 +60,7 @@ class = "data.frame", row.names = c("5m", "10m", "15m", "20m")))
 comment(speedskate) <- "MarbleLympics 2018 speed skating times"
 
 # default par() settings
-def.par <- list(xlog = FALSE, ylog = FALSE, adj = 0.5, ann =
+.def.par <- list(xlog = FALSE, ylog = FALSE, adj = 0.5, ann =
 TRUE, ask = FALSE, bg = "transparent", bty = "o", cex = 1,
 cex.axis = 1, cex.lab = 1, cex.main = 1.2, cex.sub = 1, col =
 "black", col.axis = "black", col.lab = "black", col.main =
@@ -89,39 +89,39 @@ e.char <- paste0("2.7182818284590452353602874713526624977572470936999",
 e <- as.numeric(e.char)
 
 # Pi, Archimedes' constant or circle constant
-π.char <- paste0("3.1415926535897932384626433832795028841971693993751",
+pi.char <- paste0("3.1415926535897932384626433832795028841971693993751",
                  "058209749445923078164062862089986280348253421170679")
-π <- as.numeric(π.char)
+pi <- as.numeric(pi.char)
 
 # Phi, the golden ratio
-φ.char <- paste0("1.6180339887498948482045868343656381177203091798057",
+phi.char <- paste0("1.6180339887498948482045868343656381177203091798057",
                  "628621354486227052604628189024497072072041893911375")
-φ <- as.numeric(φ.char)
+phi <- as.numeric(phi.char)
 
 # Feigenbaum bifurcation velocity
-δ.char <- paste0("4.6692016091029906718532038204662016172581855774757",
+feig1.char <- paste0("4.6692016091029906718532038204662016172581855774757",
                  "686327456513430041343302113147371386897440239480138")
-δ <- as.numeric(δ.char)
+feig1 <- as.numeric(feig1.char)
 
 # Feigenbaum reduction parameter
-α.char <- paste0("2.5029078750958928222839028732182157863812713767271",
+feig2.char <- paste0("2.5029078750958928222839028732182157863812713767271",
                  "499773361920567792354631795902067032996497464338341")
-α <- as.numeric(α.char)
+feig2 <- as.numeric(feig2.char)
 
 # Euler–Mascheroni constant
-γ.char <- paste0("0.5772156649015328606065120900824024310421593359399",
+eu.ma.char <- paste0("0.5772156649015328606065120900824024310421593359399",
                  "23598805767234884867726777664670936947063291746749")
-γ <- as.numeric(γ.char)
+eu.ma <- as.numeric(eu.ma.char)
 
 # Khintchine's constant
-K_0.char <- paste0("2.6854520010653064453097148354817956938203822939944",
+khin.char <- paste0("2.6854520010653064453097148354817956938203822939944",
                    "629530511523455572188595371520028011411749318476980")
-K_0 <- as.numeric(K_0.char)
+khin <- as.numeric(khin.char)
 
 # Glaisher-Kinkelin constant
-A.char <- paste0("1.2824271291006226368753425688697917277676889273250",
+gla.kin.char <- paste0("1.2824271291006226368753425688697917277676889273250",
                  "011920637400217404063088588264611297364919582023744")
-A <- as.numeric(A.char)
+gla.kin <- as.numeric(gla.kin.char)
 
 
 

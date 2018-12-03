@@ -7,6 +7,7 @@
 #' and matrix each row is treated as a separate set of counts or proportions, with
 #' columns representing species, types, categories etc.
 #' @param base the log base to be used.
+#' @param ... further arguments passed to methods
 #' 
 #' @export
 #' 
@@ -31,14 +32,14 @@
 #' 
 #' entropy(xx) 
 
-entropy <- function(...) {
+entropy <- function(x, ...) {
     UseMethod("entropy")
 }
 
 #' @rdname entropy
 #' @export
 
-entropy.table <- function(x, base=2) {
+entropy.table <- function(x, base=2, ...) {
     if (length(dim(x)) == 2) {
         entropy.matrix(x)
     }
@@ -50,7 +51,7 @@ entropy.table <- function(x, base=2) {
 #' @rdname entropy
 #' @export
 
-entropy.data.frame <- function(x, base=2) {
+entropy.data.frame <- function(x, base=2, ...) {
     x <- as.matrix(x)
     sc <- x / rowSums(x)
     lg <- log(sc, base)
@@ -61,7 +62,7 @@ entropy.data.frame <- function(x, base=2) {
 #' @rdname entropy
 #' @export
 
-entropy.matrix <- function(x, base=2) {
+entropy.matrix <- function(x, base=2, ...) {
     sc <- x / rowSums(x)
     lg <- log(sc, base)
     lg[is.infinite(lg)] <- 0
@@ -71,7 +72,7 @@ entropy.matrix <- function(x, base=2) {
 #' @rdname entropy
 #' @export
 
-entropy.default <- function(x, base=2) {
+entropy.default <- function(x, base=2, ...) {
     freqs <- table(x) / length(x)
     -sum(freqs * log(freqs, base=base))
 }

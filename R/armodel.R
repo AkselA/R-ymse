@@ -102,7 +102,8 @@ arimpulse <- function(mod, pulse=1, n.ahead=20, plot=TRUE, ...) {
 	initi <- c(nulls, pulse + arm2$x.mean)
 	imp0 <- predict(arm2, newdata=initi, n.ahead=n.ahead, se.fit=TRUE)
 	imp <- imp0$pred
-	imp <- ts(c(tail(initi, length(pulse) + 1), imp), f=arm2$frequency)
+	imp <- ts(c(tail(initi, length(pulse) + 1), imp), 
+	  frequency=arm2$frequency)
 	if (plot) {
 	    plot(imp, ...)
 	    invisible(imp0)
@@ -145,7 +146,7 @@ arfit <- function(x, mod, x.mean=mod$x.mean) {
 	arm2$x.mean <- x.mean
     arm2$n.used <- length(x)
     arm2$n.obs <- length(x)
-    arm2$resid <- ts(res, f=freq)
+    arm2$resid <- ts(res, frequency=freq)
 	arm2$series <- deparse(substitute(x))
 	arm2$frequency <- freq
 	arm2
@@ -159,6 +160,8 @@ arfit <- function(x, mod, x.mean=mod$x.mean) {
 #' @param mod an AR model
 #' @param x.mean the mean used. By default the mean of the original model.
 #' Set to zero for no demeaning
+#' @param init how the initial values should be chosen. First observation carried
+#' backwards (default), mean of the first values, or the first values in reverse.
 #' 
 #' @seealso \code{\link{armodel}}
 #' 

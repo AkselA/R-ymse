@@ -2,10 +2,11 @@
 #' 
 #' Coerce a list consisting of data.frames or matrices of equal size to a 3d array
 #' 
-#' @param ll a list of equal sized data.frames or matrices
+#' @param x a list of equal sized data.frames or matrices
+#' @param ... (not used)
 #' 
-#' @return A list of length \eqn{l} with elements of \eqn{m} rows and \eqn{n} columns will
-#' result in an \eqn{m \times n \times l}{m × n × l} array.
+#' @return A list of length \eqn{l} with elements of \eqn{m} rows and \eqn{n} 
+#' columns wix result in an \eqn{m \times n \times l}{m × n × l} array.
 #' 
 #' @export
 #' 
@@ -20,12 +21,12 @@
 #' 
 #' as.array(speedskate)
 
-as.array.list <- function(ll) {
-    arr <- array(data=unlist(ll), 
-      dim=c(nrow(ll[[1]]), ncol(ll[[1]]), length(ll)), 
+as.array.list <- function(x, ...) {
+    arr <- array(data=unlist(x), 
+      dim=c(nrow(x[[1]]), ncol(x[[1]]), length(x)), 
       dimnames=list(
-        rownames(ll[[1]]), colnames(ll[[1]]), names(ll)))
-    comment(arr) <- comment(ll)
+        rownames(x[[1]]), colnames(x[[1]]), names(x)))
+    comment(arr) <- comment(x)
     arr
 }
 

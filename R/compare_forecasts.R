@@ -1,6 +1,6 @@
 #' Compare forecast accuracies
 #' 
-#' Test the efficacy of time series models by comparing forecast with actual data
+#' Test the efficacy of time series models by comparing forecasts with actual data
 #' 
 #' @param m a list of models to compare
 #' @param y a monovariate time series; the data to train and test the models on
@@ -10,10 +10,8 @@
 #' 
 #' @examples
 #' library(forecast)
-#' extr <- aggregate(sunspot.month, nfrequency=2, mean)
+#' extr <- aggregate(sunspot.month, nfrequency=2, mean)[100:342]
 #' extr <- ts(extr, f=21)
-#' 
-#' extr <- head(extr, 342)
 #' 
 #' mod1 <- StructTS(extr)
 #' mod2 <- ar(extr)
@@ -24,7 +22,7 @@
 #' 
 #' mod.l <- list(mod1, mod2, mod3, mod4, mod5, mod6)
 #' 
-#' l <- forecast_test(mod.l, extr, 21)
+#' l <- compare_forecasts(mod.l, extr, 21)
 #' 
 #' diffs <- sapply(l, function(y) y[["fcast"]] - y[["test"]])
 #' matplot(diffs, type="l", 
@@ -32,7 +30,8 @@
 #' 
 #' par(mfrow=c(3, 2), mar=c(3, 3, 2, 1), mgp=c(2, 0.6, 0), oma=c(0, 0, 0, 0))
 #' invisible(lapply(l, function(x) {
-#'   plot(x$fcast.obj, shaded=FALSE, PI=FALSE, include=66, type="l", cex.main=0.9, xpd=NA)
+#'   plot(x$fcast.obj, shaded=FALSE, PI=FALSE, include=66, type="l", 
+#'     cex.main=0.9, xpd=NA)
 #'   lines(x$test, col="#00FF4488")
 #'   }
 #' ))
@@ -40,7 +39,7 @@
 #' head(forecasts(l))
 #' l
 
-forecast_test <- function(m, y=NULL, holdout=NULL) {
+compare_forecasts <- function(m, y=NULL, holdout=NULL) {
 	# not working: stlm, stlf
     
     if (is.null(y)) {
@@ -94,12 +93,12 @@ forecast_test <- function(m, y=NULL, holdout=NULL) {
 		err <- c(rmse=err.rmse, mape=err.mape, mae=err.mae,
 		         "ceP"=err.corP, "ceS"=err.corS, "ceK"=err.corK)
 		
-		acclist[[i]] <- list(errors=err, 
-		                     train=train, test=test, fcast=forc$mean, fcast.obj=forc, 
-		                     call=origcall)
+		acclist[[i]] <- list(errors=err, train=train, 
+		                     test=test, fcast=forc$mean,
+		                     fcast.obj=forc, call=origcall)
 		
 	}
-	class(acclist) <- "forecast_test"
+	class(acclist) <- "compare_forecasts"
 	acclist
 }
 
@@ -111,7 +110,9 @@ forecasts <- function(x) {
 	cbind(fc, actual)
 }
 
-print.forecast_test <- function(x, nsig=3) {
+#' @export
+
+print.compare_forecasts <- function(x, nsig=3, quote=FALSE, ...) {
 	mat <- t(sapply(x, function(y) y[["errors"]]))
 	wm <- apply(mat, 2, which.min) + nrow(mat) * 0:(ncol(mat) - 1)
 	cal <- sapply(x, function(y) y$fcast.obj$method)
@@ -121,14 +122,16 @@ print.forecast_test <- function(x, nsig=3) {
 	mat <- signif(mat, nsig)
 	mat[wm] <- paste0("*", mat[wm])
 	mat[-wm] <- paste0(" ", mat[-wm])
-    print(mat, quote=FALSE)
+    print(mat, quote=quote, ...)
 	invisible(mat0)
 }
 
-summary.forecast_test <- function(x) {
-	ss <- lapply(x, function(y) y[["fcast"]] - y[["test"]])
-	ss <- do.call(rbind, lapply(ss, summary))
-	rownames(ss) <- sapply(x, function(y) as.character(y["call"]))
+#' @export
+
+summary.compare_forecasts <- function(object, ...) {
+	ss <- lapply(object, function(y) y[["fcast"]] - y[["test"]])
+	ss <- do.call(rbind, lapply(ss, summary, ...))
+	rownames(ss) <- sapply(object, function(y) as.character(y["call"]))
 	cat("Five number statistic on predicted-true difference", "\n")
     ss
 }

@@ -7,7 +7,7 @@
 isPrime(x)
 }
 \arguments{
-\item{n}{integer; one or more prime candidates}
+\item{x}{integer; one or more prime candidates}
 }
 \description{
 Test an integer for whether it is prime or not

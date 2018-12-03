@@ -4,20 +4,23 @@
 #' Two different approaches.
 #' 
 #' @param xr numeric vector; a vector of equiprobable values
-#' @param xi numeric vector; a vector of probabilities, with indices representing values
+#' @param xi numeric vector; a vector of probabilities, with indices representing
+#' values
 #' @param n integer; the number of distributions to be summed
 #' @param round integer; number of digits to round to after each convolution 
 #' @param zero.index logical; should the index of xi start at zero?
-#' @param limit numeric; values (frequencies or counts) less than this will be omitted.
+#' @param limit numeric; values (frequencies or counts) less than this will be
+#' omitted.
 #' 
-#' @details \code{dusd1} works by recursively taking the outer sum of xr, while \code{dusd2}
-#' recursively convolves xi. Although convolution is more efficient, it can introduce small
-#' errors, and with repeated convolutions those errors can compound. By rounding to a
-#' slightly lower precision after each convolution the generation of spurious singletons 
-#' and general imprecicions can be mitigated.
+#' @details \code{dusd1} works by recursively taking the outer sum of xr, while
+#' \code{dusd2} recursively convolves xi. Although convolution is more efficient,
+#' it can introduce small errors, and with repeated convolutions those errors can
+#' compound. By rounding to a slightly lower precision after each convolution the
+#' generation of spurious singletons and general imprecicions can be mitigated.
 #' 
-#' @return \code{dusd1} returns an array of size length(xr)^n representing every possible
-#' outcome. \code{dusd2} returns a probability mass function in the form of a table.
+#' @return \code{dusd1} returns an array of size length(xr)^n representing every
+#' possible outcome. \code{dusd2} returns a probability mass function in the form
+#' of a table.
 #'  
 #' @examples
 #' # five coin flips
@@ -78,11 +81,11 @@
 #' 
 #' # dusd2 isn't always quicker
 #' plot(table(dusd1(xr=c(1, 220, 3779), 12)), lwd=1)
-#' 
+#' \dontrun{
 #' s2 <- vector(length=3779)
 #' s2[c(1, 220, 3779)] <- 1
 #' plot(dusd2(xi=s2, 12, round=8), lwd=1)
-#' 
+#' }
 #' # making sure the length of xi is highly composite (or more precicely 'smooth')
 #' # improves speed
 #' # 3779 is prime, 3780 == 2*2*3*3*3*5*7

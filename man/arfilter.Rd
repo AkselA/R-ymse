@@ -13,6 +13,9 @@ arfilter(x, mod, x.mean = mod$x.mean, init = "focb")
 
 \item{x.mean}{the mean used. By default the mean of the original model.
 Set to zero for no demeaning}
+
+\item{init}{how the initial values should be chosen. First observation carried
+backwards (default), mean of the first values, or the first values in reverse.}
 }
 \description{
 Filter a time series using AR coefficients

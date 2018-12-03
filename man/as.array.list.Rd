@@ -4,14 +4,16 @@
 \alias{as.array.list}
 \title{Coerce a list to an array}
 \usage{
-\method{as.array}{list}(ll)
+\method{as.array}{list}(x, ...)
 }
 \arguments{
-\item{ll}{a list of equal sized data.frames or matrices}
+\item{x}{a list of equal sized data.frames or matrices}
+
+\item{...}{(not used)}
 }
 \value{
-A list of length \eqn{l} with elements of \eqn{m} rows and \eqn{n} columns will
-result in an \eqn{m \times n \times l}{m × n × l} array.
+A list of length \eqn{l} with elements of \eqn{m} rows and \eqn{n} 
+columns wix result in an \eqn{m \times n \times l}{m × n × l} array.
 }
 \description{
 Coerce a list consisting of data.frames or matrices of equal size to a 3d array
