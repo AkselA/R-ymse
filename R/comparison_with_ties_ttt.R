@@ -72,6 +72,7 @@ is.ttt <- function(x) {
 }
 
 #' @rdname tied_triple_test
+#' @export is.ttt
 
 print.ttt <- function(x, symbol=TRUE, ...) {
 	if (symbol) x <- c("<", "=", ">")[x + 2]
@@ -79,6 +80,7 @@ print.ttt <- function(x, symbol=TRUE, ...) {
 }
 
 #' @rdname tied_triple_test
+#' @export is.ttt
 
 table.ttt <- function(...) {
 	ta <- table.default(...)

@@ -1,10 +1,16 @@
+#' @export
+
 table <- function(...) {
 	UseMethod("table")
 }
 
+#' @export
+
 table.default <- function(...) {
 	base::table(...)
 }
+
+#' @export
 
 print.data.frame <- function(x, ...) {
 	ittt <- sapply(x, is.ttt)
