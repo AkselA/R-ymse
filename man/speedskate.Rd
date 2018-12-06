@@ -4,8 +4,8 @@
 \name{speedskate}
 \alias{speedskate}
 \title{2018 MarbleLympics speed skating times}
-\format{A list containing two data.frames, one for each lane. Columns are heat and rows
-are time checks in seconds.}
+\format{A list containing two data.frames, one for each lane. Columns are heat 
+and rows are time checks in seconds.}
 \source{
 https://www.youtube.com/watch?v=fA-O6f_jArk
 }
@@ -13,8 +13,8 @@ https://www.youtube.com/watch?v=fA-O6f_jArk
 speedskate
 }
 \description{
-Intermediate and total times for all 16 runs, arranged by lane and heat
-number.
+Intermediate and total times for all 16 runs, arranged by lane and
+heat number.
 }
 \examples{
 tt <- t(do.call(cbind, speedskate))

@@ -10,18 +10,21 @@ The Spectral Analysis of Point Processes (p. 280), M. S. Bartlett, 1963
 
 Also mentioned in: \cr
 Statistical Estimation of Density Functions (p. 252), M. S. Bartlett, 1963 \cr
-A Simplified Monte Carlo Significance Test Procedure (p. 583), Adery C. A. Hope, 1968
+A Simplified Monte Carlo Significance Test Procedure (p. 583), 
+Adery C. A. Hope, 1968
 }
 \usage{
 bartlett
 }
 \description{
-This is an example data set Bartlett used for a lecture course on stochastic
-processes, Statistics Department, University College, London. The data represents the
-times, in seconds, when cars passed an observation point by a road. \cr
+This is an example data set Bartlett used for a lecture course on
+stochastic processes, Statistics Department, University College, London. 
+The data represents the times, in seconds, when cars passed an observation point
+by a road. \cr
 
-Bartlett attributes the data to a Dr A. J. Miller who supplied them as a class example.
-According to Adery C. A. Hope the data was recorded on a rural Swedish road.
+Bartlett attributes the data to a Dr A. J. Miller who supplied them as a class 
+example. According to Adery C. A. Hope the data was recorded on a rural Swedish
+road.
 }
 \section{M. S. Bartlett's notes}{
 
@@ -34,14 +37,19 @@ Analyse the above data with a view to examining:
 }
 Possible analyses include:
 \describe{
-    \item{a}{testing the homogeneity of the consecutive random time-intervals, by means
-    of a partitioning of the degrees of freedom for the total (approximate) \eqn{\chi^2};}
-    \item{b}{testing the homogeneity of counts in consecutive fixed time-intervals, choosing
+    \item{a}{testing the homogeneity of the consecutive random time-intervals,
+by means
+    of a partitioning of the degrees of freedom for the total (approximate)
+\eqn{\chi^2};}
+    \item{b}{testing the homogeneity of counts in consecutive fixed time-intervals,
+choosing
     an appropriate interval, and partitioning the degrees of freedom corresponding
     to the total dispersion by means of an analysis of variance;}
-    \item{c}{testing the correlation between the consecutive random time-intervals;}
+    \item{c}{testing the correlation between the consecutive random 
+time-intervals;}
     \item{d}{examining the overall distribution of counts in fixed time-intervals;}
-    \item{e}{examining the overall distribution of the consecutive random time-intervals}
+    \item{e}{examining the overall distribution of the consecutive random 
+time-intervals}
 }
 You should undertake at least sufficient of these to answer the questions asked.
 }
@@ -61,7 +69,9 @@ lines(cumsum(x)/sum(x), col="red", lwd=2)
 sp <- spectrum(x, main="", xlim=c(0, 0.1), ylim=c(1e-3, 0.04))
 spec <- predict(loess(sp$spec[1:3000] ~ sp$freq[1:3000], span=0.15), se=TRUE)
 lines(sp$freq[1:3000], spec$fit, col="red", lwd=2)
-lines(sp$freq[1:3000], spec$fit - qt((0.99 + 1)/2, spec$df)*spec$se, lty=1, col="lightblue")
-lines(sp$freq[1:3000], spec$fit + qt((0.99 + 1)/2, spec$df)*spec$se, lty=1, col="lightblue")
+lines(sp$freq[1:3000], spec$fit - qt((0.99 + 1)/2, spec$df)*spec$se, 
+  lty=1, col="lightblue")
+lines(sp$freq[1:3000], spec$fit + qt((0.99 + 1)/2, spec$df)*spec$se,
+  lty=1, col="lightblue")
 }
 \keyword{datasets}

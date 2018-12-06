@@ -1,6 +1,6 @@
 Package: ymse
 Title: Various more or less useful functions and methods
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 'Aksel A. Henriksen <a@b> [aut, cre]'
 Description: What the package does (one paragraph).
 Depends: R (>= 3.5.0)

@@ -4,10 +4,10 @@
 \alias{norma}
 \title{Normalize}
 \usage{
-norma(W, c = 0, r = 2)
+norma(x, c = 0, r = 2)
 }
 \arguments{
-\item{W}{a numeric vector}
+\item{x}{a numeric vector}
 
 \item{c}{the centre (as in the midrange) for the new vector}
 

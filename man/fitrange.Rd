@@ -4,10 +4,10 @@
 \alias{fitrange}
 \title{Fit to a range}
 \usage{
-fitrange(W, lower = -1, upper = 1)
+fitrange(x, lower = -1, upper = 1)
 }
 \arguments{
-\item{W}{a numeric vector}
+\item{x}{a numeric vector}
 
 \item{lower}{the lower bound of the new vector}
 
@@ -17,7 +17,7 @@ fitrange(W, lower = -1, upper = 1)
 Linearly shift and scale a numeric vector so that it fits to a given range.
 }
 \examples{
-range(fitrange(runif(9, -2, 0.1), 0, 1))
+range(fitrange(runif(10, -2, 1.5), 0, 1))
 
 fitrange(c(2, 3, 5, 7, 4), 1, 0)
 # same, but without warning

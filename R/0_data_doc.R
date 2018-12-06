@@ -1,11 +1,13 @@
 #' Maurice Stevenson Bartlett's car data
 #' 
-#' @description This is an example data set Bartlett used for a lecture course on stochastic
-#' processes, Statistics Department, University College, London. The data represents the
-#' times, in seconds, when cars passed an observation point by a road. \cr
+#' @description This is an example data set Bartlett used for a lecture course on
+#' stochastic processes, Statistics Department, University College, London. 
+#' The data represents the times, in seconds, when cars passed an observation point
+#' by a road. \cr
 #' 
-#' Bartlett attributes the data to a Dr A. J. Miller who supplied them as a class example.
-#' According to Adery C. A. Hope the data was recorded on a rural Swedish road.
+#' Bartlett attributes the data to a Dr A. J. Miller who supplied them as a class 
+#' example. According to Adery C. A. Hope the data was recorded on a rural Swedish
+#' road.
 #' 
 #' @section M. S. Bartlett's notes:
 #' 
@@ -17,14 +19,19 @@
 #' }
 #' Possible analyses include:
 #' \describe{
-#'     \item{a}{testing the homogeneity of the consecutive random time-intervals, by means
-#'     of a partitioning of the degrees of freedom for the total (approximate) \eqn{\chi^2};}
-#'     \item{b}{testing the homogeneity of counts in consecutive fixed time-intervals, choosing
+#'     \item{a}{testing the homogeneity of the consecutive random time-intervals,
+#' by means
+#'     of a partitioning of the degrees of freedom for the total (approximate)
+#' \eqn{\chi^2};}
+#'     \item{b}{testing the homogeneity of counts in consecutive fixed time-intervals,
+#' choosing
 #'     an appropriate interval, and partitioning the degrees of freedom corresponding
 #'     to the total dispersion by means of an analysis of variance;}
-#'     \item{c}{testing the correlation between the consecutive random time-intervals;}
+#'     \item{c}{testing the correlation between the consecutive random 
+#' time-intervals;}
 #'     \item{d}{examining the overall distribution of counts in fixed time-intervals;}
-#'     \item{e}{examining the overall distribution of the consecutive random time-intervals}
+#'     \item{e}{examining the overall distribution of the consecutive random 
+#' time-intervals}
 #' }
 #' You should undertake at least sufficient of these to answer the questions asked.
 #' 
@@ -34,7 +41,8 @@
 #' 
 #' Also mentioned in: \cr
 #' Statistical Estimation of Density Functions (p. 252), M. S. Bartlett, 1963 \cr
-#' A Simplified Monte Carlo Significance Test Procedure (p. 583), Adery C. A. Hope, 1968
+#' A Simplified Monte Carlo Significance Test Procedure (p. 583), 
+#' Adery C. A. Hope, 1968
 #' 
 #' @examples
 #' cpgram(diff(bartlett))
@@ -51,19 +59,21 @@
 #' sp <- spectrum(x, main="", xlim=c(0, 0.1), ylim=c(1e-3, 0.04))
 #' spec <- predict(loess(sp$spec[1:3000] ~ sp$freq[1:3000], span=0.15), se=TRUE)
 #' lines(sp$freq[1:3000], spec$fit, col="red", lwd=2)
-#' lines(sp$freq[1:3000], spec$fit - qt((0.99 + 1)/2, spec$df)*spec$se, lty=1, col="lightblue")
-#' lines(sp$freq[1:3000], spec$fit + qt((0.99 + 1)/2, spec$df)*spec$se, lty=1, col="lightblue")
+#' lines(sp$freq[1:3000], spec$fit - qt((0.99 + 1)/2, spec$df)*spec$se, 
+#'   lty=1, col="lightblue")
+#' lines(sp$freq[1:3000], spec$fit + qt((0.99 + 1)/2, spec$df)*spec$se,
+#'   lty=1, col="lightblue")
 
 "bartlett"
 
 
 #' 2018 MarbleLympics speed skating times
 #' 
-#' @description Intermediate and total times for all 16 runs, arranged by lane and heat
-#' number.
+#' @description Intermediate and total times for all 16 runs, arranged by lane and
+#' heat number.
 #' 
-#' @format A list containing two data.frames, one for each lane. Columns are heat and rows
-#' are time checks in seconds.
+#' @format A list containing two data.frames, one for each lane. Columns are heat 
+#' and rows are time checks in seconds.
 #' 
 #' @source https://www.youtube.com/watch?v=fA-O6f_jArk
 #' 
@@ -78,3 +88,56 @@
 #' )
 
 "speedskate"
+
+#' Mathematical constants
+#' 
+#' Various mathemathical constants available as global variables
+#' 
+#' \describe{
+#'   \item{\code{e}}{Euler's number}
+#'   \item{\code{pi}}{Archimedes' number, the circle constant}
+#'   \item{\code{phi}}{Golden ratio}
+#'   \item{\code{feig1}}{Feigenbaum's first constant, \eqn{\delta}; 
+#' bifurcation velocity}
+#'   \item{\code{feig2}}{Feigenbaum's second constant, \eqn{\alpha}; 
+#' reduction parameter}
+#'   \item{\code{eu.ma}}{Euler–Mascheroni constant}
+#'   \item{\code{khin}}{Khintchine's constant}
+#'   \item{\code{glai.kin}}{Glaisher-Kinkelin constant}
+#' }
+#' 
+#' @name mathemathical_constants
+#' 
+#' @usage NULL
+#' 
+#' @aliases 
+#' e pi phi feig1 feig2 eu.ma khin glai.kin
+
+"e"
+
+#' High precision mathematical constants
+#'
+#' Character strings representing various mathemathical constants to ~100 
+#' decimal points
+#' 
+#' \describe{
+#'   \item{\code{e.char}}{Euler's number}
+#'   \item{\code{pi.char}}{Archimedes' number, the circle constant}
+#'   \item{\code{phi.char}}{Golden ratio}
+#'   \item{\code{feig1.char}}{Feigenbaum's first constant, \eqn{\delta}; 
+#' bifurcation velocity}
+#'   \item{\code{feig2.char}}{Feigenbaum's second constant, \eqn{\alpha}; 
+#' reduction parameter}
+#'   \item{\code{eu.ma.char}}{Euler–Mascheroni constant}
+#'   \item{\code{khin.char}}{Khintchine's constant}
+#'   \item{\code{glai.kin.char}}{Glaisher-Kinkelin constant}
+#' }
+#' 
+#' @name mathemathical_constants_char
+#' 
+#' @usage NULL
+#' 
+#' @aliases 
+#' e.char pi.char phi.char feig1.char feig2.char eu.ma.char khin.char glai.kin.char
+
+"e.char"

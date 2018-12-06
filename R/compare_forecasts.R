@@ -9,8 +9,8 @@
 #' @export
 #' 
 #' @examples
-#' library(forecast)
-#' extr <- aggregate(sunspot.month, nfrequency=2, mean)[100:342]
+#' set.seed(1)
+#' extr <- aggregate(sunspot.month, nfrequency=2, mean)[100:349]
 #' extr <- ts(extr, f=21)
 #' 
 #' mod1 <- StructTS(extr)
@@ -102,12 +102,22 @@ compare_forecasts <- function(m, y=NULL, holdout=NULL) {
 	acclist
 }
 
+#' Return forecasts
+#' 
+#' Return forecasts and actual data from \code{compare_forecasts} object
+#' 
+#' @param x a \code{compare_forecasts} object
+#' 
+#' @return
+#' A multivarite time series (\code{mts}) with the actual data, the holdout, 
+#' on the first column, and the forecasts on the rest.
+#'
 #' @export
 
 forecasts <- function(x) {
 	fc <- sapply(x, function(y) y[["fcast"]])
 	actual <- x[[1]][["test"]]
-	cbind(fc, actual)
+	cbind(actual, fc)
 }
 
 #' @export
