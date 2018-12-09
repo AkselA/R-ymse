@@ -60,7 +60,7 @@ class = "data.frame", row.names = c("5m", "10m", "15m", "20m")))
 comment(speedskate) <- "MarbleLympics 2018 speed skating times"
 
 # default par() settings
-.def.par <- list(xlog = FALSE, ylog = FALSE, adj = 0.5, ann =
+def.par <- list(xlog = FALSE, ylog = FALSE, adj = 0.5, ann =
 TRUE, ask = FALSE, bg = "transparent", bty = "o", cex = 1,
 cex.axis = 1, cex.lab = 1, cex.main = 1.2, cex.sub = 1, col =
 "black", col.axis = "black", col.lab = "black", col.main =
@@ -79,6 +79,7 @@ NA_real_, tcl = -0.5, usr = c(0, 1, 0, 1), xaxp = c(0, 1, 5),
 xaxs = "r", xaxt = "s", xpd = FALSE, yaxp = c(0, 1, 5), yaxs =
 "r", yaxt = "s", ylbias = 0.2)
 
+old.par <- "not set"
 
 
 # A few mathematical constants to 100 decimal points

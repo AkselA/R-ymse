@@ -106,7 +106,7 @@
 #'   \item{\code{glai.kin}}{Glaisher-Kinkelin constant}
 #' }
 #' 
-#' @name mathemathical_constants
+#' @name math_constants
 #' 
 #' @usage NULL
 #' 
@@ -133,7 +133,7 @@
 #'   \item{\code{glai.kin.char}}{Glaisher-Kinkelin constant}
 #' }
 #' 
-#' @name mathemathical_constants_char
+#' @name math_constants_char
 #' 
 #' @usage NULL
 #' 

@@ -7,7 +7,7 @@
 reset_par()
 }
 \description{
-Reverts \code{par} settings back to \code{.old.par}
+Reverts \code{par} settings back to \code{old.par}
 }
 \seealso{
 Other par_and_plot_margins_functions: \code{\link{default_par}},

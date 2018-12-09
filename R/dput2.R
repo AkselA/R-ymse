@@ -1,20 +1,25 @@
 #' Write an Object to console
 #' 
-#' Writes an ASCII text representation of an R object to the console for easy copy/paste
+#' Writes an ASCII text representation of an R object to the console for easy
+#' copy/paste
 #' sharing
 #' 
 #' @param x an object
 #' @param width integer; column width
 #' @param assign character; should assignment be included?
-#' @param breakAtParen logical; should lines break at parenthesis begins (default FALSE)
+#' @param breakAtParen logical; should lines break at parenthesis begins
+#' (default FALSE)
+#' @param compact remove spaces around ' = ' assignments
 #' 
-#' @details This is similar to the way \code{dput} is used to print ASCII representations
+#' @details This is similar to the way \code{dput} is used to print ASCII
+#' representations
 #' of objects to the console. The differences are that \code{dput2} lets you specify
-#' the width of the resulting column, and assignment of the object to the name used in
-#' the call will by default be included. Line breaks are by default only done on whitespace,
+#' the width of the resulting column, and assignment of the object to the name used
+#' in the call will by default be included. Line breaks are by default only done on
+#' whitespace,
 #' but can be set to happen at parenthesis begins as well. This should not break code
-#' and can make for a more compact representation, but it can also make the code harder
-#' to read.
+#' and can make for a more compact representation, but it can also make the code
+#' harder to read.
 #' 
 #' @seealso \code{\link{dput}}, \code{\link{deparse}}
 #' 
@@ -22,14 +27,13 @@
 #' 
 #' @examples
 #' xmpl <- faithful[sort(sample(1:nrow(faithful), 50)), ]
-#' 
 #' dput(xmpl)
 #' cat(deparse(xmpl, width.cutoff=65), sep='\n')
-#' 
-#' dput2(xmpl, 65)
-#' dput2(xmpl, 65, assign="end")
-#' dput2(xmpl, 80, assign="none")
-#' dput2(xmpl[1:10,], 10, "none")
+#' dput2(xmpl, compact=FALSE)
+#' dput2(xmpl)
+#' dput2(xmpl, assign="end")
+#' dput2(xmpl, assign="none")
+#' dput2(xmpl, 80)
 #' 
 #' # no line breaks on whitespaces or parens within character strings
 #' xmpl <- mtcars[1:5, ]
@@ -38,10 +42,11 @@
 #'                     "v v v v v v v v v v",
 #'                     "(  g-god, d-god, _-___)",
 #'                     "100*(part)/(total)")
+#' dput2(xmpl, 15)
 #' dput2(xmpl, 15, breakAtParen=TRUE)
-#' dput2(xmpl)
 
-dput2 <- function(x, width=65, assign=c("front", "end", "none"), breakAtParen=FALSE) {
+dput2 <- function(x, width=65, assign=c("front", "end", "none"), 
+  breakAtParen=FALSE, compact=TRUE) {
 	assign <- match.arg(assign)
 	dep <- switch(assign,
       "front" = {
@@ -55,6 +60,9 @@ dput2 <- function(x, width=65, assign=c("front", "end", "none"), breakAtParen=FA
        "none" = {
           deparse(x, width.cutoff=500)
       })
+    if (compact) {
+    	dep <- gsub(" = ", "=", dep)
+    }
 	dep <- paste(dep, collapse="")
 	
 	if (width > 0) {	

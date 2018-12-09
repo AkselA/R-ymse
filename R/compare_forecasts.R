@@ -9,6 +9,7 @@
 #' @export
 #' 
 #' @examples
+#' library(forecast)
 #' set.seed(1)
 #' extr <- aggregate(sunspot.month, nfrequency=2, mean)[100:349]
 #' extr <- ts(extr, f=21)

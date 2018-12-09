@@ -11,8 +11,8 @@ Sets \code{par} settings to their default values
 }
 \details{
 Default par settings can be retreived by \code{data(.def.par)}. A new default
-can be specified by editing \code{.def.par} or making a 
-\code{.def.par <- par(no.readonly=TRUE)} type call.
+can be specified by editing \code{def.par} or making a 
+\code{def.par <- par(no.readonly=TRUE)} type call.
 }
 \seealso{
 Other par_and_plot_margins_functions: \code{\link{reset_par}},

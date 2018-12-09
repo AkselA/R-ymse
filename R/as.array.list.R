@@ -18,6 +18,11 @@
 #' l <- list(df1, df2, df3)
 #' 
 #' as.array(l)
+#'
+#' llm <- list(matrix(LETTERS[1:6], 2), 
+#'             matrix(LETTERS[7:12], 2))
+#' 
+#' as.array(llm)
 #' 
 #' as.array(speedskate)
 
@@ -29,4 +34,3 @@ as.array.list <- function(x, ...) {
     comment(arr) <- comment(x)
     arr
 }
-

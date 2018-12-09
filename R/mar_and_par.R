@@ -17,8 +17,8 @@
 #' @export
 
 set_mar <- function(x=2, y=2, main=1, right=1) {
-	if (!exists(".old.par")) {
-		.old.par <<- par(no.readonly=TRUE)
+	if (!is.list("old.par")) {
+		assign("old.par", par(no.readonly=TRUE), envir=.GlobalEnv)
 	}
 	mar <- c(x, y, main, right)
 	mgp <- c(1.9, 0.6, 0)
@@ -27,18 +27,18 @@ set_mar <- function(x=2, y=2, main=1, right=1) {
 
 #' Reset par
 #' 
-#' Reverts \code{par} settings back to \code{.old.par}
+#' Reverts \code{par} settings back to \code{old.par}
 #' 
 #' @family par_and_plot_margins_functions
 #' 
 #' @export
 
 reset_par <- function() {
-	if (!exists(".old.par")) {
+	if (!exists("old.par")) {
 		stop("set_mar or default_par has not been called yet")
 	}
-	par(.old.par)
-	rm(.old.par, pos=1)
+	par(old.par)
+	rm(old.par, pos=1)
 }
 
 #' Default par
@@ -47,18 +47,18 @@ reset_par <- function() {
 #' 
 #' @details
 #' Default par settings can be retreived by \code{data(.def.par)}. A new default
-#' can be specified by editing \code{.def.par} or making a 
-#' \code{.def.par <- par(no.readonly=TRUE)} type call.
+#' can be specified by editing \code{def.par} or making a 
+#' \code{def.par <- par(no.readonly=TRUE)} type call.
 #' 
 #' @family par_and_plot_margins_functions
 #' 
 #' @export
 
 default_par <- function() {
-	if (!exists(".old.par")) {
-		.old.par <<- par(no.readonly=TRUE)
+	if (!is.list("old.par")) {
+		assign("old.par", par(no.readonly=TRUE), envir=.GlobalEnv)
 	}
-	par(.def.par)
+	par(def.par)
 }
 
 

@@ -3,11 +3,6 @@
 \name{plot.stl}
 \alias{plot.stl}
 \title{Plot \code{stl} object}
-\usage{
-\method{plot}{stl}(x, labels = colnames(X), set.pars = list(mar = c(0, 6, 0,
-  6), oma = c(6, 0, 4, 0), tck = -0.01, mfrow = c(nplot, 1)), main = NULL,
-  range.bars = TRUE, ..., col.range = "light gray")
-}
 \description{
 A a very minor modification of \code{stats::stl}. \cr
 Only difference is that the distance between the plotting window and

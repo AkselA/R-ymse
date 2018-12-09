@@ -17,6 +17,7 @@ compare_forecasts(m, y = NULL, holdout = NULL)
 Test the efficacy of time series models by comparing forecasts with actual data
 }
 \examples{
+library(forecast)
 set.seed(1)
 extr <- aggregate(sunspot.month, nfrequency=2, mean)[100:349]
 extr <- ts(extr, f=21)

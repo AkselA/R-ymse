@@ -4,6 +4,8 @@
 #' Only difference is that \code{lwd} now specifies the width of the histogram bars'
 #' outline.
 #' 
+#' @usage NULL
+#' 
 #' @seealso \code{\link[graphics]{plot.histogram}}, \code{\link{plot.stl}}
 #' 
 #' @export

@@ -3,13 +3,6 @@
 \name{plot.histogram}
 \alias{plot.histogram}
 \title{Plot \code{histogram} object}
-\usage{
-\method{plot}{histogram}(x, freq = equidist, density = NULL, angle = 45,
-  col = NULL, border = par("fg"), lty = NULL, lwd = 1,
-  main = paste("Histogram of", paste(x$xname, collapse = "\\n")),
-  sub = NULL, xlab = x$xname, ylab, xlim = range(x$breaks), ylim = NULL,
-  axes = TRUE, labels = FALSE, add = FALSE, ann = TRUE, ...)
-}
 \description{
 A a very minor modification of \code{graphics::plot.histogram}. \cr
 Only difference is that \code{lwd} now specifies the width of the histogram bars'
