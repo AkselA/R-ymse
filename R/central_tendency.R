@@ -1,6 +1,7 @@
 #' Central tendency measures
 #' 
 #' @param x numeric vector
+#' @param na.rm remove \code{NA}s before starting calculations
 #' @param ... send further arguments to underlying function, e.g. \code{density}
 #' for cmode
 #' 
@@ -19,7 +20,10 @@ NULL
 #' @export pseudomedian
 
 # aka. Hodges–Lehmann estimator
-pseudomedian <- function(x) {
+pseudomedian <- function(x, na.rm=TRUE) {
+	if (na.rm) {
+		x <- x[!is.na(x)]
+	}
     median(c(x, colMeans(combn(x, 2))))
 }
 

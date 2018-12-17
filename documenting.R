@@ -103,9 +103,9 @@ add_data <- function(projname) {
     dtf
 }
 
+document(projname)
 load_all(projname)
 add_data(projname)
-document(projname)
 
 check(projname, manual=FALSE)
 

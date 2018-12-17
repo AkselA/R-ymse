@@ -6,7 +6,9 @@
 #' 
 #' @usage NULL
 #' 
-#' @seealso \code{\link[graphics]{plot.histogram}}, \code{\link{plot.stl}}
+#' @seealso 
+#' \code{\link[graphics]{plot.histogram}}, \code{\link{plot.stl}},
+#' \code{\link{ahist}}
 #' 
 #' @export
 

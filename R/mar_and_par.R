@@ -16,7 +16,7 @@
 #' 
 #' @export
 
-set_mar <- function(x=2, y=2, main=1, right=1) {
+set_mar <- function(x=1.8, y=1.8, main=1, right=1) {
 	if (!is.list("old.par")) {
 		assign("old.par", par(no.readonly=TRUE), envir=.GlobalEnv)
 	}

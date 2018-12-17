@@ -4,7 +4,7 @@
 \alias{set_mar}
 \title{Set plot margins}
 \usage{
-set_mar(x = 2, y = 2, main = 1, right = 1)
+set_mar(x = 1.8, y = 1.8, main = 1, right = 1)
 }
 \arguments{
 \item{x}{margin width for the x axis, default \code{2}}

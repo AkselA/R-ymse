@@ -3,6 +3,8 @@
 #' Compare numeric values, returning an inbetween value for ties
 #' 
 #' @param x,y numeric values to be compared
+#' @param symbols should symbols be used instead of numeric values?
+#' @param ... further arguments passed to methods
 #' 
 #' @seealso \code{\link{Comparison}}, \code{\link{comparison_with_ties}}
 #' 
@@ -74,8 +76,8 @@ is.ttt <- function(x) {
 #' @rdname tied_triple_test
 #' @export is.ttt
 
-print.ttt <- function(x, symbol=TRUE, ...) {
-	if (symbol) x <- c("<", "=", ">")[x + 2]
+print.ttt <- function(x, symbols=TRUE, ...) {
+	if (symbols) x <- c("<", "=", ">")[x + 2]
 	print(unclass(x), ...)
 }
 

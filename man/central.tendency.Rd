@@ -6,12 +6,14 @@
 \alias{cmode}
 \title{Central tendency measures}
 \usage{
-pseudomedian(x)
+pseudomedian(x, na.rm = TRUE)
 
 cmode(x, ...)
 }
 \arguments{
 \item{x}{numeric vector}
+
+\item{na.rm}{remove \code{NA}s before starting calculations}
 
 \item{...}{send further arguments to underlying function, e.g. \code{density}
 for cmode}

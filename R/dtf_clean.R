@@ -2,8 +2,11 @@
 #' 
 #' Create a data.frame from a messy table
 #' 
-#' @param x A messy table the form of a character string
-#' @param header Does the table include headers? (default TRUE)
+#' @param x a messy table the form of a character string
+#' @param header does the table include headers? (default TRUE)
+#' @param stringsAsFactors should strings be read as factors? (default FALSE)
+#' @param na.strings a vector of character strings which will be interpreted
+#' as missing values
 #' @param ... further arguments passed to \code{read.table}
 #' 
 #' @export
@@ -54,12 +57,26 @@
 #'   0.9  |  0.5    |  0.2    |  0.7    |  Y1
 #' "
 #' 
-#' lapply(c(x1, x2, x3, x4), dtf.clean)
+#' x5 <- "
+#'        Season   |   Team  | W | AHWO
+#' -------------------------------------
+#' 1  |  2017/2018 |  TeamA  | 2 | 1.75
+#' 2  |  2017/2018 |  TeamB  | 1 | 1.85
+#' 3  |  2017/2018 |  TeamC  | 1 | 1.70
+#' 4  |  2017/2018 |  TeamD  | 0 | 3.10
+#' 5  |  2016/2017 |  TeamA  | 1 | 1.49
+#' 6  |  2016/2017 |  TeamB  | 3 | 1.51
+#' 7  |  2016/2017 |  TeamC  | 2 | 1.90
+#' 8  |  2016/2017 |  TeamD  | 0 | N/A 
+#' "
+#' 
+#' lapply(c(x1, x2, x3, x4), dtf_clean)
 
-dtf.clean <- function(x, header=TRUE, ...) {
+dtf_clean <- function(x, header=TRUE, na.strings=c("NA", "N/A"), 
+  stringsAsFactors=FALSE, ...) {
     # https://stackoverflow.com/questions/52023709
     # read each row as a character string
-    x <- scan(text=x, what="character", sep="\n")
+    x <- scan(text=x, what="character", sep="\n", quiet=TRUE)
 
     # keep only lines containing alphanumerics
     x <- x[grep("[[:alnum:]]", x)]
@@ -68,6 +85,7 @@ dtf.clean <- function(x, header=TRUE, ...) {
     x <- gsub("\\| | \\|", " ", x)
 
     # read the result as a table
-    read.table(text=paste(x, collapse="\n"), header=header, ...)    
+    read.table(text=paste(x, collapse="\n"), header=header, 
+      na.strings=na.strings, stringsAsFactors=stringsAsFactors, ...)    
 }
 

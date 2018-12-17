@@ -15,12 +15,16 @@ ttt(x, y)
 
 is.ttt(x)
 
-\method{print}{ttt}(x, symbol = TRUE, ...)
+\method{print}{ttt}(x, symbols = TRUE, ...)
 
 \method{table}{ttt}(...)
 }
 \arguments{
 \item{x, y}{numeric values to be compared}
+
+\item{symbols}{should symbols be used instead of numeric values?}
+
+\item{...}{further arguments passed to methods}
 }
 \description{
 Compare numeric values, returning an inbetween value for ties
