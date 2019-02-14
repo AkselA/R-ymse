@@ -6,21 +6,23 @@
 \alias{dusd2}
 \title{Discrete (Uniform) Sum Distributions}
 \usage{
-dusd1(xr = 1:6, n = 2)
+dusd1(xr = 1:6, n = 2, FUN = "+")
 
-dusd2(xi = rep(1, 6), n = 2, round, zero.index = FALSE, limit = 1e-13)
+dusd2(xi = rep(1, 6), n = 2, bix = 1, round, limit = 1e-13)
 }
 \arguments{
 \item{xr}{numeric vector; a vector of equiprobable values}
 
 \item{n}{integer; the number of distributions to be summed}
 
+\item{FUN}{function passed on to \code{outer}}
+
 \item{xi}{numeric vector; a vector of probabilities, with indices representing
 values}
 
-\item{round}{integer; number of digits to round to after each convolution}
+\item{bix}{logical; where does the index of xi start?}
 
-\item{zero.index}{logical; should the index of xi start at zero?}
+\item{round}{integer; number of digits to round to after each convolution}
 
 \item{limit}{numeric; values (frequencies or counts) less than this will be
 omitted.}
@@ -44,8 +46,8 @@ generation of spurious singletons and general imprecicions can be mitigated.
 \examples{
 # five coin flips
 plot(table(dusd1(0:1, 5)))
-plot(dusd2(c(1, 1), 5, zero.index=TRUE))
-plot(dbinom(0:5, 5, 0.5), type="h", lwd=2)
+plot(dusd2(c(1, 1), 5, bix=0))
+plot(as.table(dbinom(0:5, 5, 0.5)))
 
 # ten flips with a loaded coin
 plot(table(dusd1(c(1, 1, 2), 10)))
@@ -66,12 +68,12 @@ barplot(apply(rr, 1, table), beside=TRUE)
 plot(table(dusd1(xr=1:6, 3)))
 plot(dusd2(xi=rep(1, 6), n=3))
 
-# D6 die with faces 2, 3, 5, 7, 11, 13 (prime numbers)
+# d6 die with faces 2, 3, 5, 7, 11, 13 (prime numbers)
 plot(table(dusd1(xr=c(2, 3, 5, 7, 11, 13), 3)))
 
 # Loaded die
 p <- c(0.5, 1, 1, 1, 1, 1.5); sum(p)
-plot(dusd2(xi=p*3, n=2))
+plot(dusd2(xi=p, n=2))
 
 # A loaded die with prime number faces
 s <- vector(length=13)
@@ -112,4 +114,8 @@ s3 <- vector(length=3780)
 s3[c(1, 220, 3779)] <- 1
 plot(dusd2(xi=s3, 12, round=9), lwd=1)
 
+}
+\seealso{
+\code{\link{combodice}} for a more flexible implementation of the 
+same ideas
 }

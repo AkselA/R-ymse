@@ -7,8 +7,9 @@
 #' @param xi numeric vector; a vector of probabilities, with indices representing
 #' values
 #' @param n integer; the number of distributions to be summed
+#' @param FUN function passed on to \code{outer}
 #' @param round integer; number of digits to round to after each convolution 
-#' @param zero.index logical; should the index of xi start at zero?
+#' @param bix logical; where does the index of xi start?
 #' @param limit numeric; values (frequencies or counts) less than this will be
 #' omitted.
 #' 
@@ -21,12 +22,15 @@
 #' @return \code{dusd1} returns an array of size length(xr)^n representing every
 #' possible outcome. \code{dusd2} returns a probability mass function in the form
 #' of a table.
-#'  
+#' 
+#' @seealso \code{\link{combodice}} for a more flexible implementation of the 
+#' same ideas
+#' 
 #' @examples
 #' # five coin flips
 #' plot(table(dusd1(0:1, 5)))
-#' plot(dusd2(c(1, 1), 5, zero.index=TRUE))
-#' plot(dbinom(0:5, 5, 0.5), type="h", lwd=2)
+#' plot(dusd2(c(1, 1), 5, bix=0))
+#' plot(as.table(dbinom(0:5, 5, 0.5)))
 #' 
 #' # ten flips with a loaded coin
 #' plot(table(dusd1(c(1, 1, 2), 10)))
@@ -47,12 +51,12 @@
 #' plot(table(dusd1(xr=1:6, 3)))
 #' plot(dusd2(xi=rep(1, 6), n=3))
 #' 
-#' # D6 die with faces 2, 3, 5, 7, 11, 13 (prime numbers)
+#' # d6 die with faces 2, 3, 5, 7, 11, 13 (prime numbers)
 #' plot(table(dusd1(xr=c(2, 3, 5, 7, 11, 13), 3)))
 #' 
 #' # Loaded die
 #' p <- c(0.5, 1, 1, 1, 1, 1.5); sum(p)
-#' plot(dusd2(xi=p*3, n=2))
+#' plot(dusd2(xi=p, n=2))
 #' 
 #' # A loaded die with prime number faces
 #' s <- vector(length=13)
@@ -100,16 +104,41 @@ NULL
 #' @rdname dusd
 #' @export dusd1
 
-dusd1 <- function(xr=1:6, n=2) {
+dusd1 <- function(xr=1:6, n=2, FUN="+") {
+	UseMethod("dusd1")
+}
+
+#' @export
+
+dusd1.default <- function(xr=1:6, n=2, FUN="+") {
+    FUN <- match.fun(FUN)
 	li <- replicate(n, xr, simplify=FALSE)
-	fu <- function(a, b) outer(a, b, "+")
+	fu <- function(a, b) outer(a, b, FUN)
     Reduce(fu, li)
+}
+
+#' @export
+
+dusd1.dice <- function(xr, ...) {
+	dusd1.default(expand(xr), ...)
+}
+
+#' @export
+
+dusd1.table <- function(xr, ...) {
+	dusd1.default(expand(xr), ...)
 }
 
 #' @rdname dusd
 #' @export dusd2
 
-dusd2 <- function(xi=rep(1, 6), n=2, round, zero.index=FALSE, limit=1e-13) {
+dusd2 <- function(xi=rep(1, 6), n=2, bix=1, round, limit=1e-13) {
+	UseMethod("dusd2")
+}
+
+#' @export
+
+dusd2.default <- function(xi=rep(1, 6), n=2, bix=1, round, limit=1e-13) {
     if (!missing(round)) {
 	    li <- replicate(n, xi, simplify=FALSE)
         re <- Reduce(function(a, b) {
@@ -121,6 +150,19 @@ dusd2 <- function(xi=rep(1, 6), n=2, round, zero.index=FALSE, limit=1e-13) {
         re <- Reduce(function(a, b) convolve(a, rev(b), type="open"), li)
     }
     re <- as.table(re)
-    names(re) <- (n:(length(re) + n - 1)) - zero.index*n
+    names(re) <- seq.int(bix*n, length.out=length(re))
     re[re > limit]
+}
+
+#' @export
+
+dusd2.dice <- function(xi, n=2, ...) {
+	dusd2.default(xi=xi, n=n, bix=bix(xi), ...)
+}
+
+#' @export
+
+dusd2.table <- function(xi, n=2, ...) {
+    xi <- as.dice(xi)
+	dusd2.default(xi=xi, n=n, bix=bix(xi), ...)
 }

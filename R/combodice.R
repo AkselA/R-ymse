@@ -1,0 +1,111 @@
+#' Combine dice
+#' 
+#' Generate probability density functions for combinations of dice.
+#' 
+#' @param x a list of dice objects, or objects that can be interpreted as such
+#' @param FUN function passed on to \code{outer} or \code{apply}, depending
+#' on method
+#' @param ... further arguments passed to \code{FUN}
+#' @param method method for computation. One of outer, expand.grid or convolve
+#' @param name name used for the resulting PDF. Will use x object if none is given 
+#' 
+#' @details Each of the methods have their advantages and disadvantages. Outer 
+#' and expand.grid work with roughly the same speed and memory, and can take the
+#' same kind of input, but FUN is interpreted differently, reflecting their use of
+#' \code{outer} and \code{apply} respectively. Convolve is much quicker than the
+#' other two, but is restricted to only summing distributions.  
+#' While the first two can handle non-integer values, but only integer probabilities,
+#' the third can handle non-integer probabilities, but only integer values.
+#' 
+#' @return A table giving the relative probability of each value
+#' 
+#' @seealso \code{\link{dusd}}
+#' 
+#' @export
+#' 
+#' @examples
+#' # Fudge dice
+#' dF.2 <- as.table(c("-1"=2, "0"=2, "1"=2))
+#' dF.1 <- as.table(c("-1"=1, "0"=4, "1"=1))
+#' fudgedice2221 <- list(dF.2, dF.2, dF.2, dF.1)
+#' 
+#' combodice(fudgedice2221)
+#' 
+#' # Heterogeneous-class list and non-integer values
+#' die1 <- as.table(c("2.6"=2, "3"=1, "5"=1))
+#' die2 <- c(0, 1.4)
+#' die3 <- as.dice(as.table(c("1"=2, "2"=2, "3"=2)))
+#' diel <- list(die1, die2, die3)
+#' 
+#' combodice(diel)
+#' 
+#' # Regular d6 pair
+#' re <- combodice(list(1:6, 1:6))
+#' 
+#' # Sichermann pair
+#' si <- combodice(list(c(1, 2, 2, 3, 3, 4), c(1, 3, 4, 5, 6, 8)))
+#' re; si # Identical
+#' 
+#' # One regular and one "average" d6
+#' combodice(list(1:6, c(2, 3, 3, 4, 4, 5)))
+#' 
+#' # One 1/2 coin, one D4 and one d6, multiplied together
+#' combodice(list(1:2, 1:4, 1:6), "*")
+#' 
+#' # 3d6, and d6+d10+d20. Discard lowest
+#' discard_lowest <- function(x) sum(sort(x)[-1])
+#' combodice(list(1:6, 1:6, 1:6), discard_lowest, method="ex")
+#' combodice(list(1:6, 1:10, 1:20), discard_lowest, method="ex")
+#' 
+#' # Dice pool. 3 d10 with target value 7
+#' f <- function(x) sum(x >= 7)
+#' combodice(lapply(rep(1, 3), seq, 10), f, method="ex")/10
+#' 
+#' # Equivalent using binomial PDF
+#' dbinom(0:3, 3, 0.4)*100
+#' 
+#' # I have a d20 with a slight bump at the 4 and 10 facets,
+#' # which makes 16 and 11 less likely, but the nearby 3, 18, 19 and 20
+#' # correspondingly more likely. How does this affect the PDF?
+#' d20l <- dice(20)
+#' d20l[c(16, 11)] <- 0.6
+#' d20l[c(3, 20, 18, 19)] <- 1.2
+#' mean(d20l)
+#' 
+#' c0 <- combodice(list(dice(6), dice(10), dice(20)), method="conv", name="fair")
+#' cl <- combodice(list(dice(6), dice(10), d20l), method="conv", name="uneven")
+#' 
+#' par(mar=c(3, 3, 1, 1))
+#' plot(c0, type="o", pch=16, col="grey")
+#' points(cl, col=2, type="o", lwd=1, pch=16, cex=0.6)
+
+combodice <- function(x, FUN, ..., 
+  method=c("outer", "expand.grid", "convolve"), name) {
+	method <- match.arg(method)
+	ot <- switch(method,
+	  outer={
+	    if (missing(FUN)) FUN <- "+"
+	    FUN <- match.fun(FUN)
+	    ou <- Reduce(function(a, b) outer(a, b, FUN, ...), expand(x))
+	    table(ou)
+	  },
+	  expand.grid={
+	    if (missing(FUN)) FUN <- "sum"
+	    FUN <- match.fun(FUN)
+	    eg <- apply(expand.grid(expand(x)), 1, FUN, ...)
+	    table(eg)
+	  },
+	  convolve={
+	    li <- as.dice(x) 
+        co <- Reduce(function(a, b) convolve(a, rev(b), type="open"), li)
+        co <- as.table(co)
+        names(co) <- seq.int(sum(sapply(li, bix)), length.out=length(co))
+        co
+	  })	
+	if (missing(name)) {
+		name <- deparse(substitute(x))
+	}
+	names(dimnames(ot)) <- name
+	ot
+}
+
