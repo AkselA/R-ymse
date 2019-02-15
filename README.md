@@ -7,10 +7,23 @@ adjective
 Old Norse *ýmsir*, *ýmissir*, pl. *ýmiss*, *ímiss*  
 
 ### usage
-    library(devtools)
-    install_github("AkselA/R-ymse")
-    library(ymse)
+```R
+library(devtools)
+install_github("AkselA/R-ymse")
+library(ymse)
 
-    ?ymse::means
+# Effect of an uneven d20 die on PDF 
+d20l <- dice(20)
+d20l[c(16, 11)] <- 0.6
+d20l[c(3, 20, 18, 19)] <- 1.2
+
+c0 <- combodice(list(dice(6), dice(10), dice(20)), method="conv", name="fair")
+cl <- combodice(list(dice(6), dice(10), d20l), method="conv", name="uneven")
+
+set_mar()
+plot(c0, type="o", pch=16, col="grey")
+points(cl, col=2, type="o", lwd=1, pch=16, cex=0.6)
+legend("topright", c("fair", "uneven"), bty="n", col=c("grey", "red"), lwd=2:1)
+```
 
 ![graph](https://github.com/AkselA/R-ymse/blob/master/dice.png)
