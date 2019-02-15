@@ -12,3 +12,5 @@ Old Norse *ýmsir*, *ýmissir*, pl. *ýmiss*, *ímiss*
     library(ymse)
 
     ?ymse::means
+
+![graph](https://github.com/AkselA/R-ymse/blob/master/dice.png)
