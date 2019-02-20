@@ -12,7 +12,7 @@ library(devtools)
 install_github("AkselA/R-ymse")
 library(ymse)
 
-# Effect of an uneven d20 die on PDF 
+# Effect of an uneven d20 die on summed PDF 
 d20l <- dice(20)
 d20l[c(16, 11)] <- 0.6
 d20l[c(3, 20, 18, 19)] <- 1.2

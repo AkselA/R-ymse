@@ -85,9 +85,10 @@ mean(d20l)
 c0 <- combodice(list(dice(6), dice(10), dice(20)), method="conv", name="fair")
 cl <- combodice(list(dice(6), dice(10), d20l), method="conv", name="uneven")
 
-par(mar=c(3, 3, 1, 1))
+set_mar()
 plot(c0, type="o", pch=16, col="grey")
 points(cl, col=2, type="o", lwd=1, pch=16, cex=0.6)
+legend("topright", c("fair", "bumpy"), bty="n", col=c("grey", "red"), lwd=2:1)
 }
 \seealso{
 \code{\link{dusd}}

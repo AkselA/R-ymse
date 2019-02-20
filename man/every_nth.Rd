@@ -2,33 +2,47 @@
 % Please edit documentation in R/every_nth.R
 \name{every_nth}
 \alias{every_nth}
-\alias{every_nth.default}
 \alias{every_nth.matrix}
+\alias{every_nth.array}
 \alias{every_nth.data.frame}
 \alias{every_nth.list}
 \title{Select every n'th element}
 \usage{
-every_nth(x, ...)
-
-\method{every_nth}{default}(x, n = 2, start = 1, ...)
+every_nth(...)
 
 \method{every_nth}{matrix}(x, n = 2, start = 1, margin = 1, ...)
 
-\method{every_nth}{data.frame}(x, n = 2, start = 1, ...)
+\method{every_nth}{array}(x, n = 2, start = 1, margin = 1, ...)
+
+\method{every_nth}{data.frame}(x, n = 2, start = 1, margin = 1, ...)
 
 \method{every_nth}{list}(x, n = 2, start = 1, ...)
 }
 \arguments{
-\item{x}{an object to be selected from}
-
 \item{...}{further arguments passed to methods}
+
+\item{x}{an object to be selected from}
 
 \item{n}{selection "step size"}
 
 \item{start}{integer in [1:n] specifying the start of selection}
 
-\item{margin}{for matrices, what margin to select along}
+\item{margin}{what margin to select along}
 }
 \description{
-Select every second, third, fourth etc. element (or slice/hyperplane)
+Select every second, third, fourth etc. element (or slice/hyperplane) of an
+object
+}
+\examples{
+m <- matrix(1:64, 8)
+every_nth(m, n=3, start=3, margin=2)
+
+d <- data.frame(A=1:8, B=2:9, Q=letters[rep(1:3, length.out=8)])
+every_nth(d, start=2)
+
+a <- array(1:6^4, rep(6, 4))
+every_nth(a)
+
+l <- list(a=1:3, b=2:6, c=8:5, d=9:7, e=list(ea=1:2, eb=1), f=2:6)
+every_nth(l, n=2, start=2)
 }
