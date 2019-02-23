@@ -1,6 +1,4 @@
-ymseEnv <- new.env()
-
-def.par <- list(xlog = FALSE, ylog = FALSE, adj = 0.5, ann =
+.def.par <- list(xlog = FALSE, ylog = FALSE, adj = 0.5, ann =
 TRUE, ask = FALSE, bg = "transparent", bty = "o", cex = 1,
 cex.axis = 1, cex.lab = 1, cex.main = 1.2, cex.sub = 1, col =
 "black", col.axis = "black", col.lab = "black", col.main =
@@ -19,9 +17,10 @@ NA_real_, tcl = -0.5, usr = c(0, 1, 0, 1), xaxp = c(0, 1, 5),
 xaxs = "r", xaxt = "s", xpd = FALSE, yaxp = c(0, 1, 5), yaxs =
 "r", yaxt = "s", ylbias = 0.2)
 
-old.par <- "not set"
+.old.par <- "not set"
 
-assign("def.par", old.par, envir=ymseEnv)
-assign("old.par", old.par, envir=ymseEnv)
+ymseEnv <- new.env()
+assign("def.par", .def.par, envir=ymseEnv)
+assign("old.par", .old.par, envir=ymseEnv)
 
 # globalVariables(c("def.par", "old.par"))

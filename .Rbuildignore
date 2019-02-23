@@ -4,3 +4,4 @@ commit\.command
 \.pdf$
 \.png$
 ^.*\.Rproj$
+^__.*

@@ -122,7 +122,7 @@ show_pdf(projname)
 
 use_build_ignore(
   c("^data\\.R", "documenting\\.R", "commit\\.command", "\\.pdf$", 
-    "\\.png$", "^.*\\.Rproj$"),
+    "\\.png$", "^.*\\.Rproj$", "^__.*"),
   pkg=projname, escape=FALSE)
 
 readLines(file.path(projname, ".Rbuildignore"))

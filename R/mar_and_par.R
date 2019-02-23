@@ -17,7 +17,8 @@
 #' @export
 
 set_mar <- function(x=1.8, y=1.8, main=1, right=1) {
-	if (!is.list("old.par")) {
+	old.par <- get("old.par", envir=ymseEnv)
+	if (!is.list(old.par)) {
 		assign("old.par", par(no.readonly=TRUE), envir=ymseEnv)
 	}
 	mar <- c(x, y, main, right)
@@ -34,11 +35,13 @@ set_mar <- function(x=1.8, y=1.8, main=1, right=1) {
 #' @export
 
 reset_par <- function() {
-	if (!exists("old.par")) {
+	old.par <- get("old.par", envir=ymseEnv)
+	if (!is.list(old.par)) {
 		stop("set_mar or default_par has not been called yet")
 	}
 	par(old.par)
-	rm(old.par, pos=1)
+	assign("old.par", "par has been reset", envir=ymseEnv)
+	invisible(old.par)
 }
 
 #' Default par
@@ -55,10 +58,13 @@ reset_par <- function() {
 #' @export
 
 default_par <- function() {
-	if (!is.list("old.par")) {
+	old.par <- get("old.par", envir=ymseEnv)
+	if (!is.list(old.par)) {
 		assign("old.par", par(no.readonly=TRUE), envir=ymseEnv)
 	}
+	def.par <- get("def.par", envir=ymseEnv)
 	par(def.par)
+	invisible(def.par)
 }
 
 
