@@ -25,5 +25,5 @@ is made.
 }
 \seealso{
 Other par_and_plot_margins_functions: \code{\link{default_par}},
-  \code{\link{reset_par}}
+  \code{\link{revert_par}}
 }

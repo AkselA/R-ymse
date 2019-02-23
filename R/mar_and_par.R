@@ -18,15 +18,13 @@
 
 set_mar <- function(x=1.8, y=1.8, main=1, right=1) {
 	old.par <- get("old.par", envir=ymseEnv)
-	if (!is.list(old.par)) {
-		assign("old.par", par(no.readonly=TRUE), envir=ymseEnv)
-	}
+	assign("old.par", par(no.readonly=TRUE), envir=ymseEnv)
 	mar <- c(x, y, main, right)
 	mgp <- c(1.9, 0.6, 0)
 	par(mar=mar, mgp=mgp)
 }
 
-#' Reset par
+#' Revert par
 #' 
 #' Reverts \code{par} settings back to \code{old.par}
 #' 
@@ -34,13 +32,13 @@ set_mar <- function(x=1.8, y=1.8, main=1, right=1) {
 #' 
 #' @export
 
-reset_par <- function() {
+revert_par <- function() {
 	old.par <- get("old.par", envir=ymseEnv)
+	assign("old.par", par(no.readonly=TRUE), envir=ymseEnv)
 	if (!is.list(old.par)) {
-		stop("set_mar or default_par has not been called yet")
+		stop("set_mar or default_par needs to be called first")
 	}
 	par(old.par)
-	assign("old.par", "par has been reset", envir=ymseEnv)
 	invisible(old.par)
 }
 
@@ -58,10 +56,7 @@ reset_par <- function() {
 #' @export
 
 default_par <- function() {
-	old.par <- get("old.par", envir=ymseEnv)
-	if (!is.list(old.par)) {
-		assign("old.par", par(no.readonly=TRUE), envir=ymseEnv)
-	}
+	assign("old.par", par(no.readonly=TRUE), envir=ymseEnv)
 	def.par <- get("def.par", envir=ymseEnv)
 	par(def.par)
 	invisible(def.par)
