@@ -59,6 +59,9 @@ every_nth.matrix <- function(x, n=2, start=1, margin=1, ...) {
 every_nth.array <- function(x, n=2, start=1, margin=1, ...) {
 	d <- dim(x)
 	ndim <- length(d)
+	if (margin > ndim) {
+		stop("invalid margin")
+	}
 	s <- modn(1:d[margin], n) == start
 	
 	mar <- rep("", ndim)

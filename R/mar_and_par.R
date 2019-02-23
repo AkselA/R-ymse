@@ -18,7 +18,7 @@
 
 set_mar <- function(x=1.8, y=1.8, main=1, right=1) {
 	if (!is.list("old.par")) {
-		assign("old.par", par(no.readonly=TRUE), envir=.GlobalEnv)
+		assign("old.par", par(no.readonly=TRUE), envir=ymseEnv)
 	}
 	mar <- c(x, y, main, right)
 	mgp <- c(1.9, 0.6, 0)
@@ -56,7 +56,7 @@ reset_par <- function() {
 
 default_par <- function() {
 	if (!is.list("old.par")) {
-		assign("old.par", par(no.readonly=TRUE), envir=.GlobalEnv)
+		assign("old.par", par(no.readonly=TRUE), envir=ymseEnv)
 	}
 	par(def.par)
 }

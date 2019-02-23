@@ -2,6 +2,7 @@
 % Please edit documentation in R/every_nth.R
 \name{every_nth}
 \alias{every_nth}
+\alias{every_nth.default}
 \alias{every_nth.matrix}
 \alias{every_nth.array}
 \alias{every_nth.data.frame}
@@ -9,6 +10,8 @@
 \title{Select every n'th element}
 \usage{
 every_nth(...)
+
+\method{every_nth}{default}(x, n = 2, start = 1, ...)
 
 \method{every_nth}{matrix}(x, n = 2, start = 1, margin = 1, ...)
 

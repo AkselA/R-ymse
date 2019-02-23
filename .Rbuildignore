@@ -1,15 +1,6 @@
-^.*\.Rproj$
-^\.Rproj\.user$
-^data\.R$
-^documenting\.R$
-^commit\.command$
-^\.pdf$
-data.R
-documenting.R
-commit.command
-.pdf
-data\.R
+^data\.R
 documenting\.R
 commit\.command
 \.pdf$
 \.png$
+^.*\.Rproj$
