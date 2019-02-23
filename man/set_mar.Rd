@@ -23,6 +23,26 @@ Old \code{par} settings are stored in \code{.old.par} before a call to
 \code{par} of the form \code{par(mar=c(x, y, main, right), mgp=c(1.9, 0.6, 0))}
 is made.
 }
+\examples{
+ymse:::.old.par
+get("old.par", envir=ymse:::ymseEnv)
+ls(envir=ymse:::ymseEnv)
+
+par(col.axis=2)
+plot(1:4)
+
+set_mar()
+plot(1:4)
+
+default_par()
+plot(1:4)
+
+revert_par()
+plot(1:4)
+
+ymse:::.old.par
+head(get("old.par", envir=ymse:::ymseEnv))
+}
 \seealso{
 Other par_and_plot_margins_functions: \code{\link{default_par}},
   \code{\link{revert_par}}

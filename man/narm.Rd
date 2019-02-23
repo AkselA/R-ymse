@@ -35,9 +35,9 @@ Remove \code{NA}s from vector or matrix
 \examples{
 m1 <- matrix(c(10, 20, 30, 43,
                10, NA, 32, 50,
-	              NA, NA, NA, NA,
-	              13, 22, 70, 81,
-	              NA, 29, NA, 41), 5, byrow=TRUE,
+               NA, NA, NA, NA,
+               13, 22, 70, 81,
+               NA, 29, NA, 41), 5, byrow=TRUE,
                dimnames=list(letters[1:5], LETTERS[1:4]))
 
 narm(m1) 

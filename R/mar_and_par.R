@@ -15,6 +15,26 @@
 #' @family par_and_plot_margins_functions
 #' 
 #' @export
+#' 
+#' @examples
+#' ymse:::.old.par
+#' get("old.par", envir=ymse:::ymseEnv)
+#' ls(envir=ymse:::ymseEnv)
+#' 
+#' par(col.axis=2)
+#' plot(1:4)
+#' 
+#' set_mar()
+#' plot(1:4)
+#' 
+#' default_par()
+#' plot(1:4)
+#' 
+#' revert_par()
+#' plot(1:4)
+#' 
+#' ymse:::.old.par
+#' head(get("old.par", envir=ymse:::ymseEnv))
 
 set_mar <- function(x=1.8, y=1.8, main=1, right=1) {
 	old.par <- get("old.par", envir=ymseEnv)
