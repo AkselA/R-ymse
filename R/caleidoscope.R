@@ -6,12 +6,12 @@
 #' @param odd logical; should the resulting matrix have odd dimensions?
 #' 
 #' @details Three copies of \code{m} will be made. One flipped horizontally, one flipped
-#' vertically, and one flipped both horizontally and vertically. Then they are recombined with
-#' the original matrix in the upper right corner, and the flipped copies in the upper left,
-#' lower righ and lower left corners, respectively.
+#' vertically, and one flipped both horizontally and vertically. Then they are recombined
+#' with the original matrix in the upper right corner, and the flipped copies in the
+#' upper left, lower righ and lower left corners, respectively.
 #' 
-#' @return A matrix of either \eqn{2\times}{2×} or \eqn{2\times - 1}{2× - 1} the number of rows
-#' and columns of the input matrix.
+#' @return A matrix of either \eqn{2\times}{2×} or \eqn{2\times - 1}{2× - 1} the number
+#' of rows and columns of the input matrix.
 #' 
 #' @export
 #' 

@@ -103,9 +103,20 @@ add_data <- function(projname) {
     dtf
 }
 
+use_build_ignore(
+  c("^data\\.R", "documenting\\.R", "commit\\.command", "\\.pdf$", 
+    "\\.png$", "^.*\\.Rproj$", "^__.*"),
+  pkg=projname, escape=FALSE)
+
+readLines(file.path(projname, ".Rbuildignore"))
+
+# detach(package:pollplot)
+
 document(projname)
 load_all(projname)
 add_data(projname)
+
+# ?adjustcolorHSV
 
 check(projname, manual=FALSE)
 
@@ -120,12 +131,6 @@ show_pdf <- function(package, lib.loc=NULL, opt="--force") {
 } 
 show_pdf(projname)
 
-use_build_ignore(
-  c("^data\\.R", "documenting\\.R", "commit\\.command", "\\.pdf$", 
-    "\\.png$", "^.*\\.Rproj$", "^__.*"),
-  pkg=projname, escape=FALSE)
-
-readLines(file.path(projname, ".Rbuildignore"))
 
 # run convenience script to add, commit and maybe push change
 system(paste0("open ", projname, "/commit.command"))
