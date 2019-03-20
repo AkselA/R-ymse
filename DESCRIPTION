@@ -3,9 +3,9 @@ Title: Ymse (Various)
 Version: 0.5.1
 Authors@R: 'Aksel A. Henriksen <a@b> [aut, cre]'
 Description: Supplies a number of more or less useful functions and methods suitable
-	for, eg. estimating dice roll probabilities, calculate latin squares, perform
-	binary search, adjust colours in HSV space, produce prime numbers, and other
-	assorted disparate tasks.
+  for, eg. estimating dice roll probabilities, calculate latin squares, perform
+  binary search, adjust colours in HSV space, produce prime numbers, and other
+  assorted disparate tasks.
 Depends: R (>= 3.5.0)
 Imports: stats, utils, graphics, grDevices, forecast
 License: GPL (>= 2)
