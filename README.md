@@ -13,11 +13,11 @@ install_github("AkselA/R-ymse")
 library(ymse)
 
 # Effect of an uneven d20 die on summed PDF 
-d20l <- dice(20)
+d20l <- d20 <- dice(20)
 d20l[c(16, 11)] <- 0.6
 d20l[c(3, 20, 18, 19)] <- 1.2
 
-c0 <- combodice(list(dice(6), dice(10), dice(20)), method="conv", name="fair")
+c0 <- combodice(list(dice(6), dice(10), d20), method="conv", name="fair")
 cl <- combodice(list(dice(6), dice(10), d20l), method="conv", name="uneven")
 
 set_mar()

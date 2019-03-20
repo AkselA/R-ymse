@@ -116,7 +116,7 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-# ?adjustcolorHSV
+?simple_loess
 
 check(projname, manual=FALSE)
 
