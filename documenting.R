@@ -116,7 +116,7 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-?simple_loess
+?pairwise_col
 
 check(projname, manual=FALSE)
 
