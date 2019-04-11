@@ -17,3 +17,10 @@ print.data.frame <- function(x, ...) {
 	x[ittt] <- lapply(x[ittt], function(x) c("<", "=", ">")[x + 2])
 	base::print.data.frame(x, ...)
 }
+
+#' @export
+
+as.table.data.frame <- function(x, ...) {
+	rownames(x) <- colnames(x)
+	as.table(as.matrix(x), ...)
+}
