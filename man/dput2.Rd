@@ -5,7 +5,7 @@
 \title{Write an Object to console}
 \usage{
 dput2(x, width = 65, assign = c("front", "end", "none"),
-  breakAtParen = FALSE, compact = TRUE)
+  breakAtParen = FALSE, compact = TRUE, exdent = NULL)
 }
 \arguments{
 \item{x}{an object}
@@ -14,10 +14,12 @@ dput2(x, width = 65, assign = c("front", "end", "none"),
 
 \item{assign}{character; should assignment be included?}
 
-\item{breakAtParen}{logical; should lines break at parenthesis begins
-(default FALSE)}
+\item{breakAtParen}{logical; should lines break at parenthesis begins}
 
 \item{compact}{remove spaces around ' = ' assignments}
+
+\item{exdent}{a non-negative integer specifying the exdentation of lines
+after the first. default 2 if assign="front", else 0.}
 }
 \description{
 Writes an ASCII text representation of an R object to the console for easy

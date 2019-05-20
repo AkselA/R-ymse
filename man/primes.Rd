@@ -22,5 +22,5 @@ On my lightweight laptop:
 1e7 -> 0.32s, 5e7 -> 1.7s, 1e8 -> 3.7s, 2e8 -> 7.6s, 3e8 -> 15s
 }
 \seealso{
-\code{\link{isPrime}}
+\code{\link{is_prime}}
 }

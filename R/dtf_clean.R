@@ -74,6 +74,7 @@
 
 dtf_clean <- function(x, header=TRUE, na.strings=c("NA", "N/A"), 
   stringsAsFactors=FALSE, ...) {
+    .Deprecated("simple_table")
     # https://stackoverflow.com/questions/52023709
     # read each row as a character string
     x <- scan(text=x, what="character", sep="\n", quiet=TRUE)

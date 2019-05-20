@@ -10,6 +10,8 @@
 #' to the \emph{hue}, \emph{saturation}, \emph{value} and \emph{alpha} values
 #' @param transform a 4x4 diagonal matrix specifying the scaling applied to the
 #' \emph{hue}, \emph{saturation}, \emph{value} and \emph{alpha} values
+#' @param h,s,v,alpha fixed vlues for hue, saturation, value and alpha. Overrides any
+#' corresponding scaling factor or offset
 #' 
 #' @details
 #' Essentially an HSV version of the RGB-based \code{\link{adjustcolor}}. One
@@ -32,7 +34,8 @@
 #' @export
 
 adjustcolorHSV <- function(col, alpha.f=1, h.f=1, s.f=1, v.f=1, 
-  offset=c(0, 0, 0, 0), transform=diag(c(h.f, s.f, v.f, alpha.f))) {
+  offset=c(0, 0, 0, 0), transform=diag(c(h.f, s.f, v.f, alpha.f)), 
+  h=NULL, s=NULL, v=NULL, alpha=NULL) {
     stopifnot(exprs = {
         length(offset) %% 4L == 0L
         !is.null(d <- dim(transform))
@@ -42,6 +45,18 @@ adjustcolorHSV <- function(col, alpha.f=1, h.f=1, s.f=1, v.f=1,
     x <- rbind(rgb2hsv(cc[1:3,]), cc[4,]/255)
     xt <- transform %*% x + matrix(offset, nrow=4L, ncol=ncol(x))
     xt[1,] <- xt[1,] %% 1L
-    x[] <- pmax(0, pmin(1, xt))
-    hsv(x[1L, ], x[2L, ], x[3L, ], x[4L, ])
+    if (!is.null(h)) {
+    	xt[1L, ] <- h
+    }
+    if (!is.null(s)) {
+    	xt[2L, ] <- s
+    }
+    if (!is.null(v)) {
+    	xt[3L, ] <- v
+    }
+    if (!is.null(alpha)) {
+    	xt[4L, ] <- alpha
+    }
+    xt[] <- pmax(0, pmin(1, xt))
+    hsv(xt[1L, ], xt[2L, ], xt[3L, ], xt[4L, ])
 }

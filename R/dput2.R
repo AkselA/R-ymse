@@ -8,8 +8,9 @@
 #' @param width integer; column width
 #' @param assign character; should assignment be included?
 #' @param breakAtParen logical; should lines break at parenthesis begins
-#' (default FALSE)
 #' @param compact remove spaces around ' = ' assignments
+#' @param exdent a non-negative integer specifying the exdentation of lines
+#' after the first. default 2 if assign="front", else 0.
 #' 
 #' @details This is similar to the way \code{dput} is used to print ASCII
 #' representations
@@ -46,9 +47,12 @@
 #' dput2(xmpl, 15, breakAtParen=TRUE)
 
 dput2 <- function(x, width=65, assign=c("front", "end", "none"), 
-  breakAtParen=FALSE, compact=TRUE) {
-	assign <- match.arg(assign)
-	dep <- switch(assign,
+  breakAtParen=FALSE, compact=TRUE, exdent=NULL) {
+    assign <- match.arg(assign)
+    if (is.null(exdent)) {
+        exdent <- 2*(assign == "front")
+    }
+    dep <- switch(assign,
       "front" = {
           asg <- paste(deparse(substitute(x)), "<- ")
           c(asg, deparse(x, width.cutoff=500))
@@ -61,32 +65,32 @@ dput2 <- function(x, width=65, assign=c("front", "end", "none"),
           deparse(x, width.cutoff=500)
       })
     if (compact) {
-    	dep <- gsub(" = ", "=", dep)
+        dep <- gsub(" = ", "=", dep)
     }
-	dep <- paste(dep, collapse="")
-	
-	if (width > 0) {	
-		if (breakAtParen) {
-	        dep <- gsub("\\(", "\\( ", dep)
+    dep <- paste(dep, collapse="")
+    
+    if (width > 0) {    
+        if (breakAtParen) {
+            dep <- gsub("\\(", "\\( ", dep)
             
-    		# remove spaces after parens in character strings
-    		# and replace the remaining spaces with nbsp
+            # remove spaces after parens in character strings
+            # and replace the remaining spaces with nbsp
             spl <- strsplit(dep, "\"")[[1]]
             chstr <- 1:length(spl) %% 2 == 0
             spl[chstr] <- gsub("\\( ", "\\(", spl[chstr])
             spl[chstr] <- gsub(" ", "\u00A0", spl[chstr])
             dep <- paste(spl, collapse="\"")
-			
-			dep <- strwrap(dep, width=width + 1)
-		    dep <- gsub("\\( ", "\\(", dep)
-		} else {
-    		# replace spaces in character strings with nbsp
-	    	spl <- strsplit(dep, "\"")[[1]]
+            
+            dep <- strwrap(dep, width=width + 1, exdent=exdent)
+            dep <- gsub("\\( ", "\\(", dep)
+        } else {
+            # replace spaces in character strings with nbsp
+            spl <- strsplit(dep, "\"")[[1]]
             chstr <- 1:length(spl) %% 2 == 0
             spl[chstr] <- gsub(" ", "\u00A0", spl[chstr])
             dep <- paste(spl, collapse="\"")
-			dep <- strwrap(dep, width=width + 1)
-		}
+            dep <- strwrap(dep, width=width + 1, exdent=exdent)
+        }
     }
-	cat(dep, sep="\n")
+    cat(dep, sep="\n")
 }

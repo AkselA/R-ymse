@@ -116,7 +116,7 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-?pairwise_col
+?smat
 
 check(projname, manual=FALSE)
 

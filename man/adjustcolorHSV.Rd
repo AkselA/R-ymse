@@ -5,7 +5,8 @@
 \title{Adjust Colors in One or More Directions Conveniently.}
 \usage{
 adjustcolorHSV(col, alpha.f = 1, h.f = 1, s.f = 1, v.f = 1,
-  offset = c(0, 0, 0, 0), transform = diag(c(h.f, s.f, v.f, alpha.f)))
+  offset = c(0, 0, 0, 0), transform = diag(c(h.f, s.f, v.f, alpha.f)),
+  h = NULL, s = NULL, v = NULL, alpha = NULL)
 }
 \arguments{
 \item{col}{vector of colors, in any format that col2rgb() accepts}
@@ -18,6 +19,9 @@ to the \emph{hue}, \emph{saturation}, \emph{value} and \emph{alpha} values}
 
 \item{transform}{a 4x4 diagonal matrix specifying the scaling applied to the
 \emph{hue}, \emph{saturation}, \emph{value} and \emph{alpha} values}
+
+\item{h, s, v, alpha}{fixed vlues for hue, saturation, value and alpha. Overrides any
+corresponding scaling factor or offset}
 }
 \value{
 A character vector the same length as \code{col} contaning color data in standard
