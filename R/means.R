@@ -51,7 +51,7 @@ harm <- function(x, na.rm=TRUE) {
     if (na.rm) {  
         x <- x[!is.na(x)]
     }
-	1/mean(1/x)
+    1/mean(1/x)
 }
 
 #' @rdname means
@@ -62,35 +62,35 @@ geom <- function(x, zero.rule=c("1p", "rm", "1"), na.rm=TRUE) {
         x <- x[!is.na(x)]
     }
     if (any(x == 0)) {
-	    zero <- match.arg(zero.rule)
-	    switch(zero, 
-	      "1p" = {
-		      if (any(l <- x < 0)) {
-				  (-1)^sum(l) * expm1(mean(log1p(abs(x))))
-			  } else {
-			      expm1(mean(log1p(x)))
-		      }},
-		  "rm" = {
-		  	  x <- x[x != 0]
-		      if (any(l <- x < 0)) {
-				  (-1)^sum(l) * exp(mean(log(abs(x))))
-			  } else {
-			      exp(mean(log(x)))
-		      }},
-		   "1" = {
-		   	  x[x == 0] <- 1
-		      if (any(l <- x < 0)) {
-				  (-1)^sum(l) * exp(mean(log(abs(x))))
-			  } else {
-			      exp(mean(log(x)))
-		      }}
-	    )
+        zero <- match.arg(zero.rule)
+        switch(zero, 
+          "1p" = {
+              if (any(l <- x < 0)) {
+                  (-1)^sum(l) * expm1(mean(log1p(abs(x))))
+              } else {
+                  expm1(mean(log1p(x)))
+              }},
+          "rm" = {
+                x <- x[x != 0]
+              if (any(l <- x < 0)) {
+                  (-1)^sum(l) * exp(mean(log(abs(x))))
+              } else {
+                  exp(mean(log(x)))
+              }},
+           "1" = {
+                 x[x == 0] <- 1
+              if (any(l <- x < 0)) {
+                  (-1)^sum(l) * exp(mean(log(abs(x))))
+              } else {
+                  exp(mean(log(x)))
+              }}
+        )
     } else {
-	    if (any(l <- x < 0)) {
-	        (-1)^sum(l) * exp(mean(log(abs(x))))
-		} else {
-		    exp(mean(log(x)))
-	    }
+        if (any(l <- x < 0)) {
+            (-1)^sum(l) * exp(mean(log(abs(x))))
+        } else {
+            exp(mean(log(x)))
+        }
     }
 }
 

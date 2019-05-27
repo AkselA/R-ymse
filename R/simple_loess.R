@@ -46,6 +46,7 @@ simple_loess <- function(...) {
 
 #' @rdname simple_loess
 #' @export
+
 simple_loess.default <- function(y, x=seq_along(y), xout=sort(x), span=0.75,
   periodic=FALSE, ...) {
     if (length(xout) == 1 & is.integer(xout)) {
@@ -77,6 +78,7 @@ simple_loess.default <- function(y, x=seq_along(y), xout=sort(x), span=0.75,
 
 #' @rdname simple_loess
 #' @export
+
 simple_loess.data.frame <- function(df, xout=sort(df[,1]), ...) {
 	x <- df[,1]
 	y <- df[,2]

@@ -7,73 +7,6 @@ library(devtools)
 setwd("~/Documents/R/prosjekter")
 projname <- "ymse"
 
-# define a few helper functions
-
-# specialized line-wrap function.
-# takes into account latex-like document markup
-linewrap <- function(txt, width=90, strip.cr=FALSE, add.cr=TRUE) {
-	lin <- paste(txt, collapse=" ")
-	lin <- gsub("#'", " ", lin)
-	if (strip.cr) lin <- gsub("\\\\cr", "", lin)
-	lin <- gsub("[ ]+", " ", lin)
-	words <- strsplit(lin, '\\{[^}]+ (*SKIP)(*FAIL)| ', perl=TRUE)[[1]]
-	words <- words[!nchar(words) == 0]
-	words.clean <- gsub("\\\\[a-zA-Z]+\\{([^}]+)\\}", "\\1", words)
-	words.length <- nchar(words.clean) + 1
-	words.length[words.clean == "\\cr"] <- 0
-	
-	llist <- vector()
-	llength <- 0
-	
-	for (i in seq_along(words.length)) {
-		llength <- llength + words.length[i]
-		if (length(words.clean[i-1]) != 0 && words.clean[i-1] == "\\cr") {
-		    llength <- width + 1
-		}
-		if (llength > width) {
-			llength <- words.length[i]
-		}
-		llist[[i]] <- llength
-	}
-	words[words.clean == "\\cr"] <- ""
-	lline <- cumsum(diff(c(0, llist)) < 0) + 1
-	llines <- aggregate(words, list(lline), paste, collapse=" ")[[2]]
-	llines <- sub(" +$", "", llines)
-	llines <- sub("^ +", "", llines)
-	
-	if (add.cr) llines <- paste(llines, "\\cr")
-	
-	llines
-}
-
-# turns text into roxygen2 comments
-# cut/copy text, run roxcomm(), paste
-roxcomm <- function(action="add", max.width=0, strip.cr=FALSE, add.cr=FALSE) {
-    action <- match.arg(action, c("revert", "add", "detab"))
-    pat <- switch(action,
-                  revert=c("^#'[ ]*", ""),
-                     add=c("(.*)", "#' \\1"),
-                   detab=c("\t", "    "))
-
-    copy <- pipe("pbpaste")
-    lines <- readLines(copy)
-    
-    if (max.width > 0) {
-    	lines <- linewrap(lines, width=max.width, strip.cr=strip.cr, add.cr=add.cr)
-    }
-    
-    lines <- gsub(pat[1], pat[2], lines)
-
-    clip <- pipe("pbcopy", "w")                       
-    writeLines(text=lines, con=clip)                               
-
-    close(clip)
-    close(copy)
-}
-# roxcomm("add", 0)
-# roxcomm("add", 80, add.cr=TRUE)
-
-
 # turns objects found in "projname"/data.R (project root)
 # into data files available through data()
 # by saving them as .rda files in "projname"/data
@@ -119,6 +52,15 @@ add_data(projname)
 ?smat
 
 check(projname, manual=FALSE)
+
+# Ispect package object sizes
+ppath <- paste0(find.package(projname, lib.loc=.libPaths()), "/R/", projname)
+lazyLoad(ppath)
+
+ll <- sapply(ls(), function(x) object.size(get(x)))
+ll <- sort(ll, decreasing=TRUE)
+ll[] <- utils:::format.object_size(ll, units="Kb")
+as.data.frame(ll)
 
 show_pdf <- function(package, lib.loc=NULL, opt="--force") {
     owd <- getwd()

@@ -16,6 +16,16 @@
 #' c(1, 4, 3, 1) %tlt% c(1, 3, 3, 2)
 #' c(1, 4, 3, 1) %tgt% c(1, 3, 3, 2)
 #' 
+#' # Calculate Mann–Whitney U statistic
+#' set.seed(1)
+#' x <- sort(round(runif(20)*13, 1))
+#' y <- sort(round(runif(15)*10, 1))
+#' o <- outer(x, y, "%tgt%")
+#' 
+#' sum(o)
+#' wilcox.test(x, y, exact=FALSE)$statistic
+#' 
+#' 
 #' @name comparison_with_ties
 
 NULL
