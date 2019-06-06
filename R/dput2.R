@@ -48,7 +48,8 @@
 
 dput2 <- function(x, width=65, assign=c("front", "end", "none"), 
   breakAtParen=FALSE, compact=TRUE, exdent=NULL) {
-  	attr(x, ".internal.selfref") <- NULL # in case data.table etc.
+  	x1 <- x
+  	attr(x1, ".internal.selfref") <- NULL # in case data.table etc.
     assign <- match.arg(assign)
     if (is.null(exdent)) {
         exdent <- 2*(assign == "front")
@@ -56,14 +57,14 @@ dput2 <- function(x, width=65, assign=c("front", "end", "none"),
     dep <- switch(assign,
       "front" = {
           asg <- paste(deparse(substitute(x)), "<- ")
-          c(asg, deparse(x, width.cutoff=500))
+          c(asg, deparse(x1, width.cutoff=500))
       },
         "end" = {
           asg <- paste(" ->", deparse(substitute(x)))
-          c(deparse(x, width.cutoff=500), asg)
+          c(deparse(x1, width.cutoff=500), asg)
       },
        "none" = {
-          deparse(x, width.cutoff=500)
+          deparse(x1, width.cutoff=500)
       })
     if (compact) {
         dep <- gsub(" = ", "=", dep)
