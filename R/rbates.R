@@ -1,3 +1,5 @@
+#' @export
+
 rbates <- function(n, a=0, b=1, nr=5, const.var=FALSE) {
 	q <- trunc(nr)
 	r <- nr - q

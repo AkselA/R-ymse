@@ -4,29 +4,60 @@
 \alias{central.tendency}
 \alias{pseudomedian}
 \alias{cmode}
+\alias{dmode}
+\alias{midrange}
+\alias{srmean}
 \title{Central tendency measures}
 \usage{
 pseudomedian(x, na.rm = TRUE)
 
-cmode(x, ...)
+cmode(x, single = TRUE, ...)
+
+dmode(x, single = TRUE, na.rm = FALSE)
+
+midrange(x, na.rm = FALSE)
+
+srmean(x, na.rm = FALSE)
 }
 \arguments{
 \item{x}{numeric vector}
 
 \item{na.rm}{remove \code{NA}s before starting calculations}
 
+\item{single}{return a single value (for \code{cmode} and \code{dmode})}
+
 \item{...}{send further arguments to underlying function, e.g. \code{density}
-for cmode}
+for \code{cmode}
+
+# @seealso \code{\link{means}}}
 }
 \description{
 Central tendency measures
 }
 \examples{
 xx <- c(1, 3, 4, 5, 7, 8, 9, 9, 7, 5, 4, 5, 3, 8)
-median(xx)#' 
+median(xx)
 pseudomedian(xx)
 
-}
-\seealso{
-\code{\link{means}}
+# Discrete mode
+dmode(c(2, 3, 3, 4, 5))
+dmode(c(2, 3, 3, 2, 5))
+dmode(c(2, 3, 3, 2, 5), single=FALSE)
+dmode(c(2, 1, 3, NA, 1))
+dmode(c(2, 1, 3, NA, NA))
+
+# Continuous mode
+cmode(c(2, 3, 3, 4, 5))
+cmode(c(2, 3, 3, 4, 5))
+cmode(c(2, 3, 3, 4, 4, 5), n=512)
+cmode(c(2, 2, 3, 3, 6, 6, 6, 7), single=FALSE, adjust=0.5)
+
+# Slightly robust mean
+set.seed(1)
+r <- round(rexp(12)*c(-100, 100))
+mean(r)
+srmean(r)
+weighted.mean(sort(r), c(0.5, rep(1, length(r)-2), 0.5))
+
+
 }

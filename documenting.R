@@ -49,11 +49,11 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-?smat
+?expand
 
 check(projname, manual=FALSE)
 
-# Ispect package object sizes
+# Inspect package object sizes
 ppath <- paste0(find.package(projname, lib.loc=.libPaths()), "/R/", projname)
 lazyLoad(ppath)
 
@@ -81,3 +81,4 @@ system(paste0("open ", projname, "/commit.command"))
 
 install_github(paste0("AkselA/R-", projname))
 library(projname, character.only=TRUE)
+

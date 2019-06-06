@@ -71,6 +71,17 @@ plot(dusd2(xi=rep(1, 6), n=3))
 # d6 die with faces 2, 3, 5, 7, 11, 13 (prime numbers)
 plot(table(dusd1(xr=c(2, 3, 5, 7, 11, 13), 3)))
 
+# Probalility of getting 7 or 8 with an 8-sided die in n out of 5 throws
+l <- 6/8
+h <- 1-l
+d <- as.dice(c(l, h), bix=0)
+
+dusd2(d, 5)
+# need integer "probabilities" for dusd1
+table(dusd1(d*4, 5))/(4^5)
+# or an equivalent die
+table(dusd1(c(0, 0, 0, 1), 5))/(4^5)
+
 # Loaded die
 p <- c(0.5, 1, 1, 1, 1, 1.5); sum(p)
 plot(dusd2(xi=p, n=2))

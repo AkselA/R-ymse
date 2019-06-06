@@ -8,7 +8,7 @@ max2 <- function(x, na.rm=FALSE) {
 # The second largest value, not the second largest unique value
 # max2(x, na.rm=TRUE)
 
-min2 <- function(x, na.rm=TRUE) {
+min2 <- function(x, na.rm=FALSE) {
     min(x[-which.min(x)], na.rm=na.rm)
 }
 

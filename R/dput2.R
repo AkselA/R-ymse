@@ -48,6 +48,7 @@
 
 dput2 <- function(x, width=65, assign=c("front", "end", "none"), 
   breakAtParen=FALSE, compact=TRUE, exdent=NULL) {
+  	attr(x, ".internal.selfref") <- NULL # in case data.table etc.
     assign <- match.arg(assign)
     if (is.null(exdent)) {
         exdent <- 2*(assign == "front")

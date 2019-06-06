@@ -19,6 +19,8 @@
 #' but if you end up using it on data \eqn{\le 0}, the wise call would be to
 #' reconsider whether using a geometric mean really makes sense in that case.
 #' 
+#' @seealso \code{\link{central.tendency}}
+#'
 #' @examples
 #' funl <- substitute(c(harm, geom, mean, quad, cubi))
 #' 

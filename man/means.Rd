@@ -70,3 +70,6 @@ geom(y, zero.rule="rm")
 geom(y, zero.rule="1")
 
 }
+\seealso{
+\code{\link{central.tendency}}
+}
