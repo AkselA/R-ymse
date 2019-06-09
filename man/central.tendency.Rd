@@ -27,9 +27,7 @@ srmean(x, na.rm = FALSE)
 \item{single}{return a single value (for \code{cmode} and \code{dmode})}
 
 \item{...}{send further arguments to underlying function, e.g. \code{density}
-for \code{cmode}
-
-# @seealso \code{\link{means}}}
+for \code{cmode}}
 }
 \description{
 Central tendency measures
@@ -60,4 +58,7 @@ srmean(r)
 weighted.mean(sort(r), c(0.5, rep(1, length(r)-2), 0.5))
 
 
+}
+\seealso{
+\code{\link{means}}
 }

@@ -49,7 +49,7 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-?expand
+?weekday
 
 check(projname, manual=FALSE)
 

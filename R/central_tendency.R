@@ -10,7 +10,7 @@ clamp <- function(x, lower, upper) {
 #' @param ... send further arguments to underlying function, e.g. \code{density}
 #' for \code{cmode}
 #' 
-#' # @seealso \code{\link{means}}
+#' @seealso \code{\link{means}}
 #' 
 #' @examples
 #' xx <- c(1, 3, 4, 5, 7, 8, 9, 9, 7, 5, 4, 5, 3, 8)
