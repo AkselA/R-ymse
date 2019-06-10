@@ -9,9 +9,8 @@
 #' as missing values
 #' @param ... further arguments passed to \code{read.table}
 #' 
-#' @export
-#' 
 #' @examples
+#' \dontrun{
 #' x1 <- "
 #' +------------+------+------+----------+--------------------------+
 #' |    Date    | Emp1 | Case | Priority | PriorityCountinLast7days |
@@ -71,6 +70,7 @@
 #' "
 #' 
 #' lapply(c(x1, x2, x3, x4), dtf_clean)
+#' }
 
 dtf_clean <- function(x, header=TRUE, na.strings=c("NA", "N/A"), 
   stringsAsFactors=FALSE, ...) {

@@ -7,6 +7,24 @@ library(devtools)
 setwd("~/Documents/R/prosjekter")
 projname <- "ymse"
 
+# Inspect package object sizes
+objsizes <- function(projname, load.installed=FALSE) {
+	if (load.installed) {
+		ppath <- find.package(projname, lib.loc=.libPaths())
+	    ppathr <- paste0(, "/R/", projname)
+        lazyLoad(ppathr)
+    }
+	pkgls <- ls(paste0("package:", projname))
+	ll <- t(sapply(pkgls, function(x) {
+		o <- get(x)
+		c(bytes=object.size(o), class=class(o))
+		}))
+	dtf <- type.convert(data.frame(ll))
+	dtf$"SI size" <- sapply(dtf[,1], 
+	  utils:::format.object_size, units="auto", standard="SI")
+    dtf[order(-dtf[,1]), c(1, 3, 2)]
+}
+
 # turns objects found in "projname"/data.R (project root)
 # into data files available through data()
 # by saving them as .rda files in "projname"/data
@@ -36,32 +54,7 @@ add_data <- function(projname) {
     dtf
 }
 
-use_build_ignore(
-  c("^data\\.R", "documenting\\.R", "commit\\.command", "\\.pdf$", 
-    "\\.png$", "^.*\\.Rproj$", "^__.*"),
-  pkg=projname, escape=FALSE)
-
-readLines(file.path(projname, ".Rbuildignore"))
-
-# detach(package:pollplot)
-
-document(projname)
-load_all(projname)
-add_data(projname)
-
-?weekday
-
-check(projname, manual=FALSE)
-
-# Inspect package object sizes
-ppath <- paste0(find.package(projname, lib.loc=.libPaths()), "/R/", projname)
-lazyLoad(ppath)
-
-ll <- sapply(ls(), function(x) object.size(get(x)))
-ll <- sort(ll, decreasing=TRUE)
-ll[] <- utils:::format.object_size(ll, units="Kb")
-as.data.frame(ll)
-
+# Create and show documentation PDF
 show_pdf <- function(package, lib.loc=NULL, opt="--force") {
     owd <- getwd()
     setwd(package)
@@ -71,6 +64,36 @@ show_pdf <- function(package, lib.loc=NULL, opt="--force") {
                   shQuote(path))) 
     setwd(owd)
 } 
+
+# get a list of function arguments ready for Roxygen2 use
+params <- function(fun) {
+	cat(paste("@param", names(formals(fun))), sep="\n")
+}
+
+use_build_ignore(
+  c("^data\\.R", "documenting\\.R", "commit\\.command", "\\.pdf$", 
+    "\\.png$", "^.*\\.Rproj$", "^__.*"),
+  pkg=projname, escape=FALSE)
+
+readLines(file.path(projname, ".Rbuildignore"))
+
+# detach(paste0("package:", projname), character.only=TRUE)
+
+document(projname)
+load_all(projname)
+add_data(projname)
+
+?multidensity
+
+check(projname, manual=FALSE)
+
+objsizes(projname)
+
+ll <- t(sapply(pkgls, function(x) {
+	o <- get(x)
+	list(bytes=object.size(o), class=class(o))
+	}))
+
 show_pdf(projname)
 
 

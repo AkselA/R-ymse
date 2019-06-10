@@ -1,3 +1,4 @@
+
 #' @export
 
 weekday_english <- function(x, short=TRUE) {
@@ -72,6 +73,7 @@ weekday.default <- function(x, short=TRUE,
 	language <- match.arg(language)
 	FUN <- match.fun(paste0("weekday_", language))
 	FUN(x, short)
+	# do.call(FUN, list(x, short))
 }
 
 #' @rdname weekday

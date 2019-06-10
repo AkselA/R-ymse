@@ -1,5 +1,5 @@
 clamp <- function(x, lower, upper) {
-	pmax(lower, pmin(upper, x))
+    pmax(lower, pmin(upper, x))
 }
 
 #' Central tendency measures
@@ -47,9 +47,9 @@ NULL
 
 # aka. Hodges–Lehmann estimator
 pseudomedian <- function(x, na.rm=TRUE) {
-	if (na.rm) {
-		x <- x[!is.na(x)]
-	}
+    if (na.rm) {
+        x <- x[!is.na(x)]
+    }
     median(c(x, colMeans(combn(x, 2))))
 }
 
@@ -58,17 +58,17 @@ pseudomedian <- function(x, na.rm=TRUE) {
 
 # continuous mode
 cmode <- function(x, single=TRUE, ...) {
-	dl <- list(...)
-	defarg <- alist(x=x, adjust=1.2, n=1024, from=min(x), to=max(x))
-	pm <- pmatch(names(dl), names(defarg))
-	nna <- !is.na(pm)
-	defarg[pm[nna]] <- dl[nna]
-	dl <- c(defarg, dl[!nna])
+    dl <- list(...)
+    defarg <- alist(x=x, adjust=1.2, n=1024, from=min(x), to=max(x))
+    pm <- pmatch(names(dl), names(defarg))
+    nna <- !is.na(pm)
+    defarg[pm[nna]] <- dl[nna]
+    dl <- c(defarg, dl[!nna])
     den <- do.call(density, dl)
     if (single) {
-    	den$x[which.max(den$y)]
+        den$x[which.max(den$y)]
     } else {
-    	cm <- do.call(cbind, den[1:2])
+        cm <- do.call(cbind, den[1:2])
         sm <- diff(cm[,"y"])
         cmx <- cm[which(diff(sign(sm)) < 0) + 1, ]
         cmx
@@ -101,7 +101,7 @@ midrange <- function(x, na.rm=FALSE) {
     if (na.rm) {
         x <- x[!is.na(x)]
     }
-	(min(x)+max(x))/2
+    (min(x)+max(x))/2
 }
 
 #' @rdname central.tendency
@@ -112,8 +112,8 @@ srmean <- function(x, na.rm=FALSE) {
     if (na.rm) {
         x <- x[!is.na(x)]
     }
-	mr <- (min(x)+max(x))/2
-	(sum(x)-mr)/(length(x)-1)
+    mr <- (min(x)+max(x))/2
+    (sum(x)-mr)/(length(x)-1)
 }
 
 # midhinge

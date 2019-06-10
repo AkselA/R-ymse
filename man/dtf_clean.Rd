@@ -23,6 +23,7 @@ as missing values}
 Create a data.frame from a messy table
 }
 \examples{
+\dontrun{
 x1 <- "
 +------------+------+------+----------+--------------------------+
 |    Date    | Emp1 | Case | Priority | PriorityCountinLast7days |
@@ -82,4 +83,5 @@ x5 <- "
 "
 
 lapply(c(x1, x2, x3, x4), dtf_clean)
+}
 }
