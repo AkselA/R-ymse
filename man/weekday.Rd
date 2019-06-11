@@ -3,20 +3,18 @@
 \name{weekday}
 \alias{weekday}
 \alias{weekday.default}
-\alias{weekday.POSIXt}
 \alias{weekday.Date}
+\alias{weekday.POSIXt}
 \title{Week-day names}
 \usage{
 weekday(x, ...)
 
 \method{weekday}{default}(x, short = TRUE, language = c("english",
-  "nn_norwegian", "bm_norwegian"), ...)
+  "nn norwegian", "bm norwegian"), ...)
 
-\method{weekday}{POSIXt}(x, short = TRUE, language = c("english",
-  "nn_norwegian", "bm_norwegian"), ...)
+\method{weekday}{Date}(x, ...)
 
-\method{weekday}{Date}(x, short = TRUE, language = c("english",
-  "nn_norwegian", "bm_norwegian"), ...)
+\method{weekday}{POSIXt}(x, ...)
 }
 \arguments{
 \item{x}{a vector}
@@ -40,5 +38,5 @@ weekday(c("3", "2", "1"))
 weekday(3:1)
 
 weekday(Sys.Date())
-weekday(Sys.Date(), short=FALSE, lang="nn_nor")
+weekday(Sys.Date(), short=FALSE, lang="nn nor")
 }

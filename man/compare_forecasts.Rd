@@ -17,8 +17,27 @@ compare_forecasts(m, y = NULL, holdout = NULL)
 Test the efficacy of time series models by comparing forecasts with actual data
 }
 \examples{
+data(tf.d12)
+ts2 <- head(tf.d12, 110)
+
+mod1 <- forecast::snaive(ts2)
+mod2 <- ar(ts2)
+mod3 <- forecast::ets(ts2)
+mod.l <- list(mod1, mod2, mod3)
+
+(l <- compare_forecasts(mod.l, ts2, 12))
+
+par(mfrow=c(3, 1), mar=c(3, 3, 2, 1), mgp=c(2, 0.6, 0), oma=c(0, 0, 0, 0))
+invisible(lapply(l, function(x) {
+  plot(x$fcast.obj, shaded=FALSE, PI=FALSE, include=48, type="l", 
+    cex.main=0.9, xpd=NA)
+  lines(x$test, col="#00FF4488")
+  }
+))
+
+\dontrun{
 library(forecast)
-set.seed(1)
+data(sunspot.month)
 extr <- aggregate(sunspot.month, nfrequency=2, mean)[100:349]
 extr <- ts(extr, f=21)
 
@@ -47,4 +66,5 @@ invisible(lapply(l, function(x) {
 summary(l)
 head(forecasts(l))
 l
+}
 }

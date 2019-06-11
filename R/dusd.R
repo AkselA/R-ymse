@@ -95,18 +95,19 @@
 #' tail(dusd2(xi=s, 15))
 #' 
 #' # dusd2 isn't always quicker
-#' plot(table(dusd1(xr=c(1, 220, 3779), 12)), lwd=1)
 #' \dontrun{
+#' plot(table(dusd1(xr=c(1, 220, 3779), 12)), lwd=1)
 #' s2 <- vector(length=3779)
 #' s2[c(1, 220, 3779)] <- 1
 #' plot(dusd2(xi=s2, 12, round=8), lwd=1)
-#' }
+#' 
 #' # making sure the length of xi is highly composite (or more precicely 'smooth')
 #' # improves speed
 #' # 3779 is prime, 3780 == 2*2*3*3*3*5*7
 #' s3 <- vector(length=3780)
 #' s3[c(1, 220, 3779)] <- 1
 #' plot(dusd2(xi=s3, 12, round=9), lwd=1)
+#' }
 #' 
 #' @name dusd
 

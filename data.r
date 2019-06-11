@@ -6,7 +6,7 @@
 smt <- structure(c(6, 0, 4, 0, 3, 0, 6, 0, 4, 3, 4, 0, 6, 0, 3, 
 0, 4, 0, 6, 3, 3, 3, 3, 3, 3), .Dim=c(5L, 5L), .Dimnames=list(c("A",
 "T", "G", "C", "-"), c("A", "T", "G", "C", "-")))
-smt
+
 # Fragments of pre-aligned insulin gene sequences
 insulin <- structure(c("C", "C", "A", "G", "T", "A", "A", "C", "C", "A",
 "C", "C", "A", "G", "C", "C", "C", "T", "A", "A", "G", "T", "G", "A", "T",

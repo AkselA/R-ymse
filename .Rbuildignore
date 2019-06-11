@@ -5,3 +5,4 @@ commit\.command
 \.png$
 ^.*\.Rproj$
 ^__.*
+^\.DS_Store$

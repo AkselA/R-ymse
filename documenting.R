@@ -22,7 +22,12 @@ objsizes <- function(projname, load.installed=FALSE) {
 	dtf <- type.convert(data.frame(ll))
 	dtf$"SI size" <- sapply(dtf[,1], 
 	  utils:::format.object_size, units="auto", standard="SI")
-    dtf[order(-dtf[,1]), c(1, 3, 2)]
+	tot <- sum(dtf[,1])
+    tot <- utils:::format.object_size(tot, units="auto", standard="SI")
+    dtf <- dtf[order(-dtf[,1]), c(1, 3, 2)]
+    print(dtf)
+    cat(paste("\nTotal:", tot))
+    invisible(list(dtf, total=tot))
 }
 
 # turns objects found in "projname"/data.R (project root)
@@ -72,7 +77,7 @@ params <- function(fun) {
 
 use_build_ignore(
   c("^data\\.R", "documenting\\.R", "commit\\.command", "\\.pdf$", 
-    "\\.png$", "^.*\\.Rproj$", "^__.*"),
+    "\\.png$", "^.*\\.Rproj$", "^__.*", "^\\.DS_Store$"),
   pkg=projname, escape=FALSE)
 
 readLines(file.path(projname, ".Rbuildignore"))
@@ -83,16 +88,11 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-?multidensity
+?weekday
 
 check(projname, manual=FALSE)
 
 objsizes(projname)
-
-ll <- t(sapply(pkgls, function(x) {
-	o <- get(x)
-	list(bytes=object.size(o), class=class(o))
-	}))
 
 show_pdf(projname)
 

@@ -1,6 +1,3 @@
-
-#' @export
-
 weekday_english <- function(x, short=TRUE) {
 	if (short) {
 	    c("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")[x]
@@ -13,8 +10,6 @@ weekday_english <- function(x, short=TRUE) {
 # The days of the week aren't considered proper nouns in Norwegian, and
 # hence shouldn't be capitalized
 
-#' @export
-
 weekday_nn_norwegian <- function(x, short=TRUE) {
 	if (short) {
 	    c("m\U00E5n", "tys", "ons", "tor", "fre", "laur", "sun")[x]
@@ -23,9 +18,6 @@ weekday_nn_norwegian <- function(x, short=TRUE) {
 		  "laurdag", "sundag")[x]
 	}
 }
-
-
-#' @export
 
 weekday_bm_norwegian <- function(x, short=TRUE) {
 	if (short) {
@@ -57,7 +49,7 @@ weekday_bm_norwegian <- function(x, short=TRUE) {
 #' weekday(3:1)
 #' 
 #' weekday(Sys.Date())
-#' weekday(Sys.Date(), short=FALSE, lang="nn_nor")
+#' weekday(Sys.Date(), short=FALSE, lang="nn nor")
 
 weekday <- function(x, ...) {
 	UseMethod("weekday")
@@ -67,35 +59,31 @@ weekday <- function(x, ...) {
 #' @export
 
 weekday.default <- function(x, short=TRUE, 
-  language=c("english", "nn_norwegian", "bm_norwegian"),
+  language=c("english", "nn norwegian", "bm norwegian"),
   ...) {
-	x <- type.convert(x)
+  	if (!is.integer(x)) {
+	    x <- type.convert(x)
+	}
 	language <- match.arg(language)
-	FUN <- match.fun(paste0("weekday_", language))
-	FUN(x, short)
-	# do.call(FUN, list(x, short))
+    switch(language,
+      "english"=weekday_english(x, short),
+      "nn norwegian"=weekday_nn_norwegian(x, short),
+      "bm norwegian"=weekday_bm_norwegian(x, short)
+    )
 }
 
 #' @rdname weekday
 #' @export
 
-weekday.POSIXt <- function(x, short=TRUE, 
-  language=c("english", "nn_norwegian", "bm_norwegian"),
-  ...) {
+weekday.Date <- function(x, ...) {
 	x <- as.integer(format(x, format="%u"))
-	language <- match.arg(language)
-	FUN <- match.fun(paste0("weekday_", language))
-	FUN(x, short)
+    weekday.default(x, ...)
 }
 
 #' @rdname weekday
 #' @export
 
-weekday.Date <- function(x, short=TRUE, 
-  language=c("english", "nn_norwegian", "bm_norwegian"),
-  ...) {
+weekday.POSIXt <- function(x, ...) {
 	x <- as.integer(format(x, format="%u"))
-	language <- match.arg(language)
-	FUN <- match.fun(paste0("weekday_", language))
-	FUN(x, short)
+    weekday.default(x, ...)
 }

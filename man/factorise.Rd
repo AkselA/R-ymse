@@ -16,14 +16,15 @@ An integer vector
 Find the prime factors of a given integer
 }
 \examples{
-x <- 2 * 2 * 2 * 3 * 3 * 5
-factorise(x)
+factorise(320)
+factorise(2 * 2 * 2 * 3 * 3 * 5)
 
 prod(factorise(5641324))
 
+\dontrun{
 factorise(nextn(60000000, c(2, 3)))
 factorise(72*999983)
-
+}
 }
 \seealso{
 \code{\link{factors}} for unique prime factors or all integer factors
