@@ -7,7 +7,7 @@
 multidensity(x, main, xlab = "", ylab = "Density", xlim, ylim, col = 1:9,
   lty = 1:2, lwd = 1, add = FALSE, frame.plot = TRUE, legend = TRUE,
   x.legend = "topleft", y.legend = NULL, bty = "o",
-  box.col = "#FFFFFF00", bg.legend = "#FFFFFF88", cex.legend = 0.7,
+  box.col = "#FFFFFF00", bg.legend = "#FFFFFFAA", cex.legend = 0.7,
   x.intersp = 1, y.intersp = 1.5, inset = 0, xpd.legend = NA,
   horiz = FALSE, ...)
 }
@@ -26,8 +26,10 @@ in plot and legend}
 
 \item{add}{if \code{TRUE}, add to the current plot}
 
-\item{frame.plot}{a logical indicating whether a box should be drawn around
-the plot.}
+\item{frame.plot}{an integer indicating whether a box should be drawn around
+the plot before the legend (\code{1}), after the legend (\code{2}),
+or not at all (\code{0}). Logical values are coerced to integer, so
+\code{TRUE} implies \code{1}, and \code{FALSE} implies \code{0}}
 
 \item{legend}{logical; if \code{TRUE} (the default) a legend is included with 
 the plot}

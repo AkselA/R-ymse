@@ -11,8 +11,10 @@
 #' @param col,lty,lwd the line colours, types and widths for lines appearing
 #'        in plot and legend
 #' @param add if \code{TRUE}, add to the current plot
-#' @param frame.plot a logical indicating whether a box should be drawn around
-#'        the plot.
+#' @param frame.plot an integer indicating whether a box should be drawn around
+#'        the plot before the legend (\code{1}), after the legend (\code{2}),
+#'        or not at all (\code{0}). Logical values are coerced to integer, so
+#'        \code{TRUE} implies \code{1}, and \code{FALSE} implies \code{0}
 #' @param legend logical; if \code{TRUE} (the default) a legend is included with 
 #'        the plot
 #' @param x.legend,y.legend the x and y co-ordinates to be used to position the
@@ -57,9 +59,10 @@
 multidensity <- function(x, main, xlab="", ylab="Density", xlim, ylim,
   col=1:9, lty=1:2, lwd=1, add=FALSE, frame.plot=TRUE, legend=TRUE, 
   x.legend="topleft", y.legend=NULL, bty="o", box.col="#FFFFFF00", 
-  bg.legend="#FFFFFF88", cex.legend=0.7, x.intersp=1, y.intersp=1.5,
+  bg.legend="#FFFFFFAA", cex.legend=0.7, x.intersp=1, y.intersp=1.5,
   inset=0, xpd.legend=NA, horiz=FALSE, ...) {
       
+    frame.plot <- as.integer(frame.plot[1])
     xn <- deparse(substitute(x))
     de <- lapply(x, density, ...)
     ll <- length(x)
@@ -90,16 +93,41 @@ multidensity <- function(x, main, xlab="", ylab="Density", xlim, ylim,
           lines(de[[x]][1:2], col=col[x], lty=lty[x], lwd=lwd[x])
       }
     )
-    if (frame.plot) box()
+    if (frame.plot == 1) box()
     if (legend) {
         leg <- sprintf("%s\nN = %s, bw = %s", 
           names(x),
           lengths(x),
-          signif(sapply(de, "[[", "bw"), 3))
+          format(round(sapply(de, "[[", "bw"), 3), scientific=FALSE))
         legend(x.legend, y.legend, leg, col=col, lty=lty, lwd=lwd, 
           bty=bty, box.col=box.col, bg=bg.legend, cex=cex.legend,
           x.intersp=x.intersp, y.intersp=y.intersp, inset=inset, 
           xpd=xpd.legend, horiz=horiz)
     }
+    if (frame.plot == 2) box()
     invisible(de)
 }
+
+ndec <- function(x, dec=".") {
+	op <- options()
+	on.exit(options(op))
+	options(scipen=99)
+	spl <- strsplit(as.character(x), dec, fixed=TRUE)
+	l <- lengths(spl)
+	i <- l == 2
+	l[!i] <- 0
+	if (sum(l) == 0) {
+		dc <- cbind(unlist(spl), seq_along(spl))
+	} else {
+		dc <- do.call(rbind, spl)
+	}
+	l[i] <- nchar(dc[i,2])
+	
+	before <- nchar(dc[,1])
+	after <- l
+	nchar <- before + after + 1*i
+	
+	cbind(before, after, nchar)
+}
+
+

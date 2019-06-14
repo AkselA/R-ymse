@@ -158,9 +158,23 @@ khin <- as.numeric(khin.char)
 
 # Glaisher-Kinkelin constant
 glai.kin.char <- paste0("1.2824271291006226368753425688697917277676889273250",
-                       "011920637400217404063088588264611297364919582023744")
+                        "011920637400217404063088588264611297364919582023744")
 glai.kin <- as.numeric(glai.kin.char)
 
+# Decimal expansion of zeta(1/2)
+zeta1o2.char <- paste0("-1.4603545088095868128894991525152980124672293310125",
+                       "8149054288608782553052947450062527641937546335681")
+zeta.1o2 <- as.numeric(zeta1o2.char)
+
+# Decimal expansion of zeta(3/2)
+zeta3o2.char <- paste0("2.612375348685488343348567567924071630570800652400063",
+                       "40757332824881492776768827286099624386812631195238297")
+zeta3o2 <- as.numeric(zeta3o2.char)
+
+# Decimal expansion of zeta(3) (Apery's constant)
+zeta3.char <- paste0("1.2020569031595942853997381615114499907649862923404988",
+                     "8179227155534183820578631309018645587360933525814619915")
+zeta3 <- as.numeric(zeta3.char)
 
 
 # # Bernoulli e approximation

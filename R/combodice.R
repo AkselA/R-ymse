@@ -52,17 +52,24 @@
 #' # One 1/2 coin, one D4 and one d6, multiplied together
 #' combodice(list(1:2, 1:4, 1:6), "*")
 #' 
-#' # 3d6, and d6+d10+d20. Discard lowest
-#' discard_lowest <- function(x) sum(sort(x)[-1])
-#' combodice(list(1:6, 1:6, 1:6), discard_lowest, method="ex")
-#' combodice(list(1:6, 1:10, 1:20), discard_lowest, method="ex")
+#' # Probability of getting n 1s throwing 1d4, 1d6 and 2d8
+#' f <- function(x) sum(x == 1)
+#' combodice(list(1:4, 1:6, 1:8, 1:8), FUN=f, method="exp")
+#' 
+#' # 3d6, discarding the lowest
+#' discard_lowest <- function(x) sum(x[-which.min(x)])
+#' combodice(list(1:6, 1:6, 1:6), discard_lowest, method="exp")
+#' 
+#' # 1d4, 2d6 and 1d20, discarding lowest and highest
+#' olympic <- function(x) sum(x[-c(which.min(x), which.max(x))])
+#' combodice(list(1:4, 1:6, 1:6, 1:20), olympic, method="exp")
 #' 
 #' # Dice pool. 3 d10 with target value 7
 #' f <- function(x) sum(x >= 7)
-#' combodice(lapply(rep(1, 3), seq, 10), f, method="ex")/10
+#' combodice(lapply(rep(1, 3), seq, 10), f, method="ex")/10^3
 #' 
 #' # Equivalent using binomial PDF
-#' dbinom(0:3, 3, 0.4)*100
+#' dbinom(0:3, 3, 0.4)
 #' 
 #' # I have a d20 with a slight bump at the 4 and 10 facets,
 #' # which makes 16 and 11 less likely, but the nearby 3, 18, 19 and 20

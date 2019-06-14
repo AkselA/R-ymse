@@ -38,6 +38,7 @@ invisible(lapply(l, function(x) {
 \dontrun{
 library(forecast)
 data(sunspot.month)
+
 extr <- aggregate(sunspot.month, nfrequency=2, mean)[100:349]
 extr <- ts(extr, f=21)
 
