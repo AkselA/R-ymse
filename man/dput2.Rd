@@ -58,5 +58,5 @@ dput2(xmpl, 15)
 dput2(xmpl, 15, breakAtParen=TRUE)
 }
 \seealso{
-\code{\link{dput}}, \code{\link{deparse}}
+\code{\link{dput}}, \code{\link{deparse}}, \code{\link{explode}}
 }

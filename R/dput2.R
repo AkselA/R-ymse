@@ -22,7 +22,7 @@
 #' and can make for a more compact representation, but it can also make the code
 #' harder to read.
 #' 
-#' @seealso \code{\link{dput}}, \code{\link{deparse}}
+#' @seealso \code{\link{dput}}, \code{\link{deparse}}, \code{\link{explode}}
 #' 
 #' @export
 #' 

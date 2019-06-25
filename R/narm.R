@@ -54,14 +54,14 @@ narm.matrix <- function(x, margin=1, keep=c("any", "complete"), ...) {
     keep <- match.arg(keep)
     if (margin == 1) {
         r <- switch(keep,
-          any=x[rowSums(!ina) != 0, ],
-          complete=x[rowSums(ina) == 0, ])
+          any=x[rowSums(!ina) != 0, , drop=FALSE],
+          complete=x[rowSums(ina) == 0, , drop=FALSE])
         return(r)
     }
     if (margin == 2) {
         r <- switch(keep,
-          any=x[, colSums(!ina) != 0],
-          complete=x[, colSums(ina) == 0])
+          any=x[, colSums(!ina) != 0, drop=FALSE],
+          complete=x[, colSums(ina) == 0, drop=FALSE])
         return(r)
     }
 }
@@ -83,8 +83,8 @@ narm.data.frame <- function(x, margin=1, keep=c("any", "complete"), ...) {
     }
     if (margin == 2) {
         r <- switch(keep,
-          any=x[, colSums(!ina) != 0],
-          complete=x[, colSums(ina) == 0])
+          any=x[, colSums(!ina) != 0, drop=FALSE],
+          complete=x[, colSums(ina) == 0, drop=FALSE])
         return(r)
     }
 }

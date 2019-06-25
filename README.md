@@ -26,4 +26,4 @@ points(cl, col=2, type="o", lwd=1, pch=16, cex=0.6)
 legend("topright", c("fair", "uneven"), bty="n", col=c("grey", "red"), lwd=2:1)
 ```
 
-![graph](https://github.com/AkselA/R-ymse/blob/master/dice.png)
+![graph](https://raw.githubusercontent.com/AkselA/R-ymse/master/dice.png)

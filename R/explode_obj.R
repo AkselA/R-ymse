@@ -1,6 +1,6 @@
 #' Explode object
 #' 
-#' Presents an R object in an exploded form
+#' Presents an R object in an exploded, or expanded, form
 #' 
 #' @param x an R oject, or a character string describing an R object
 #' @param indent how many spaces for indention (and exdention) at each level
@@ -24,17 +24,17 @@
 #' 
 #' @examples
 #' xc <- 'list(v=1, A=c("abv", "bom"), B=c(1:3, 31, 28), list("foo", "bar", 1))'
-#' explode_obj(xc)
+#' explode(xc)
 #' 
 #' xl <- list(O=NA, R=list(j=1:3, h="(a)", q=structure(list(a=1:2, b=c("A, K",
 #'   "B, L")), class="data.frame", row.names=c(NA, -2L))), N=1, L=FALSE)
-#' explode_obj(xl)
+#' explode(xl)
 #' 
 #' mt <- 'coplot(mpg ~ disp | as.factor(cyl), data = mtcars,
 #'        panel = panel.smooth, rows = 1)'
-#' explode_obj(mt)
+#' explode(mt)
 
-explode_obj <- function(x, indent=2) {
+explode <- function(x, indent=2) {
 
 	if (is.character(x) & length(x) == 1) {
 	    dep <- x

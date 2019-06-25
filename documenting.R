@@ -88,7 +88,7 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-?weekday
+?file_ext
 
 check(projname, manual=FALSE)
 

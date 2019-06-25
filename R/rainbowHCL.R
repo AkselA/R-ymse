@@ -16,20 +16,21 @@ rainbowHCL <- function (n, c=100, l=75, start=0, end=max(1, n - 1)/n,
     else character()
 }
 
-# n <- 25
-# hcl0 <- rainbowHCL(n)
-# hcl1 <- rainbowHCL(n, c=150, l=85)
-# hcl2 <- adjustcolorHSV(rainbowHCL(n), s.f=1.5, v.f=1.2)
-# hsv0 <- rainbow(n)
-
-# cols <- rbind(hcl0, hcl1, hcl2, hsv0)
-
 # mat2grid <- function(x) {
 	# eg <- expand.grid(1:NCOL(x), NROW(x):1)
 	# gd <- data.frame(eg, c(t(x)), stringsAsFactors=FALSE)
 	# colnames(gd) <- c("x", "y", "z")
 	# gd
 # }
+
+# n <- 25
+# hcl0 <- rainbowHCL(n)
+# hcl1 <- rainbowHCL(n, c=150, l=85)
+# hcl2 <- rainbowHCL(n, s=1, v=1)
+# hsv0 <- rainbow(n)
+
+# cols <- rbind(hcl0, hcl1, hcl2, hsv0)
+
 
 # pos <- mat2grid(cols)
 # plot(pos[,1:2], pch=17, cex=3.5, col=pos[,3], ylim=c(0.5, 4.5))
