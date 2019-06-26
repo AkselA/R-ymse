@@ -19,7 +19,7 @@ align_num(x, lpad = " ", rpad = "0", dec = ".", min.dec = 0,
 \item{rm.dec}{remove zeros at the end of whole numbers}
 }
 \description{
-Align numbers
+Align numbers for neat vertical printing
 }
 \examples{
 x <- c(22100, 100, 1015, 13.018, 0.1, 0.01234)

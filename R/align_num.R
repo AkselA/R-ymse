@@ -1,5 +1,7 @@
 #' Align numbers
 #' 
+#' Align numbers for neat vertical printing
+#' 
 #' @param x numeric or character vector
 #' @param lpad,rpad character strings used for padding. Repeated to length
 #' @param dec decimal seperator, or any other character to align by

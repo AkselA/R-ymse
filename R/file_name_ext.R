@@ -5,8 +5,8 @@
 #' @param x a character vector
 #' 
 #' @details
-#' If the supplied file has several extensions, f.ex. like \code{foobar.tar.bz},
-#' only the last extension will be considered.
+#' If the supplied file name has several extensions, f.ex. like 
+#' \code{foobar.tar.bz}, only the last extension will be considered.
 #' 
 #' @return
 #' \code{file_ext} returns the file extension of each file path. \code{file_name}

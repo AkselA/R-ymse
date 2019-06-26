@@ -88,7 +88,7 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-?file_ext
+?set_mar
 
 check(projname, manual=FALSE)
 

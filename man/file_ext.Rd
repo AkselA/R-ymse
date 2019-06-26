@@ -24,8 +24,8 @@ returns both name and extension, but arranged in separate columns of a matrix.
 Separate file name and extension from a file path
 }
 \details{
-If the supplied file has several extensions, f.ex. like \code{foobar.tar.bz},
-only the last extension will be considered.
+If the supplied file name has several extensions, f.ex. like 
+\code{foobar.tar.bz}, only the last extension will be considered.
 }
 \examples{
 x <- c("/hg/.gi.tar.gz", "ff/hg/hh.pdf", "git", ".History", ".History.log")
