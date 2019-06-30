@@ -6,7 +6,7 @@ adjective
 
 Old Norse *ýmsir*, *ýmissir*, pl. *ýmiss*, *ímiss*  
 
-### usage
+### Usage
 ```R
 library(devtools)
 install_github("AkselA/R-ymse")

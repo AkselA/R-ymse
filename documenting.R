@@ -88,7 +88,7 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-?set_mar
+?merge_multiple
 
 check(projname, manual=FALSE)
 
