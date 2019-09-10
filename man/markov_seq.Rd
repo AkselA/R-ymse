@@ -4,14 +4,14 @@
 \alias{markov_seq}
 \title{Discrete markov sequence}
 \usage{
-markov_seq(tmat, init = 1, length = 1000)
+markov_seq(n = 100, tmat = rbind(1:3, 3:1, 2:0), init = 1)
 }
 \arguments{
+\item{n}{length of the sequence}
+
 \item{tmat}{a transition matrix}
 
 \item{init}{the initial state}
-
-\item{length}{length of the sequence}
 }
 \description{
 Generate a random discrete markov sequence
@@ -22,9 +22,9 @@ m <- matrix(c(0.5, 0.3, 0.2,
               0.2, 0.3, 0.5), 3, byrow=TRUE)
 
 set.seed(1)
-ms <- markov_seq(m)
+ms <- markov_seq(n=1000, tmat=m)
 
 colMeans(m)
 prop.table(table(ms))
-prop.table(table(tail(ms, -1), head(ms, -1), dnn=c("n", "n+1")), 1)
+round(prop.table(table(head(ms, -1), tail(ms, -1), dnn=c("n", "n+1")), 1), 2)
 }

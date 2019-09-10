@@ -88,7 +88,6 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-?fingerknit
 
 check(projname, manual=FALSE)
 

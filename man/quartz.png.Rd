@@ -4,7 +4,7 @@
 \alias{quartz.png}
 \title{Save as PNG}
 \usage{
-quartz.png(file = "\%Y\%m\%d_\%H", width = 600, dir, force = FALSE)
+quartz.png(file = "\%Y\%m\%d_\%H", width = 550, dir, force = FALSE)
 }
 \arguments{
 \item{file}{file name. If it contains any \code{"\%"} it is passed on as a 

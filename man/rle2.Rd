@@ -39,7 +39,7 @@ m <- matrix(c(
 ), 3, byrow=TRUE)
 
 set.seed(1)
-y <- LETTERS[markov_seq(m, length=100)]
+y <- LETTERS[markov_seq(n=100, m)]
 rle2(y, out="named")
 
 

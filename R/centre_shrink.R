@@ -1,47 +1,47 @@
 
 centre.shrink <- function(x, trace=FALSE, break.ties=TRUE, cfun=mean) {
-	cf <- match.fun(cfun)
-	or <- order(x)
-	so <- x[or]
-	le <- length(so)
-	ol <- numeric(le)
-	
-	if (break.ties) {
-		rn <- sample.int(2, le, replace=TRUE)
-		for (i in le:1) {
-			mn <- cf(so)
-			ht <- c(1, i)
-		
-			ad <- abs(so[ht] - mn)
-			if (diff(ad) == 0) {
-				wm <- rn[i]
-			} else {
-    			wm <- which.max(ad)				
-			}
-			ix <- ht[wm]
-			
-			ol[i] <- so[ix]		    
-			so <- so[-ix]
-		}
-		ol
-	} else {		
-		for (i in le:1) {
-			mn <- cf(so)
-			ht <- c(1, i)
-		
-			ad <- abs(so[ht] - mn)
-			wm <- which.max(ad)
-			ix <- ht[wm]
-			
-			ol[i] <- so[ix]		    
-			so <- so[-ix]
-		}
-	}
-	if (trace) {
-		rev(ol)
-	} else {
-		ol[1]
-	}
+    cf <- match.fun(cfun)
+    or <- order(x)
+    so <- x[or]
+    le <- length(so)
+    ol <- numeric(le)
+    
+    if (break.ties) {
+        rn <- sample.int(2, le, replace=TRUE)
+        for (i in le:1) {
+            mn <- cf(so)
+            ht <- c(1, i)
+        
+            ad <- abs(so[ht] - mn)
+            if (diff(ad) == 0) {
+                wm <- rn[i]
+            } else {
+                wm <- which.max(ad)                
+            }
+            ix <- ht[wm]
+            
+            ol[i] <- so[ix]            
+            so <- so[-ix]
+        }
+        ol
+    } else {        
+        for (i in le:1) {
+            mn <- cf(so)
+            ht <- c(1, i)
+        
+            ad <- abs(so[ht] - mn)
+            wm <- which.max(ad)
+            ix <- ht[wm]
+            
+            ol[i] <- so[ix]            
+            so <- so[-ix]
+        }
+    }
+    if (trace) {
+        rev(ol)
+    } else {
+        ol[1]
+    }
 }
 
 

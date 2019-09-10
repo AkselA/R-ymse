@@ -38,7 +38,7 @@
 #' file.info(p)
 #' }
 
-quartz.png <- function(file="%Y%m%d_%H", width=600, dir, force=FALSE) {
+quartz.png <- function(file="%Y%m%d_%H", width=550, dir, force=FALSE) {
     if (grepl("%", file, fixed=TRUE)) {
         file <- paste0(format(Sys.time(), file), ".png")
     } else {

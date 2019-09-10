@@ -2,9 +2,9 @@
 #' 
 #' Generate a random discrete markov sequence
 #' 
+#' @param n length of the sequence
 #' @param tmat a transition matrix
 #' @param init the initial state
-#' @param length length of the sequence
 #' 
 #' @export
 #' 
@@ -14,20 +14,20 @@
 #'               0.2, 0.3, 0.5), 3, byrow=TRUE)
 #' 
 #' set.seed(1)
-#' ms <- markov_seq(m)
+#' ms <- markov_seq(n=1000, tmat=m)
 #' 
 #' colMeans(m)
 #' prop.table(table(ms))
-#' prop.table(table(tail(ms, -1), head(ms, -1), dnn=c("n", "n+1")), 1)
+#' round(prop.table(table(head(ms, -1), tail(ms, -1), dnn=c("n", "n+1")), 1), 2)
 
-markov_seq <- function(tmat, init=1, length=1e3) {
+markov_seq <- function(n=100, tmat=rbind(1:3, 3:1, 2:0), init=1) {
 	nstates <- nrow(tmat)
 	if (init > nstates) {
 		stop("The initial state must be within the state space")
 	}
 	statespace <- seq_len(nstates)
 	statevec0 <- vector(length=nstates)
-	outvec <- vector(length=length)
+	outvec <- vector(length=n)
 	outvec[1] <- init
 	
 	for (n in seq_along(outvec)) {

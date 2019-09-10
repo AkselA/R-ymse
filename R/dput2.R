@@ -85,6 +85,7 @@ dput2 <- function(x, width=65, assign=c("front", "end", "none"),
             
             dep <- strwrap(dep, width=width + 1, exdent=exdent)
             dep <- gsub("\\( ", "\\(", dep)
+            dep <- gsub("\u00A0", " ", dep)
         } else {
             # replace spaces in character strings with nbsp
             spl <- strsplit(dep, "\"")[[1]]
@@ -92,6 +93,7 @@ dput2 <- function(x, width=65, assign=c("front", "end", "none"),
             spl[chstr] <- gsub(" ", "\u00A0", spl[chstr])
             dep <- paste(spl, collapse="\"")
             dep <- strwrap(dep, width=width + 1, exdent=exdent)
+            dep <- gsub("\u00A0", " ", dep)
         }
     }
     cat(dep, sep="\n")
