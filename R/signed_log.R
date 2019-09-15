@@ -32,10 +32,10 @@ signed_poly <- function(x, p=0.5, pre=0) {
 }
 
 
-plot(r, type="l", lty=2)
-lines(signed_poly(r, 2, pre=0.01), col="red")
-lines(signed_poly(r, 0.5, pre=0.01), col="orange")
-lines(signed_exp(r), col="blue")
-lines(signed_log(r), col="purple")
+# plot(r, type="l", lty=2)
+# lines(signed_poly(r, 2, pre=0.01), col="red")
+# lines(signed_poly(r, 0.5, pre=0.01), col="orange")
+# lines(signed_exp(r), col="blue")
+# lines(signed_log(r), col="purple")
 
 

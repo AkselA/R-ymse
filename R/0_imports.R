@@ -4,6 +4,5 @@
 #' @import graphics
 #' @import datasets
 #' @import grDevices
-#' @importFrom forecast forecast
 
 NULL
