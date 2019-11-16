@@ -4,8 +4,12 @@
 \alias{spread_seq}
 \title{Spread sequence}
 \usage{
-spread_seq(x, f = 1.1, ..., node = c("midrange", "first", "last", "mean",
-  "median", "min", "max"))
+spread_seq(
+  x,
+  f = 1.1,
+  ...,
+  node = c("midrange", "first", "last", "mean", "median", "min", "max")
+)
 }
 \arguments{
 \item{x}{a numeric vector}

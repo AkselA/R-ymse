@@ -6,14 +6,35 @@
 \alias{ccf_max}
 \title{Maximum ACF, PACF and CCF}
 \usage{
-acf_max(x, ..., plot = FALSE, show = plot, ci = 0.95, ma.ci = TRUE,
-  max.type = c("pos", "neg", "abs"), most.signif = FALSE)
+acf_max(
+  x,
+  ...,
+  plot = FALSE,
+  show = plot,
+  ci = 0.95,
+  ma.ci = TRUE,
+  max.type = c("pos", "neg", "abs"),
+  most.signif = FALSE
+)
 
-pacf_max(x, ..., plot = FALSE, show = plot, ci = 0.95,
-  max.type = c("pos", "neg", "abs"))
+pacf_max(
+  x,
+  ...,
+  plot = FALSE,
+  show = plot,
+  ci = 0.95,
+  max.type = c("pos", "neg", "abs")
+)
 
-ccf_max(x, y, ..., plot = FALSE, show = plot, ci = 0.95,
-  max.type = c("pos", "neg", "abs"))
+ccf_max(
+  x,
+  y,
+  ...,
+  plot = FALSE,
+  show = plot,
+  ci = 0.95,
+  max.type = c("pos", "neg", "abs")
+)
 }
 \arguments{
 \item{x, y}{univariate numeric vector or time series}

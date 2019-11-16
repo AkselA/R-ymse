@@ -3,6 +3,7 @@
 library(roxygen2)
 library(devtools)
 
+
 # set project directory and name
 setwd("~/Documents/R/prosjekter")
 projname <- "ymse"
@@ -27,7 +28,7 @@ objsizes <- function(projname, load.installed=FALSE) {
     dtf <- dtf[order(-dtf[,1]), c(1, 3, 2)]
     print(dtf)
     cat(paste("\nTotal:", tot))
-    invisible(list(dtf, total=tot))
+    invisible(dtf)
 }
 
 # turns objects found in "projname"/data.R (project root)
@@ -94,7 +95,7 @@ document(projname)
 load_all(projname)
 add_data(projname)
 
-check(projname, manual=FALSE)
+check(projname)
 
 objsizes(projname)
 
@@ -106,6 +107,6 @@ system(paste0("open ", projname, "/commit.command"))
 
 # dev_example(projname)
 
-install_github(paste0("AkselA/R-", projname))
+install_github(paste0("AkselA/R-", projname), build_manual=TRUE, force=TRUE)
 library(projname, character.only=TRUE)
-
+?aug_median

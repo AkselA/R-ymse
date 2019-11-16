@@ -3,7 +3,6 @@
 \docType{package}
 \name{ymse}
 \alias{ymse}
-\alias{ymse-package}
 \title{ymse: A collection of more or less useful functions}
 \description{
 There is no grand "theme" to ymse, other than that none of the functions,

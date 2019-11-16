@@ -15,6 +15,8 @@ can be specified by editing \code{def.par} or making a
 \code{def.par <- par(no.readonly=TRUE)} type call.
 }
 \seealso{
-Other par_and_plot_margins_functions: \code{\link{revert_par}},
-  \code{\link{set_mar}}
+Other par_and_plot_margins_functions: 
+\code{\link{revert_par}()},
+\code{\link{set_mar}()}
 }
+\concept{par_and_plot_margins_functions}

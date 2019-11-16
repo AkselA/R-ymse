@@ -4,8 +4,13 @@
 \alias{dtf_clean}
 \title{Data cleanup}
 \usage{
-dtf_clean(x, header = TRUE, na.strings = c("NA", "N/A"),
-  stringsAsFactors = FALSE, ...)
+dtf_clean(
+  x,
+  header = TRUE,
+  na.strings = c("NA", "N/A"),
+  stringsAsFactors = FALSE,
+  ...
+)
 }
 \arguments{
 \item{x}{a messy table the form of a character string}

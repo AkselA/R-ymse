@@ -4,8 +4,16 @@
 \alias{rainbowHCL}
 \title{HCL rainbow palette}
 \usage{
-rainbowHCL(n, c = 100, l = 75, start = 0, end = max(1, n - 1)/n,
-  alpha = 1, s = NULL, v = NULL)
+rainbowHCL(
+  n,
+  c = 100,
+  l = 75,
+  start = 0,
+  end = max(1, n - 1)/n,
+  alpha = 1,
+  s = NULL,
+  v = NULL
+)
 }
 \arguments{
 \item{n}{number of colours}

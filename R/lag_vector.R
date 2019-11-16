@@ -46,11 +46,11 @@ lag_trim <- function(x, k) {
 #' @examples
 #' x <- 1:9
 #' 
-#' lag.vector(x, c(0, 1, -2, 3))
-#' lag.vector(x, c(0, 1, -2, 3), "na")
-#' lag.vector(x, c(0, 1, -2, 3), "trim")
+#' lag_vector(x, c(0, 1, -2, 3))
+#' lag_vector(x, c(0, 1, -2, 3), "na")
+#' lag_vector(x, c(0, 1, -2, 3), "trim")
 
-lag.vector <- function(x, k, type=c("cycle", "na.fill", "trim"), ...) {
+lag_vector <- function(x, k, type=c("cycle", "na.fill", "trim"), ...) {
 	type <- match.arg(type)
 	switch(type,
 	  cycle=lag_cycle(x, k),

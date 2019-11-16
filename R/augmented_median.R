@@ -34,15 +34,15 @@
 #' mean(x)
 
 aug_median <- function(x, p=1, rank=FALSE, na.rm=FALSE) {
-	if (na.rm) {
-		x <- x[!is.na(x)]
-	}
-	r <- x
-	if (rank) {
-		r <- rank(r)
-	}
-	r <- -abs(median(r) - r)
-	mi <- min(r)
+    if (na.rm) {
+        x <- x[!is.na(x)]
+    }
+    r <- x
+    if (rank) {
+        r <- rank(r)
+    }
+    r <- -abs(median(r) - r)
+    mi <- min(r)
     r <- (r - mi) * (0.9/(max(r) - mi)) + 0.1
     r <- r^p
     sum(x*(r/sum(r)))

@@ -11,11 +11,9 @@ keep_finite(x, ...)
 
 \method{keep_finite}{default}(x, ...)
 
-\method{keep_finite}{matrix}(x, margin = 1, keep = c("any", "complete"),
-  ...)
+\method{keep_finite}{matrix}(x, margin = 1, keep = c("any", "complete"), ...)
 
-\method{keep_finite}{data.frame}(x, margin = 1, keep = c("any", "complete"),
-  ...)
+\method{keep_finite}{data.frame}(x, margin = 1, keep = c("any", "complete"), ...)
 }
 \arguments{
 \item{x}{a vector or matrix}

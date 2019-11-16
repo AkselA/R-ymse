@@ -4,8 +4,14 @@
 \alias{armodel}
 \title{Create an AR model object}
 \usage{
-armodel(coefs, mean = 0, intercept = 0, var.pred = 1, frequency = 1,
-  x.name = "Synthetic AR model")
+armodel(
+  coefs,
+  mean = 0,
+  intercept = 0,
+  var.pred = 1,
+  frequency = 1,
+  x.name = "Synthetic AR model"
+)
 }
 \arguments{
 \item{coefs}{a vector of model coefficients}

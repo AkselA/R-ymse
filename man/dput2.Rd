@@ -4,8 +4,14 @@
 \alias{dput2}
 \title{Write an Object to console}
 \usage{
-dput2(x, width = 65, assign = c("front", "end", "none"),
-  breakAtParen = FALSE, compact = TRUE, exdent = NULL)
+dput2(
+  x,
+  width = 65,
+  assign = c("front", "end", "none"),
+  breakAtParen = FALSE,
+  compact = TRUE,
+  exdent = NULL
+)
 }
 \arguments{
 \item{x}{an object}
