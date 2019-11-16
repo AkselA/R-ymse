@@ -4,6 +4,7 @@
 #' 
 #' @param x a vector or factor object
 #' @param na.rm should \code{NA}s be included
+#' @param order how should the results be ordered, if any?
 #' 
 #' @return
 #' A \code{data.frame} with columns \code{val} (the original values and class
@@ -16,17 +17,26 @@
 #' set.seed(1)
 #' m <- sample(c(rep(NA, 5), rpois(45, 3)))
 #' quick_table(m)
+#' 
+#' x <- LETTERS[c(2, 2, 2, 2, 3, 1, 1)]
+#' quick_table(x, order="freq")
+#' quick_table(x, order="value")
+#' quick_table(x, order="none")
 
-quick_table <- function(x, na.rm=FALSE) {
+quick_table <- function(x, na.rm=FALSE, order=c("frequency", "value", "none")) {
 	if (na.rm) {
 		x <- x[!is.na(x)]
 	}
     ux <- unique(x)
     freq <- tabulate(match(x, ux))
-    dtf <- data.frame(val=ux, freq)[order(-freq),]
+    dtf <- switch(match.arg(order), 
+      frequency=data.frame(val=ux, freq, stringsAsFactors=FALSE)[order(-freq),],
+      value=data.frame(val=ux, freq, stringsAsFactors=FALSE)[order(ux),],
+      none=data.frame(val=ux, freq, stringsAsFactors=FALSE))
     rownames(dtf) <- NULL
     dtf
 }
+
 
 #' Run Length Encoding
 #' 

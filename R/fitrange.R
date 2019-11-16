@@ -48,11 +48,12 @@ fitrange <- function(x, lower=-1, upper=1) {
 		return(numeric(0))
 	}
 	newrange <- upper - lower
-	oldrange <- max(x, na.rm=TRUE) - min(x, na.rm=TRUE)
+	mi <- min(x, na.rm=TRUE)
+	oldrange <- max(x, na.rm=TRUE) - mi
 	if (oldrange == 0) {
 		d <- abs(x - lower) < abs(x - upper)
 		ifelse(d, lower, upper)
 	} else {
-	    (x - min(x, na.rm=TRUE)) * (newrange/oldrange) + lower
+	    (x - mi) * (newrange/oldrange) + lower
     }
 }

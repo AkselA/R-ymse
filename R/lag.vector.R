@@ -1,46 +1,55 @@
 lag_cycle <- function(x, k) {
 	lx <- length(x)
-	if (length(k > 1)) {
-		l <- sapply(k, function(ki) x[(((1:lx)-1-ki) %% lx)+1])
-		colnames(l) <- paste0("L.", k)
-	} else {
-	    l <- x[(((1:lx)-1-k) %% lx)+1]
-	}
+	l <- lapply(k, function(ki) x[(((1:lx)-1-ki) %% lx)+1])
+	l <- data.frame(l, stringsAsFactors=FALSE)
+	colnames(l) <- paste0("L.", k)
 	l
 }
 
+
 lag_fill <- function(x, k, fill=NA) {
-	if ((m <- min(k)) < 0) {
-		k <- k - m
-	}
+	m <- min(k)
+    k <- k - m
 	lx <- length(x)
-	if (length(k) > 1) {
-		mk <- max(k)
-		l <- sapply(k, function(ki) c(rep(fill, ki), x, rep(fill, mk-ki)))
-		colnames(l) <- paste0("L.", k)
-	} else {
-	    l <- c(rep(fill, k), x)
-	}
+	mk <- max(k)
+	l <- lapply(k, function(ki) c(rep(fill, ki), x, rep(fill, mk-ki)))
+	l <- data.frame(l, stringsAsFactors=FALSE)
+	colnames(l) <- paste0("L.", k+m)
+	rownames(l) <- as.numeric(rownames(l)) + m
 	l
 }
 
 lag_trim <- function(x, k) {
-	if ((m <- max(k)) > 0) {
-		k <- k - m
-	}
+	o <- k
+	k <- -k
+	m <- min(k)
+	k <- k - m
 	k <- abs(k)
-	if (length(k) > 1) {
-        sl <- length(x)-diff(range(k))
-		l <- sapply(k, function(ki) x[(1:sl)+ki])
-		colnames(l) <- paste0("L.-", k)
-	} else {
-	    l <- x[-(1:k)]
-	}
-	l
+    sl <- length(x) - diff(range(k))
+	l <- lapply(k, function(ki) x[(1:sl)+ki])
+	l <- data.frame(l, stringsAsFactors=FALSE)
+	colnames(l) <- paste0("L.", o)
+	rownames(l) <- as.numeric(rownames(l)) - m
+    l
 }
 
 
+#' Lag an arbitrary vector
+#' 
+#' @param x vector to be lagged
+#' @param k integer vector specifying the number of lags
+#' @param type how to deal with non-overlapping sections
+#' @param ... further arguments passed to methods
+#' 
 #' @export
+#' 
+#' @examples
+#' x <- 1:9
+#' 
+#' lag.vector(x, c(0, 1, -2, 3))
+#' lag.vector(x, c(0, 1, -2, 3), "na")
+#' lag.vector(x, c(0, 1, -2, 3), "trim")
+
 lag.vector <- function(x, k, type=c("cycle", "na.fill", "trim"), ...) {
 	type <- match.arg(type)
 	switch(type,

@@ -9,20 +9,20 @@ projname <- "ymse"
 
 # Inspect package object sizes
 objsizes <- function(projname, load.installed=FALSE) {
-	if (load.installed) {
-		ppath <- find.package(projname, lib.loc=.libPaths())
-	    ppathr <- paste0(, "/R/", projname)
+    if (load.installed) {
+        ppath <- find.package(projname, lib.loc=.libPaths())
+        ppathr <- paste0(, "/R/", projname)
         lazyLoad(ppathr)
     }
-	pkgls <- ls(paste0("package:", projname))
-	ll <- t(sapply(pkgls, function(x) {
-		o <- get(x)
-		c(bytes=object.size(o), class=class(o))
-		}))
-	dtf <- type.convert(data.frame(ll))
-	dtf$"SI size" <- sapply(dtf[,1], 
-	  utils:::format.object_size, units="auto", standard="SI")
-	tot <- sum(dtf[,1])
+    pkgls <- ls(paste0("package:", projname))
+    ll <- t(sapply(pkgls, function(x) {
+        o <- get(x)
+        c(bytes=object.size(o), class=class(o))
+        }))
+    dtf <- type.convert(data.frame(ll))
+    dtf$"SI size" <- sapply(dtf[,1], 
+      utils:::format.object_size, units="auto", standard="SI")
+    tot <- sum(dtf[,1])
     tot <- utils:::format.object_size(tot, units="auto", standard="SI")
     dtf <- dtf[order(-dtf[,1]), c(1, 3, 2)]
     print(dtf)
@@ -34,24 +34,24 @@ objsizes <- function(projname, load.installed=FALSE) {
 # into data files available through data()
 # by saving them as .rda files in "projname"/data
 add_data <- function(projname) {
-	if (!dir.exists(projname)) {
-		stop(paste("Could not find", projname, "in current directory"))
-	}
-	datapath <- file.path(projname, "data.R")
-	if (!file.exists(datapath)) {
-		stop(paste("Could not find", datapath))
-	}
+    if (!dir.exists(projname)) {
+        stop(paste("Could not find", projname, "in current directory"))
+    }
+    datapath <- file.path(projname, "data.R")
+    if (!file.exists(datapath)) {
+        stop(paste("Could not find", datapath))
+    }
     dir.create(file.path(projname, "data"), showWarnings=FALSE)
     tmp.env <- new.env()
-	source(datapath, local=tmp.env)
-	tmp.list <- as.list(tmp.env, sorted=TRUE)
+    source(datapath, local=tmp.env)
+    tmp.list <- as.list(tmp.env, sorted=TRUE)
     files <- file.path(projname, "data", paste0(names(tmp.list), ".rda"))
     obj <- mapply(save, list=names(tmp.list), file=files, 
       MoreArgs=list(compress="xz", envir=tmp.env))
     if (length(files) == 1) {
         cat("File added:")
     } else {
-    	cat("Files added:")
+        cat("Files added:")
     }
     dtf <- data.frame(x=paste0(files), 
                       y=paste(sprintf("%.1f", file.size(files)/1000), "kB"))
@@ -72,29 +72,34 @@ show_pdf <- function(package, lib.loc=NULL, opt="--force") {
 
 # get a list of function arguments ready for Roxygen2 use
 params <- function(fun) {
-	cat(paste("@param", names(formals(fun))), sep="\n")
+    cat(paste("@param", names(formals(fun))), sep="\n")
 }
 
-use_build_ignore(
-  c("^data\\.R", "documenting\\.R", "commit\\.command", "\\.pdf$", 
-    "\\.png$", "^.*\\.Rproj$", "^__.*", "^\\.DS_Store$"),
-  pkg=projname, escape=FALSE)
+# Write .Rbuildignore file
+buildignore <- function(projname, pat=c("^data\\.R", "documenting\\.R", 
+  "commit\\.command", "\\.pdf$", "\\.png$", "\\.Rproj$", "^__.*",
+  "^\\.DS_Store$")) {
+    bignore.path <- file.path(projname, ".Rbuildignore") 
+    if (!file.exists(bignore.path)) {
+        file.create(bignore.path)
+    }
+    pat <- union(scan(bignore.path, ""), pat)
+    cat(pat, file=bignore.path, sep="\n")
+}
 
-readLines(file.path(projname, ".Rbuildignore"))
-
+buildignore(projname)
 # detach(paste0("package:", projname), character.only=TRUE)
 
 document(projname)
 load_all(projname)
 add_data(projname)
 
-
 check(projname, manual=FALSE)
 
 objsizes(projname)
 
 show_pdf(projname)
-
+sessionInfo()
 
 # run convenience script to add, commit and maybe push change
 system(paste0("open ", projname, "/commit.command"))

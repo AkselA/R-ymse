@@ -1,4 +1,4 @@
-r <- seq(-1, 1, 0.01)
+# r <- seq(-1, 1, 0.01)
 
 
 signed_log <- function(x, p1=TRUE, scale=p1) {

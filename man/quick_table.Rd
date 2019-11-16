@@ -4,12 +4,14 @@
 \alias{quick_table}
 \title{Tabulate data}
 \usage{
-quick_table(x, na.rm = FALSE)
+quick_table(x, na.rm = FALSE, order = c("frequency", "value", "none"))
 }
 \arguments{
 \item{x}{a vector or factor object}
 
 \item{na.rm}{should \code{NA}s be included}
+
+\item{order}{how should the results be ordered, if any?}
 }
 \value{
 A \code{data.frame} with columns \code{val} (the original values and class
@@ -23,4 +25,9 @@ Quick and simple function for creating contingency tables
 set.seed(1)
 m <- sample(c(rep(NA, 5), rpois(45, 3)))
 quick_table(m)
+
+x <- LETTERS[c(2, 2, 2, 2, 3, 1, 1)]
+quick_table(x, order="freq")
+quick_table(x, order="value")
+quick_table(x, order="none")
 }

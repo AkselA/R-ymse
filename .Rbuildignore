@@ -6,3 +6,4 @@ commit\.command
 ^.*\.Rproj$
 ^__.*
 ^\.DS_Store$
+\.Rproj$
