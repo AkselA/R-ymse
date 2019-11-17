@@ -1,7 +1,7 @@
 # Niche apportionment models, aka. broken stick models
 
 # Dominance decay
-f <- function() {
+stick <- function() {
 	n <- 10
 	x <- 1
 	v <- numeric(n)

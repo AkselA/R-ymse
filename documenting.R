@@ -1,7 +1,13 @@
 
 # load required libraries
+
+install_version("devtools", version="1.13.3", repos="http://cran.us.r-project.org")
+install_version("roxygen2", version="6.1.1", repos="http://cran.us.r-project.org")
+install.packages("roxygen2")
+
 library(roxygen2)
 library(devtools)
+sessionInfo()
 
 
 # set project directory and name
@@ -77,18 +83,21 @@ params <- function(fun) {
 }
 
 # Write .Rbuildignore file
-buildignore <- function(projname, pat=c("^data\\.R", "documenting\\.R", 
-  "commit\\.command", "\\.pdf$", "\\.png$", "\\.Rproj$", "^__.*",
-  "^\\.DS_Store$")) {
+buildignore <- function(projname, add=TRUE, pat=c("^data\\.R", 
+  "documenting\\.R", "commit\\.command", "\\.pdf$", "\\.png$",
+  "\\.Rproj$", "^__.*", "^\\.DS_Store$")) {
     bignore.path <- file.path(projname, ".Rbuildignore") 
     if (!file.exists(bignore.path)) {
         file.create(bignore.path)
     }
-    pat <- union(scan(bignore.path, ""), pat)
+    if (add) {
+        pat <- union(scan(bignore.path, ""), pat)
+    }
+    message(paste(pat, collapse="   "))
     cat(pat, file=bignore.path, sep="\n")
 }
 
-buildignore(projname)
+buildignore(projname, add=FALSE)
 # detach(paste0("package:", projname), character.only=TRUE)
 
 document(projname)
@@ -96,11 +105,11 @@ load_all(projname)
 add_data(projname)
 
 check(projname)
-
+?dusd
 objsizes(projname)
 
 show_pdf(projname)
-sessionInfo()
+
 
 # run convenience script to add, commit and maybe push change
 system(paste0("open ", projname, "/commit.command"))
