@@ -4,32 +4,12 @@
 \alias{multidensity}
 \title{Plot multiple kernel density estimates}
 \usage{
-multidensity(
-  x,
-  main,
-  xlab = "",
-  ylab = "Density",
-  xlim,
-  ylim,
-  col = 1:9,
-  lty = 1:2,
-  lwd = 1,
-  add = FALSE,
-  frame.plot = TRUE,
-  legend = TRUE,
-  x.legend = "topleft",
-  y.legend = NULL,
-  bty = "o",
-  box.col = "#FFFFFF00",
-  bg.legend = "#FFFFFFAA",
-  cex.legend = 0.7,
-  x.intersp = 1,
-  y.intersp = 1.5,
-  inset = 0,
-  xpd.legend = NA,
-  horiz = FALSE,
-  ...
-)
+multidensity(x, main, xlab = "", ylab = "Density", xlim, ylim,
+  col = 1:9, lty = 1:2, lwd = 1, add = FALSE, frame.plot = TRUE,
+  legend = TRUE, x.legend = "topleft", y.legend = NULL, bty = "o",
+  box.col = "#FFFFFF00", bg.legend = "#FFFFFFAA", cex.legend = 0.7,
+  x.intersp = 1, y.intersp = 1.5, inset = 0, xpd.legend = NA,
+  horiz = FALSE, ...)
 }
 \arguments{
 \item{x}{a list or data.frame of numeric values}

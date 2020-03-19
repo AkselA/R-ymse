@@ -20,7 +20,7 @@
 #' @export
 
 fingerknit <- function() {
- 	cbcopy <- pipe('printf "%s\n" "$(pbpaste)"')
+    cbcopy <- pipe('printf "%s\n" "$(pbpaste)"')
     cblines <- readLines(cbcopy)
     close(cbcopy)
     cblines[nchar(cblines) == 0] <- "###! EMPTY LINE PLACEHOLDER !###"
@@ -48,7 +48,6 @@ fingerknit <- function() {
     
     invisible(paste(input, collapse="\n"))
 }
-
 
 #' Apply function to contents of clipboard
 #' 

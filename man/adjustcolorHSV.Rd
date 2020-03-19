@@ -4,19 +4,9 @@
 \alias{adjustcolorHSV}
 \title{Adjust Colors in One or More Directions Conveniently.}
 \usage{
-adjustcolorHSV(
-  col,
-  alpha.f = 1,
-  h.f = 1,
-  s.f = 1,
-  v.f = 1,
-  offset = c(0, 0, 0, 0),
-  transform = diag(c(h.f, s.f, v.f, alpha.f)),
-  h = NULL,
-  s = NULL,
-  v = NULL,
-  alpha = NULL
-)
+adjustcolorHSV(col, alpha.f = 1, h.f = 1, s.f = 1, v.f = 1,
+  offset = c(0, 0, 0, 0), transform = diag(c(h.f, s.f, v.f, alpha.f)),
+  h = NULL, s = NULL, v = NULL, alpha = NULL)
 }
 \arguments{
 \item{col}{vector of colors, in any format that col2rgb() accepts}

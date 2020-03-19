@@ -4,15 +4,8 @@
 \alias{merge_multiple}
 \title{Merge multiple \code{data.frame}s}
 \usage{
-merge_multiple(
-  x,
-  by,
-  all = FALSE,
-  sort = TRUE,
-  incomparables = NULL,
-  include = NULL,
-  exclude = NULL
-)
+merge_multiple(x, by, all = FALSE, sort = TRUE, incomparables = NULL,
+  include = NULL, exclude = NULL)
 }
 \arguments{
 \item{x}{a list of \code{data.frame}s with at least one column in common}

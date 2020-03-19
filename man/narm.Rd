@@ -13,7 +13,8 @@ narm(x, ...)
 
 \method{narm}{matrix}(x, margin = 1, keep = c("any", "complete"), ...)
 
-\method{narm}{data.frame}(x, margin = 1, keep = c("any", "complete"), ...)
+\method{narm}{data.frame}(x, margin = 1, keep = c("any", "complete"),
+  ...)
 }
 \arguments{
 \item{x}{a vector or matrix}

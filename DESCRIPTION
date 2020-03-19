@@ -10,8 +10,8 @@ Description: Supplies a number of more or less useful functions and methods suit
     similarity between two character vectors, plot a simple loess smooth, and other
     assorted tasks.
 Depends: R (>= 3.5.0)
-Imports: stats, utils, graphics, grDevices
-License: GPL (>= 2)
+Imports: stats, utils, graphics, grDevices, datasets
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 7.0.0

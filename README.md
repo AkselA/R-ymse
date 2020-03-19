@@ -27,3 +27,6 @@ legend("topright", c("fair", "uneven"), bty="n", col=c("grey", "red"), lwd=2:1)
 ```
 
 ![graph](https://raw.githubusercontent.com/AkselA/R-ymse/master/dice.png)
+
+![graph](/Users/aksel.henriksen/Documents/R/prosjekter/ymse/dice.png)
+

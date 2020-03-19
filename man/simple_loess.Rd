@@ -8,14 +8,8 @@
 \usage{
 simple_loess(...)
 
-\method{simple_loess}{default}(
-  y,
-  x = seq_along(y),
-  xout = sort(x),
-  span = 0.75,
-  periodic = FALSE,
-  ...
-)
+\method{simple_loess}{default}(y, x = seq_along(y), xout = sort(x),
+  span = 0.75, periodic = FALSE, ...)
 
 \method{simple_loess}{data.frame}(df, xout = sort(df[, 1]), ...)
 }

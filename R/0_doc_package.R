@@ -7,7 +7,7 @@
 #' @section ymse functions:
 #' \code{\link{addrows}} Add rown to a data.frame
 #' \code{\link{ahist}} Create an average shifted histogram
-#'
+#' 
 #' @docType package
 #' @name ymse
 NULL

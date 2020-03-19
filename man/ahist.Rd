@@ -4,16 +4,9 @@
 \alias{ahist}
 \title{Average shifted histogram}
 \usage{
-ahist(
-  x,
-  n.breaks = nclass.FD(x),
-  n.shifts = 3,
-  type = c("histogram", "polygon", "line", "table"),
-  freq = FALSE,
-  plot = TRUE,
-  add = FALSE,
-  ...
-)
+ahist(x, n.breaks = nclass.FD(x), n.shifts = 3, type = c("histogram",
+  "polygon", "line", "table"), freq = FALSE, plot = TRUE,
+  add = FALSE, ...)
 }
 \arguments{
 \item{x}{a vector of values for which the histogram is desired}

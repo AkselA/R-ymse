@@ -4,7 +4,8 @@
 \alias{combodice}
 \title{Combine dice}
 \usage{
-combodice(x, FUN, ..., method = c("outer", "expand.grid", "convolve"), name)
+combodice(x, FUN, ..., method = c("outer", "expand.grid", "convolve"),
+  name)
 }
 \arguments{
 \item{x}{a list of dice objects, or objects that can be interpreted as such}

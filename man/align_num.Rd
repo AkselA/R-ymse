@@ -4,7 +4,8 @@
 \alias{align_num}
 \title{Align numbers}
 \usage{
-align_num(x, lpad = " ", rpad = "0", dec = ".", min.dec = 0, rm.dec = TRUE)
+align_num(x, lpad = " ", rpad = "0", dec = ".", min.dec = 0,
+  rm.dec = TRUE)
 }
 \arguments{
 \item{x}{numeric or character vector}

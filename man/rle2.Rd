@@ -4,11 +4,8 @@
 \alias{rle2}
 \title{Run Length Encoding}
 \usage{
-rle2(
-  x,
-  na.unique = FALSE,
-  output = c("data.frame", "rle", "named vector", "lengths", "values")
-)
+rle2(x, na.unique = FALSE, output = c("data.frame", "rle",
+  "named vector", "lengths", "values"))
 }
 \arguments{
 \item{x}{a numeric or character vector}

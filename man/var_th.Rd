@@ -4,12 +4,10 @@
 \alias{var_th}
 \title{Theoretical variance}
 \usage{
-var_th(
-  p,
-  distribution = c("uniform", "exponential", "gamma", "t", "students-t", "bates",
-    "binomial", "nbinom", "negative binomial", "beta", "f", "geometric", "hypergeometric",
-    "lognormal", "log-normal", "weibull", "signed-rank", "rank-sum", "logistic")
-)
+var_th(p, distribution = c("uniform", "exponential", "gamma", "t",
+  "students-t", "bates", "binomial", "nbinom", "negative binomial", "beta",
+  "f", "geometric", "hypergeometric", "lognormal", "log-normal", "weibull",
+  "signed-rank", "rank-sum", "logistic"))
 }
 \arguments{
 \item{p}{a named vector of parameter values, or a single unnamed numeric

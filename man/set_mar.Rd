@@ -51,8 +51,7 @@ head(get("old.par", envir=ymse:::ymseEnv))
 \seealso{
 \code{\link{par}}
 
-Other par_and_plot_margins_functions: 
-\code{\link{default_par}()},
-\code{\link{revert_par}()}
+Other par_and_plot_margins_functions: \code{\link{default_par}},
+  \code{\link{revert_par}}
 }
 \concept{par_and_plot_margins_functions}

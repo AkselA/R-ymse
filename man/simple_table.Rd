@@ -4,14 +4,8 @@
 \alias{simple_table}
 \title{Read a simple table}
 \usage{
-simple_table(
-  x,
-  header = TRUE,
-  rem.dup.header = header,
-  na.strings = c("NA", "N/A"),
-  stringsAsFactors = FALSE,
-  ...
-)
+simple_table(x, header = TRUE, rem.dup.header = header,
+  na.strings = c("NA", "N/A"), stringsAsFactors = FALSE, ...)
 }
 \arguments{
 \item{x}{a teble represented as a character string}

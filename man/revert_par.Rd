@@ -10,8 +10,7 @@ revert_par()
 Reverts \code{par} settings back to \code{old.par}
 }
 \seealso{
-Other par_and_plot_margins_functions: 
-\code{\link{default_par}()},
-\code{\link{set_mar}()}
+Other par_and_plot_margins_functions: \code{\link{default_par}},
+  \code{\link{set_mar}}
 }
 \concept{par_and_plot_margins_functions}

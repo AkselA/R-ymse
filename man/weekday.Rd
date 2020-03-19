@@ -9,12 +9,8 @@
 \usage{
 weekday(x, ...)
 
-\method{weekday}{default}(
-  x,
-  short = TRUE,
-  language = c("english", "nn norwegian", "bm norwegian"),
-  ...
-)
+\method{weekday}{default}(x, short = TRUE, language = c("english",
+  "nn norwegian", "bm norwegian"), ...)
 
 \method{weekday}{Date}(x, ...)
 
